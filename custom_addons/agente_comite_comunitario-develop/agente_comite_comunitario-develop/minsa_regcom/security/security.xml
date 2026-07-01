@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Categoria: Registro Comunitario -->
+        <record model="ir.module.category" id="minsa_regcom.module_registro">
+            <field name="name">Registro Agente Comunitario de Salud</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- GRUPO BASE -->
+        <record model="res.groups" id="group_base_user">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Usuario base</field>
+        </record>
+
+        <!-- GRUPO NACIONAL -->
+        <record model="res.groups" id="group_nacional">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Nacional</field>
+            <field name="implied_ids" eval="[(4, ref('group_base_user'))]"/>
+        </record>
+
+        <!-- GRUPO DIRESA -->
+        <record model="res.groups" id="group_diresa">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Diresa</field>
+            <field name="implied_ids" eval="[(4, ref('group_base_user'))]"/>
+        </record>
+
+        <!-- GRUPO RED -->
+        <record model="res.groups" id="group_red">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Red</field>
+            <field name="implied_ids" eval="[(4, ref('group_base_user'))]"/>
+        </record>
+
+        <!-- GRUPO RENIPRESS -->
+        <record model="res.groups" id="group_renipress">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Renipress</field>
+            <field name="implied_ids" eval="[(4, ref('group_base_user'))]"/>
+        </record>
+
+        <!-- GRUPO ADMIN REGISTRO COMUNITARIO -->
+        <record model="res.groups" id="group_adminregcom">
+            <field name="category_id" ref="minsa_regcom.module_registro"/>
+            <field name="name">Admin</field>
+            <field name="implied_ids" eval="[(4, ref('group_base_user'))]"/>
+        </record>
+
+        <!-- REGLAS - AGENTE COMUNITARIO -->
+        <!-- REGLAS - NACIONAL -->
+        <record id="nacional_lectura_access" model="ir.rule">
+            <field name="name">Nacional Registro/lectura</field>
+            <field name="model_id" ref="model_minsa_registro"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_nacional'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="nacional_detalle_lectura_access" model="ir.rule">
+            <field name="name">Nacional Registro detalle/lectura</field>
+            <field name="model_id" ref="model_minsa_registro_detalle"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_nacional'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="nacional_agente_lectura_access" model="ir.rule">
+            <field name="name">Nacional Agente comunitario/lectura</field>
+            <field name="model_id" ref="model_minsa_agente_comunitario"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_nacional'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="nacional_renipress_eess_lectura_access" model="ir.rule">
+            <field name="name">Nacional Establecimientos/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_eess"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_nacional'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <!-- REGLAS - DIRESA -->
+        <record id="diresa_general_lectura_access" model="ir.rule">
+            <field name="name">Diresa Registro/lectura</field>
+            <field name="model_id" ref="model_minsa_registro"/>
+            <field name="domain_force">[('diresa_id' ,'=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_diresa'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="diresa_agente_lectura_access" model="ir.rule">
+            <field name="name">Diresa Agente comunitario/lectura</field>
+            <field name="model_id" ref="model_minsa_agente_comunitario"/>
+            <field name="domain_force">[('diresa_id' ,'=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_diresa'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="diresa_diresa_eess_lectura_access" model="ir.rule">
+            <field name="name">Diresa Diresa/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_diresa"/>
+            <field name="domain_force">[('id', '=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_diresa'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="diresa_renipress_eess_lectura_access" model="ir.rule">
+            <field name="name">Diresa Establecimientos/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_eess"/>
+            <field name="domain_force">[('diresa_id' ,'=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_diresa'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="diresa_res_users_lectura_access" model="ir.rule">
+            <field name="name">Diresa Usuarios/lectura</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <!-- <field name="domain_force">["|",('active' ,'=', False),"&",('diresa_id' ,'=', user.diresa_id.id),('tipo_usuario' ,'in', ['agente','ambos'])]</field> -->
+            <field name="domain_force">[('diresa_id' ,'=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_diresa'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <!-- REGLAS - RED -->
+        <record id="red_general_lectura_access" model="ir.rule">
+            <field name="name">Red Registro/lectura</field>
+            <field name="model_id" ref="model_minsa_registro"/>
+            <field name="domain_force">[('red_id' ,'=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="red_agente_lectura_access" model="ir.rule">
+            <field name="name">Red Agente comunitario/lectura</field>
+            <field name="model_id" ref="model_minsa_agente_comunitario"/>
+            <field name="domain_force">[('red_id' ,'=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="red_diresa_eess_lectura_access" model="ir.rule">
+            <field name="name">Red Diresa/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_diresa"/>
+            <field name="domain_force">[('id', '=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="red_red_eess_lectura_access" model="ir.rule">
+            <field name="name">Red Red/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_red"/>
+            <field name="domain_force">[('id', '=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="red_renipress_eess_lectura_access" model="ir.rule">
+            <field name="name">Red Establecimientos/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_eess"/>
+            <field name="domain_force">[('red_id' ,'=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="red_res_users_lectura_access" model="ir.rule">
+            <field name="name">Red Usuarios/lectura</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[('red_id' ,'=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_red'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <!-- REGLAS - RENIPRESS -->
+        <record id="renipress_lectura_access" model="ir.rule">
+            <field name="name">Renipress Registro/lectura</field>
+            <field name="model_id" ref="model_minsa_registro"/>
+            <field name="domain_force">[('establecimiento_id', '=', user.establecimiento_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_renipress'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="renipress_agente_lectura_access" model="ir.rule">
+            <field name="name">Renipress Agente comunitario/lectura</field>
+            <field name="model_id" ref="model_minsa_agente_comunitario"/>
+            <field name="domain_force">[('establecimiento_id', '=', user.establecimiento_id.id),('es_voluntario','=',True)]</field>
+            <field name="groups" eval="[(4, ref('group_renipress'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="renipress_diresa_eess_lectura_access" model="ir.rule">
+            <field name="name">Renipress Diresa/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_diresa"/>
+            <field name="domain_force">[('id', '=', user.diresa_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_renipress'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="renipress_red_eess_lectura_access" model="ir.rule">
+            <field name="name">Renipress Red/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_red"/>
+            <field name="domain_force">[('id', '=', user.red_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_renipress'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="renipress_renipress_eess_lectura_access" model="ir.rule">
+            <field name="name">Renipress Establecimientos/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_eess"/>
+            <field name="domain_force">[('id', '=', user.establecimiento_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_renipress'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <!-- REGLAS - ADMIN REGISTRO COMUNITARIO -->
+        <record id="adminregcom_lectura_access" model="ir.rule">
+            <field name="name">Admin RegCom/lectura</field>
+            <field name="model_id" ref="model_minsa_registro"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_adminregcom'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="adminregcom_agente_lectura_access" model="ir.rule">
+            <field name="name">Admin Agente comunitario/lectura</field>
+            <field name="model_id" ref="model_minsa_agente_comunitario"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_adminregcom'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="adminregcom_diresa_eess_lectura_access" model="ir.rule">
+            <field name="name">Admin Diresa/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_diresa"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_adminregcom'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="adminregcom_red_eess_lectura_access" model="ir.rule">
+            <field name="name">Admin Red/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_red"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_adminregcom'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        <record id="adminregcom_renipress_eess_lectura_access" model="ir.rule">
+            <field name="name">Admin Establecimientos/lectura</field>
+            <field name="model_id" ref="renipress.model_renipress_eess"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_adminregcom'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="minsa_tipo_voluntariado_001" model="minsa.tipo.voluntariado"><field name="codigo">001</field><field name="name">Orientador(a) Judicial</field></record>
+    <record id="minsa_tipo_voluntariado_002" model="minsa.tipo.voluntariado"><field name="codigo">002</field><field name="name">Voluntario(a) de la salud</field></record>
+    <record id="minsa_tipo_voluntariado_003" model="minsa.tipo.voluntariado"><field name="codigo">003</field><field name="name">Facilitador(ra) en Acción</field></record>
+    <record id="minsa_tipo_voluntariado_004" model="minsa.tipo.voluntariado"><field name="codigo">004</field><field name="name">Promotor(ra) de Salúd Pblica</field></record>
+    <record id="minsa_tipo_voluntariado_005" model="minsa.tipo.voluntariado"><field name="codigo">005</field><field name="name">Actor(a) Local</field></record>
+    <record id="minsa_tipo_voluntariado_006" model="minsa.tipo.voluntariado"><field name="codigo">006</field><field name="name">Otros</field></record>
+</odoo>

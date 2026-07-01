@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="minsa_genero_01" model="minsa.genero"><field name="codigo">1</field><field name="name">Varon</field></record>
+    <record id="minsa_genero_02" model="minsa.genero"><field name="codigo">2</field><field name="name">Mujer</field></record>
+</odoo>

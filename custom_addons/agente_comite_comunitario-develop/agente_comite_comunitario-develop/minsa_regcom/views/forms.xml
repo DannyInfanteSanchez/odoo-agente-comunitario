@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="registro_view_tree" model="ir.ui.view">
+        <field name="name">Registro Comunitario</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="evalua_revalida == 1">
+                <field name="create_date" readonly="1"/>
+                <field name="diresa_id" readonly="1"/>
+                <field name="red_id" readonly="1"/>
+                <field name="establecimiento_id" readonly="1"/>
+                <field name="ubigeo" readonly="1"/>
+                <field name="departamento_id" readonly="1"/>
+                <field name="provincia_id" readonly="1"/>
+                <field name="distrito_id" readonly="1"/>
+                <field name="estado" readonly="1"/>
+                <field name="evalua_revalida" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="registro_view_calendar" model="ir.ui.view">
+        <field name="name">Registro Comunitario Calendar</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <calendar string="Ficha Registro" date_start="create_date">
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <field name="ubigeo"/>
+                <field name="establecimiento_id" />
+                <field name="renipress" />
+                <field name="departamento_id" />
+                <field name="provincia_id" />
+                <field name="distrito_id" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="registro_view_pivot" model="ir.ui.view">
+        <field name="name">Registro Comunitario Pivot</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="create_date" type="row"/>
+                <field name="diresa_id" type="row"/>
+                <field name="red_id" type="row"/>
+                <field name="cantidad_detalle" type='measure'/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="registro_view_bar" model="ir.ui.view">
+        <field name="name">Registro Comunitario Barras</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="diresa_id"/>
+                <field name="establecimiento_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="registro_view_form" model="ir.ui.view">
+        <field name="name">Ficha de Registro</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <form string="Registro Comunitario">
+                <header>
+                    <button name="action_validar" string="Validar" type="object" class="oe_highlight" groups="minsa_regcom.group_adminregcom, base.group_erp_manager, minsa_regcom.group_diresa, minsa_regcom.group_red" attrs="{'invisible':[('estado', '=', 'validado2')]}"/>
+                    <button name="action_borrador" string="Borrador" type="object" class="oe_highlight" groups="minsa_regcom.group_diresa, minsa_regcom.group_adminregcom, base.group_erp_manager" attrs="{'invisible':[('estado','!=', 'validado')]}"/>
+                    <button name="action_revalidar" string="Revalidar" type="object" class="oe_highlight" groups="minsa_regcom.group_adminregcom, base.group_erp_manager, minsa_regcom.group_diresa, minsa_regcom.group_red" attrs="{'invisible':[('evalua_revalida', '=', 0)]}"/>
+                    <field name="estado" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field name="es_grupo_nacional" invisible='1'/>
+                    <field name="es_grupo_diresa" invisible='1'/>
+                    <field name="es_grupo_red" invisible='1'/>
+                    <field name="es_grupo_establecimiento" invisible='1'/>
+                    <field name="es_grupo_admin" invisible='1'/>
+                    <field name="evalua_revalida" invisible='1'/>
+                    <field name="name" invisible='1'/>
+                    <group>
+                        <group>
+                            <field name="diresa_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':['|','|','|',('estado','in', ['validado', 'validado2']),('es_grupo_establecimiento','=', True),('es_grupo_diresa','=', True),('es_grupo_red','=', True)]}"/>
+                            <field name="establecimiento_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':['|',('estado','in', ['validado', 'validado2']),('es_grupo_establecimiento','=', True)]}" context="{'diresa_id': diresa_id, 'establecimiento_id': establecimiento_id, 'from_registro': True}"/>
+                            <field name="create_date" attrs="{'readonly':True}"/>
+                            <field name="tipo_registro" attrs="{'readonly': True}"/>
+                        </group>
+                        <group>
+                            <field name="tipo_archivo" attrs="{'readonly':[('estado','in', ['validado', 'validado2'])]}"/>
+                            <field name="carga_documento" widget="many2many_binary" attrs="{'readonly':[('estado', 'in', ['validado', 'validado2'])], 'invisible':[('tipo_archivo','=', 'url')], 'required': [('tipo_archivo','=','adjunto')]}"/>
+                            <field name="url_documento" widget="url" attrs="{'readonly':[('estado','in', ['validado', 'validado2'])], 'invisible':[('tipo_archivo','=', 'adjunto')], 'required': [('tipo_archivo','=','url')]}"/>
+                            <field name="valida_date" attrs="{'readonly':True}"/>
+                            <field name="revalida_date" attrs="{'readonly':True}"/>
+                            <field name="evalua_revalida" attrs="{'readonly':True}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Agente Comunitario de Salud" >
+                            <field name="detalle_ids" context="{'form_view_ref': 'minsa_recurso.registro_detalle_accion_view_form'}">
+                                <tree widget="one2many_list">
+                                    <field name="tipo_documento"/>
+                                    <field name="numero_documento"/>
+                                    <field name="name"/>
+                                    <field name="celular"/>
+                                    <field name="estado"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="registro_detalle_view_tree" model="ir.ui.view">
+        <field name="name">Registro Comunitario</field>
+        <field name="model">minsa.registro.detalle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_ficha" readonly="1"/>
+                <field name="diresa_id" readonly="1"/>
+                <field name="red_id" readonly="1"/>
+                <field name="establecimiento_id" readonly="1"/>
+                <field name="ubigeo" readonly="1"/>
+                <field name="departamento_id" readonly="1"/>
+                <field name="provincia_id" readonly="1"/>
+                <field name="distrito_id" readonly="1"/>
+                <field name="numero_documento" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="fecha_inicio" readonly="1"/>
+                <field name="fecha_fin" readonly="1"/>
+                <field name="estado" readonly="1"/>
+                <field name="registro_estado" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="registro_detalle_view_form" model="ir.ui.view">
+        <field name="name">Agente Comunitario de Salud</field>
+        <field name="model">minsa.registro.detalle</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <header>
+                    <button 
+                        name="accion_estado"
+                        string="Act Estado"
+                        type="object"
+                        attrs="{'invisible':[('registro_estado','not in',['validado2'])]}"
+                        class="oe_highlight"
+                        confirm="¿Esta seguro de actualizar el estado?"
+                        groups="minsa_regcom.group_renipress,minsa_regcom.group_diresa,minsa_regcom.group_red,base.group_erp_manager"
+                    />
+                </header>
+                <sheet>
+                    <group string="Datos Personales">
+                        <group>
+                            <field name="registro_estado" invisible="1"/>
+                            <field name="agente_comunitario_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':['|',('estado','=', 'noactivo'),('registro_estado','!=', 'borrador')]}" context="{'form_registro_agente': True}"/>
+                            <field name="tipo_documento" attrs="{'readonly': True}"/>
+                            <field name="numero_documento" attrs="{'readonly': True}"/>
+                            <field name="name" attrs="{'readonly': True}"/>
+                            <field name="celular" attrs="{'readonly': True}"/>
+                        </group>
+                        <group>
+                            <field name="fecha_inicio" attrs="{'readonly':['|',('estado','=', 'noactivo'),('registro_estado','!=', 'borrador')]}"/>
+                            <field name="fecha_fin" attrs="{'readonly':[('estado','=', 'activo')]}"/>
+                            <field name="carga_documento" widget="many2many_binary" attrs="{'readonly':['|',('estado','=', 'noactivo'),('registro_estado','!=', 'borrador')], 'required': True}"/>
+                            <field name="estado"/>
+                            <field name="observacion" attrs="{'invisible':[('estado','=', 'activo')], 'required': False}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_search_registro" model="ir.ui.view">
+        <field name="name">Buscar por Diresa y/o Fecha</field>
+        <field name="model">minsa.registro</field>
+        <field name="arch" type="xml">
+            <search string="Buscar por">
+                <field name="name"/>
+                <field name="create_date"/>
+                <field name="diresa_id"/>
+                <field name="renipress"/>
+                <field name="ubigeo"/>
+                <field name="departamento_id"/>
+                <field name="provincia_id"/>
+                <field name="distrito_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_search_registro_detalle" model="ir.ui.view">
+        <field name="name">Buscar detalle</field>
+        <field name="model">minsa.registro.detalle</field>
+        <field name="arch" type="xml">
+            <search string="Buscar por">
+                <field name="name"/>
+                <field name="tipo_documento"/>
+                <field name="numero_documento"/>
+                <field name="celular"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_registro" model="ir.actions.act_window">
+        <field name="name">Ficha de Registro</field>
+        <field name="res_model">minsa.registro</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph</field>
+    </record>
+
+    <record id="action_registro_detalle" model="ir.actions.act_window">
+        <field name="name">Agente Comunitario de Salud</field>
+        <field name="res_model">minsa.registro.detalle</field>
+        <field name="view_mode">tree,form</field>
+   </record>
+
+    <!-- GENERO -->
+    <record id="genero_view_tree" model="ir.ui.view">
+        <field name="name">Genero</field>
+        <field name="model">minsa.genero</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="genero_view_form" model="ir.ui.view">
+        <field name="name">Registro Genero</field>
+        <field name="model">minsa.genero</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_genero" model="ir.actions.act_window">
+        <field name="name">Genero</field>
+        <field name="res_model">minsa.genero</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ETNIA -->
+    <record id="etnia_view_tree" model="ir.ui.view">
+        <field name="name">Etnia</field>
+        <field name="model">minsa.etnia</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="etnia_view_form" model="ir.ui.view">
+        <field name="name">Registro Etnia</field>
+        <field name="model">minsa.etnia</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_etnia" model="ir.actions.act_window">
+        <field name="name">Etnia</field>
+        <field name="res_model">minsa.etnia</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- SEGURO -->
+    <record id="seguro_view_tree" model="ir.ui.view">
+        <field name="name">Tipo de Seguro</field>
+        <field name="model">minsa.seguro</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="seguro_view_form" model="ir.ui.view">
+        <field name="name">Registro Tipo de seguro</field>
+        <field name="model">minsa.etnia</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_seguro" model="ir.actions.act_window">
+        <field name="name">Tipo de seguro</field>
+        <field name="res_model">minsa.seguro</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- DIALECTO -->
+    <record id="dialecto_view_tree" model="ir.ui.view">
+        <field name="name">Idioma Dialecto</field>
+        <field name="model">minsa.dialecto</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="dialecto_view_form" model="ir.ui.view">
+        <field name="name">Registro Idioma o Dialecto</field>
+        <field name="model">minsa.dialecto</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dialecto" model="ir.actions.act_window">
+        <field name="name">Idioma Dialecto</field>
+        <field name="res_model">minsa.dialecto</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- GRADO DE INSTRUCCION -->
+    <record id="grado_instruccion_view_tree" model="ir.ui.view">
+        <field name="name">Grado de instrucción</field>
+        <field name="model">minsa.grado.instruccion</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="grado_instruccion_view_form" model="ir.ui.view">
+        <field name="name">Registro Grado de instrucción</field>
+        <field name="model">minsa.grado.instruccion</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_grado_instruccion" model="ir.actions.act_window">
+        <field name="name">Grado Instrucción</field>
+        <field name="res_model">minsa.grado.instruccion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- TIPO DE VOLUNTARIADO -->
+    <record id="tipo_voluntariado_view_tree" model="ir.ui.view">
+        <field name="name">Tipo de voluntariado</field>
+        <field name="model">minsa.tipo.voluntariado</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="tipo_voluntariado_view_form" model="ir.ui.view">
+        <field name="name">Registro Tipo de voluntariado</field>
+        <field name="model">minsa.tipo.voluntariado</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tipo_voluntariado" model="ir.actions.act_window">
+        <field name="name">Tipo de voluntariado</field>
+        <field name="res_model">minsa.tipo.voluntariado</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- OPERADOR MOBIL -->
+    <record id="operador_mobil_view_tree" model="ir.ui.view">
+        <field name="name">Operador Movil</field>
+        <field name="model">minsa.operador.mobil</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="operador_mobil_view_form" model="ir.ui.view">
+        <field name="name">Registro Operador Movil</field>
+        <field name="model">minsa.operador.mobil</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_operador_mobil" model="ir.actions.act_window">
+        <field name="name">Operador Movil</field>
+        <field name="res_model">minsa.operador.mobil</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- NIVEL AGENTE COMUNITARIO -->
+    <record id="nivel_agente_view_tree" model="ir.ui.view">
+        <field name="name">Nivel Agente Comunitario</field>
+        <field name="model">minsa.nivel.agente</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nivel_agente_view_form" model="ir.ui.view">
+        <field name="name">Registro Nivel Agente Comunitario</field>
+        <field name="model">minsa.nivel.agente</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nivel_agente" model="ir.actions.act_window">
+        <field name="name">Nivel Agente Comunitario</field>
+        <field name="res_model">minsa.nivel.agente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ESTANDAR DE COMPETENCIA LABORAL -->
+    <record id="estandar_laboral_view_tree" model="ir.ui.view">
+        <field name="name">Estándar de Competencia Laboral</field>
+        <field name="model">minsa.estandar.laboral</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="estandar_laboral_view_form" model="ir.ui.view">
+        <field name="name">Registro Estándar de competencia Laboral</field>
+        <field name="model">minsa.estandar.laboral</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_estandar_laboral" model="ir.actions.act_window">
+        <field name="name">Estándar de Competencia Laboral</field>
+        <field name="res_model">minsa.estandar.laboral</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

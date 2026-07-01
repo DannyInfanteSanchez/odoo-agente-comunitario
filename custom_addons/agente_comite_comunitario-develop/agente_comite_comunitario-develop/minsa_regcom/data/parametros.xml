@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data noupdate="1">
+        <record id="tipo_documento_adjuntar" model="ir.config_parameter">
+            <field name="key">tipo_documento_adjuntar</field>
+            <field name="value">pdf,xls,xlsx,doc,docx</field>
+        </record>
+        <record id="size_documento_adjunto" model="ir.config_parameter">
+            <field name="key">size_documento_adjunto_megas</field>
+            <field name="value">3</field>
+        </record>
+        <record id="map_sigrid_url" model="ir.config_parameter">
+            <field name="key">map_sigrid_url</field>
+            <field name="value">map_sigrid_url</field>
+        </record>
+        <record id="map_sigrid_user" model="ir.config_parameter">
+            <field name="key">map_sigrid_user</field>
+            <field name="value">map_sigrid_user</field>
+        </record>
+        <record id="map_sigrid_url_buscar_direccion" model="ir.config_parameter">
+            <field name="key">map_sigrid_url_buscar_direccion</field>
+            <field name="value">map_sigrid_url_buscar_direccion</field>
+        </record>
+        <record id="map_sigrid_url_buscar_coordenada" model="ir.config_parameter">
+            <field name="key">map_sigrid_url_buscar_coordenada</field>
+            <field name="value">map_sigrid_url_buscar_coordenada</field>
+        </record>
+        <record id="map_sigrid_url_recupera_direccion" model="ir.config_parameter">
+            <field name="key">map_sigrid_url_recupera_direccion</field>
+            <field name="value">map_sigrid_url_recupera_direccion</field>
+        </record>
+        <record id="map_openstreetmap_url_buscar_coordenada" model="ir.config_parameter">
+            <field name="key">map_openstreetmap_url_buscar_coordenada</field>
+            <field name="value">map_openstreetmap_url_buscar_coordenada</field>
+        </record>
+        <record id="map_openstreetmap_url_buscar_direccion" model="ir.config_parameter">
+            <field name="key">map_openstreetmap_url_buscar_direccion</field>
+            <field name="value">map_openstreetmap_url_buscar_direccion</field>
+        </record>
+        <record id="map_openstreetmap_url_buscar_ruta" model="ir.config_parameter">
+            <field name="key">map_openstreetmap_url_buscar_ruta</field>
+            <field name="value">map_openstreetmap_url_buscar_ruta</field>
+        </record>
+        <record id="validador_email" model="ir.config_parameter">
+            <field name="key">validador_email</field>
+            <field name="value">validador_email</field>
+        </record>
+        <record id="cabecera_ficha_cantidad_archivos" model="ir.config_parameter">
+            <field name="key">cabecera_cantidad_archivos</field>
+            <field name="value">2</field>
+        </record>
+        <record id="detalle_ficha_cantidad_archivos" model="ir.config_parameter">
+            <field name="key">detalle_cantidad_archivos</field>
+            <field name="value">2</field>
+        </record>
+        <record id="consulta_reniec_url" model="ir.config_parameter">
+            <field name="key">consulta_reniec_url</field>
+            <field name="value">consulta_reniec_url</field>
+        </record>
+        <record id="consulta_reniec_idapp" model="ir.config_parameter">
+            <field name="key">consulta_reniec_idapp</field>
+            <field name="value">consulta_reniec_idapp</field>
+        </record>
+        <record id="consulta_reniec_oficina" model="ir.config_parameter">
+            <field name="key">consulta_reniec_oficina</field>
+            <field name="value">consulta_reniec_oficina</field>
+        </record>
+        <record id="consulta_reniec_idusuario" model="ir.config_parameter">
+            <field name="key">consulta_reniec_idusuario</field>
+            <field name="value">consulta_reniec_idusuario</field>
+        </record>
+        <record id="tiempo_dias_validar_registro_agente" model="ir.config_parameter">
+            <field name="key">tiempo_dias_validar_registro_agente</field>
+            <field name="value">365</field>
+        </record>
+    </data>
+</odoo>
