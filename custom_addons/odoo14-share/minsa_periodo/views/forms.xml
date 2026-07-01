@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+            <record id="view_minsa_anho_form" model="ir.ui.view">
+            <field name="name">minsa.anho.form</field>
+            <field name="model">minsa.anho</field>
+            <field name="arch" type="xml">
+                <form string="Fiscal year">
+                    <header>
+                        <button class="oe_highlight" name="create_period" string="Crear Periodos Mensuales" type="object"/>
+                        <field name="state" nolabel="1" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_stop"/>
+                        </group>
+                    </group>
+                    <field colspan="4" name="period_ids" nolabel="1" widget="one2many_list">
+                        <form string="Period">
+                            <group col="4">
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="date_start"/>
+                                <field name="date_stop"/>
+                                <field name="special"/>
+                                <field invisible="1" name="state"/>
+                            </group>
+                        </form>
+                    </field>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_period_form" model="ir.ui.view">
+            <field name="name">minsa.periodo.form</field>
+            <field name="model">minsa.periodo</field>
+            <field name="arch" type="xml">
+                <form string="Periodos">
+                    <header>
+                        <field name="state" nolabel="1" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="fiscalyear_id" widget="selection"/>
+                                <label for="date_start" string="Duración"/>
+                                <div>
+                                    <field class="oe_inline" name="date_start" nolabel="1"/>-
+                                    <field class="oe_inline" name="date_stop" nolabel="1"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="special"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="year"/>
+                            <field name="month"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <record id="diresa_1" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'1'"/>
+            <field name="name">AMAZONAS</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_11" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'11'"/>
+            <field name="name">CUSCO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_13" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'13'"/>
+            <field name="name">HUANCAVELICA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_14" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'14'"/>
+            <field name="name">HUANUCO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_15" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'15'"/>
+            <field name="name">ICA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_17" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'17'"/>
+            <field name="name">JUNIN</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_18" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'18'"/>
+            <field name="name">LA LIBERTAD</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_19" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'19'"/>
+            <field name="name">LAMBAYEQUE</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_2" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'2'"/>
+            <field name="name">ANCASH</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_21" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'21'"/>
+            <field name="name">LIMA ESTE</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_22" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'22'"/>
+            <field name="name">LIMA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_23" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'23'"/>
+            <field name="name">LIMA SUR</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_24" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'24'"/>
+            <field name="name">LORETO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_25" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'25'"/>
+            <field name="name">MADRE DE DIOS</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_26" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'26'"/>
+            <field name="name">MOQUEGUA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_27" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'27'"/>
+            <field name="name">PASCO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_28" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'28'"/>
+            <field name="name">PIURA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_29" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'29'"/>
+            <field name="name">PUNO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_3" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'3'"/>
+            <field name="name">APURIMAC</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_30" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'30'"/>
+            <field name="name">SAN MARTIN</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_32" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'32'"/>
+            <field name="name">TACNA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_33" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'33'"/>
+            <field name="name">TUMBES</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_34" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'34'"/>
+            <field name="name">UCAYALI</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_35" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'35'"/>
+            <field name="name">LIMA NORTE</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_36" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'36'"/>
+            <field name="name">LIMA CENTRO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_4" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'4'"/>
+            <field name="name">AREQUIPA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_5" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'5'"/>
+            <field name="name">AYACUCHO</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_7" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'7'"/>
+            <field name="name">CAJAMARCA</field>
+            <field name="active" eval="1"/>
+        </record>
+        <record id="diresa_8" model="renipress.diresa">
+            <field name="codigo_diresa" eval="'8'"/>
+            <field name="name">CALLAO</field>
+            <field name="active" eval="1"/>
+        </record>
+    </data>
+</odoo>

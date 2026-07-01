@@ -1,0 +1,28 @@
+input.out-of-limit-value {
+    background-color: orange !important;
+}
+span.mask-suffix {
+    margin-left: 5px;
+}
+span.mask-suffix.input-group-text {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+}
+.input-group-append {
+    margin-left: -1px;
+}
+
+.input-group-append, .input-group-prepend {
+    display: -ms-flexbox;
+    display: flex;
+}
+.inline {
+    display: inline-flex;
+}

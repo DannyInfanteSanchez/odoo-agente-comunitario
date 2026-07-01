@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_minsa_anho">
+            <field name="name">Año</field>
+            <field name="res_model">minsa.anho</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_minsa_period">
+            <field name="name">Periodo</field>
+            <field name="res_model">minsa.periodo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,34 @@
+#. module: auth_signup
+#: model:ir.ui.view,arch_db:auth_signup.reset_password
+#: model:ir.ui.view,arch_db:auth_signup.signup
+msgid "Back to Login"
+msgstr "Volver al Inicio de sesión"
+
+#. module: auth_signup
+#: model:ir.ui.view,arch_db:auth_signup.login
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+#. module: auth_signup
+#: code:addons/auth_signup/controllers/main.py:61
+#, python-format
+msgid "An email has been sent with credentials to reset your password"
+msgstr ""
+"Se ha enviado un correo electrónico con las credenciales para restablecer su "
+"contraseña"
+
+#. module: auth_signup
+#: code:addons/auth_signup/models/res_users.py:108
+#, python-format
+msgid "Reset password: invalid username or email"
+msgstr "Restablecimiento de contraseña: usuario o correo electrónico no válido"
+
+#. module: auth_signup
+#: model:ir.ui.view,arch_db:auth_signup.fields
+msgid "Password"
+msgstr "Contraseña"
+
+#. module: web
+#: model:ir.ui.view,arch_db:web.login
+msgid "Email"
+msgstr "Usuario"

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_renipress_diresa,access_renipress_diresa,model_renipress_diresa,,1,0,0,0
+access_renipress_red,access_renipress_red,model_renipress_red,,1,0,0,0
+access_renipress_microred,access_renipress_microred,model_renipress_microred,,1,0,0,0
+access_renipress_eess,access_renipress_eess,model_renipress_eess,,1,0,0,0

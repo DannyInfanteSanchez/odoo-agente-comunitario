@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Vista heredada para agregar búsqueda en res.users para usuarios inactivos -->
+        <record id="view_users_search_inactive" model="ir.ui.view">
+            <field name="name">res.users.search.inactive</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <separator/>
+                    <filter name="auto_desactivado_users" string="Desactivados Automáticamente"
+                            domain="[('auto_desactivado', '=', True)]"/>
+                    <filter name="last_access_30_days" string="Sin acceso últimos 30 días"
+                            domain="[('login_date', '&lt;', (datetime.datetime.now() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="last_access_45_days" string="Sin acceso últimos 45 días"
+                            domain="[('login_date', '&lt;', (datetime.datetime.now() - datetime.timedelta(days=45)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_auto_desactivado" string="Estado de Desactivación"
+                                context="{'group_by': 'auto_desactivado'}"/>
+                        <filter name="group_by_last_access" string="Último Acceso"
+                                context="{'group_by': 'login_date:month'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

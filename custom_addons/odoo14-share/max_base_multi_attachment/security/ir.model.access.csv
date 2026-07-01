@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_max_base_multi_attachment,access_max_base_multi_attachment,model_max_base_multi_attachment,,1,1,1,1

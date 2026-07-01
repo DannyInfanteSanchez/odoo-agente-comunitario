@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<menuitem name="Periodos" groups="base.group_erp_manager"
+                  id="menu_periodo" web_icon="minsa_periodo,static/description/icon.png"/>
+    	<menuitem name="Año" id="menu_fiscalyear" action="action_minsa_anho" parent="menu_periodo"/>
+        <menuitem name="Periodo" id="menu_periodo_periodo" action="action_minsa_period" parent="menu_periodo"/>
+    </data>
+</odoo>

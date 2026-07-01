@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- #################### RES.CURRENCY #################### -->
+        <record id="base.PEN" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <!-- #################### RES.COMPANY #################### -->
+        <record model="res.company" id="base.main_company" >
+            <field name="name">Ministerio de Salud del Perú</field>
+            <field name="email">info@minsa.gob.pe</field>
+            <field name="website">http://www.minsa.gob.pe</field>
+            <field name="street">Av. Salaverry 801 Jesús María</field>
+            <field name="street2">Lima / Perú</field>
+            <field name="phone">(51-1) 315-6600</field>
+            <field name="currency_id" ref="base.PEN"/>
+            <field name="logo" type="base64" file="l10n_minsa/static/img/logo_minsa.png"/>
+            <field name="report_header">Personas que atendemos Personas.</field>
+        </record>
+
+        <!-- #################### RES.LANG #################### -->
+        <record model="res.lang" id="base.lang_es_PE" >
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep"></field>
+            <field name="time_format">%I:%M:%S %p</field>
+        </record>
+
+</odoo>
+

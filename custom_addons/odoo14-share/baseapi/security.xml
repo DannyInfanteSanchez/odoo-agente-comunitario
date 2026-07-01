@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_baseapi">
+            <field name="name">Base Api</field>
+            <field name="sequence">10</field>
+            <field name="visible" eval="0" />
+        </record>
+
+        <record id="group_api_token" model="res.groups">
+            <field name="name">Lectura</field>
+            <field name="category_id" ref="baseapi.module_baseapi"/>
+        </record>
+
+        <record id="group_api_token_post" model="res.groups">
+            <field name="name">Post</field>
+            <field name="category_id" ref="baseapi.module_baseapi"/>
+        </record>
+    </data>
+</odoo>

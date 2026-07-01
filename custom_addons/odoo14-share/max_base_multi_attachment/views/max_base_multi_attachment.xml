@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="max_base_multi_attachment_form_view" model="ir.ui.view">
+            <field name="name">max.base.multi.attachment.form</field>
+            <field name="model">max.base.multi.attachment</field>
+            <field name="arch" type="xml">
+            <form string="Attachment">
+                <sheet>
+                    <group>
+                        <field name="file" filename="name"/>
+                        <field name="name"/>
+                        <field name="file_type"/>
+                        <field name="description"/>
+                        <field name="owner_field" invisible="1"/>
+                        <field name="owner_id" invisible="1"/>
+                        <field name="owner_model" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+        <record id="max_base_multi_attachment_tree_view" model="ir.ui.view">
+            <field name="name">max.base.multi.attachment.tree</field>
+            <field name="model">max.base.multi.attachment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="max_base_multi_attachment_kanban_view" model="ir.ui.view">
+            <field name="name">max.base.multi.attachment.kanban</field>
+            <field name="model">max.base.multi.attachment</field>
+            <field name="arch" type="xml">
+                <kanban string="Attachment">
+                    <field name="file_type"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                <div class="o_kanban_image">
+                                    <i t-if="record.file_type.raw_value === 'pdf'" class="fa fa-file-pdf-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'xls'" class="fa fa-file-excel-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'xlsx'" class="fa fa-file-excel-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'ppt'" class="fa fa-file-powerpoint-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'pptx'" class="fa fa-file-powerpoint-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'doc'" class="fa fa-file-word-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'docx'" class="fa fa-file-word-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'zip'" class="fa fa-file-zip-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'rar'" class="fa fa-file-zip-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'jpg'" class="fa fa-file-image-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'jpeg'" class="fa fa-file-image-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'gif'" class="fa fa-file-image-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'bmp'" class="fa fa-file-image-o fa-4x"/>
+                                    <i t-elif="record.file_type.raw_value === 'png'" class="fa fa-file-image-o fa-4x"/>
+                                    <i t-else="" class="fa fa-file-o fa-4x"/>
+                                </div>
+                                <div style="overflow:hidden; text-overflow:ellipsis; width: 225px; word-wrap:break-word; word-break:normal; float:left; padding-left:10px;">
+                                    <ul>
+                                        <li><strong><field name="name"/></strong></li>
+                                        <li><field name="file_size"/></li>
+                                        <li><field name="description"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>
+

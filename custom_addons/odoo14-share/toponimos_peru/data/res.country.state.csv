@@ -1,0 +1,2071 @@
+id,name,code,state_id:id,province_id:id,country_id:id
+ubigeos_0101,CHACHAPOYAS,101,base.state_pe_01,,base.pe
+ubigeos_010101,CHACHAPOYAS,10101,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010102,ASUNCION,10102,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010103,BALSAS,10103,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010104,CHETO,10104,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010105,CHILIQUIN,10105,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010106,CHUQUIBAMBA,10106,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010107,GRANADA,10107,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010108,HUANCAS,10108,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010109,LA JALCA,10109,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010110,LEIMEBAMBA,10110,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010111,LEVANTO,10111,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010112,MAGDALENA,10112,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010113,MARISCAL CASTILLA,10113,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010114,MOLINOPAMPA,10114,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010115,MONTEVIDEO,10115,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010116,OLLEROS,10116,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010117,QUINJALCA,10117,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010118,SAN FRANCISCO DE DAGUAS,10118,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010119,SAN ISIDRO DE MAINO,10119,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010120,SOLOCO,10120,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_010121,SONCHE,10121,base.state_pe_01,ubigeos_0101,base.pe
+ubigeos_0102,BAGUA,102,base.state_pe_01,,base.pe
+ubigeos_010201,BAGUA,10201,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_010202,ARAMANGO,10202,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_010203,COPALLIN,10203,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_010204,EL PARCO,10204,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_010205,IMAZA,10205,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_010206,LA PECA,10206,base.state_pe_01,ubigeos_0102,base.pe
+ubigeos_0103,BONGARA,103,base.state_pe_01,,base.pe
+ubigeos_010301,JUMBILLA,10301,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010302,CHISQUILLA,10302,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010303,CHURUJA,10303,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010304,COROSHA,10304,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010305,CUISPES,10305,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010306,FLORIDA,10306,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010307,JAZAN,10307,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010308,RECTA,10308,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010309,SAN CARLOS,10309,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010310,SHIPASBAMBA,10310,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010311,VALERA,10311,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_010312,YAMBRASBAMBA,10312,base.state_pe_01,ubigeos_0103,base.pe
+ubigeos_0104,CONDORCANQUI,104,base.state_pe_01,,base.pe
+ubigeos_010401,NIEVA,10401,base.state_pe_01,ubigeos_0104,base.pe
+ubigeos_010402,EL CENEPA,10402,base.state_pe_01,ubigeos_0104,base.pe
+ubigeos_010403,RIO SANTIAGO,10403,base.state_pe_01,ubigeos_0104,base.pe
+ubigeos_0105,LUYA,105,base.state_pe_01,,base.pe
+ubigeos_010501,LAMUD,10501,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010502,CAMPORREDONDO,10502,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010503,COCABAMBA,10503,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010504,COLCAMAR,10504,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010505,CONILA,10505,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010506,INGUILPATA,10506,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010507,LONGUITA,10507,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010508,LONYA CHICO,10508,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010509,LUYA,10509,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010510,LUYA VIEJO,10510,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010511,MARIA,10511,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010512,OCALLI,10512,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010513,OCUMAL,10513,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010514,PISUQUIA,10514,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010515,PROVIDENCIA,10515,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010516,SAN CRISTOBAL,10516,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010517,SAN FRANCISCO DE YESO,10517,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010518,SAN JERONIMO,10518,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010519,SAN JUAN DE LOPECANCHA,10519,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010520,SANTA CATALINA,10520,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010521,SANTO TOMAS,10521,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010522,TINGO,10522,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_010523,TRITA,10523,base.state_pe_01,ubigeos_0105,base.pe
+ubigeos_0106,RODRIGUEZ DE MENDOZA,106,base.state_pe_01,,base.pe
+ubigeos_010601,SAN NICOLAS,10601,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010602,CHIRIMOTO,10602,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010603,COCHAMAL,10603,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010604,HUAMBO,10604,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010605,LIMABAMBA,10605,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010606,LONGAR,10606,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010607,MARISCAL BENAVIDES,10607,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010608,MILPUC,10608,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010609,OMIA,10609,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010610,SANTA ROSA,10610,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010611,TOTORA,10611,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_010612,VISTA ALEGRE,10612,base.state_pe_01,ubigeos_0106,base.pe
+ubigeos_0107,UTCUBAMBA,107,base.state_pe_01,,base.pe
+ubigeos_010701,BAGUA GRANDE,10701,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010702,CAJARURO,10702,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010703,CUMBA,10703,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010704,EL MILAGRO,10704,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010705,JAMALCA,10705,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010706,LONYA GRANDE,10706,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_010707,YAMON,10707,base.state_pe_01,ubigeos_0107,base.pe
+ubigeos_0201,HUARAZ,201,base.state_pe_02,,base.pe
+ubigeos_020101,HUARAZ,20101,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020102,COCHABAMBA,20102,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020103,COLCABAMBA,20103,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020104,HUANCHAY,20104,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020105,INDEPENDENCIA,20105,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020106,JANGAS,20106,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020107,LA LIBERTAD,20107,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020108,OLLEROS,20108,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020109,PAMPAS GRANDE,20109,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020110,PARIACOTO,20110,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020111,PIRA,20111,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_020112,TARICA,20112,base.state_pe_02,ubigeos_0201,base.pe
+ubigeos_0202,AIJA,202,base.state_pe_02,,base.pe
+ubigeos_020201,AIJA,20201,base.state_pe_02,ubigeos_0202,base.pe
+ubigeos_020202,CORIS,20202,base.state_pe_02,ubigeos_0202,base.pe
+ubigeos_020203,HUACLLAN,20203,base.state_pe_02,ubigeos_0202,base.pe
+ubigeos_020204,LA MERCED,20204,base.state_pe_02,ubigeos_0202,base.pe
+ubigeos_020205,SUCCHA,20205,base.state_pe_02,ubigeos_0202,base.pe
+ubigeos_0203,ANTONIO RAYMONDI,203,base.state_pe_02,,base.pe
+ubigeos_020301,LLAMELLIN,20301,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_020302,ACZO,20302,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_020303,CHACCHO,20303,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_020304,CHINGAS,20304,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_020305,MIRGAS,20305,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_020306,SAN JUAN DE RONTOY,20306,base.state_pe_02,ubigeos_0203,base.pe
+ubigeos_0204,ASUNCION,204,base.state_pe_02,,base.pe
+ubigeos_020401,CHACAS,20401,base.state_pe_02,ubigeos_0204,base.pe
+ubigeos_020402,ACOCHACA,20402,base.state_pe_02,ubigeos_0204,base.pe
+ubigeos_0205,BOLOGNESI,205,base.state_pe_02,,base.pe
+ubigeos_020501,CHIQUIAN,20501,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020502,ABELARDO PARDO LEZAMETA,20502,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020503,ANTONIO RAYMONDI,20503,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020504,AQUIA,20504,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020505,CAJACAY,20505,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020506,CANIS,20506,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020507,COLQUIOC,20507,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020508,HUALLANCA,20508,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020509,HUASTA,20509,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020510,HUAYLLACAYAN,20510,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020511,LA PRIMAVERA,20511,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020512,MANGAS,20512,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020513,PACLLON,20513,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020514,SAN MIGUEL DE CORPANQUI,20514,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_020515,TICLLOS,20515,base.state_pe_02,ubigeos_0205,base.pe
+ubigeos_0206,CARHUAZ,206,base.state_pe_02,,base.pe
+ubigeos_020601,CARHUAZ,20601,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020602,ACOPAMPA,20602,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020603,AMASHCA,20603,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020604,ANTA,20604,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020605,ATAQUERO,20605,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020606,MARCARA,20606,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020607,PARIAHUANCA,20607,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020608,SAN MIGUEL DE ACO,20608,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020609,SHILLA,20609,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020610,TINCO,20610,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_020611,YUNGAR,20611,base.state_pe_02,ubigeos_0206,base.pe
+ubigeos_0207,CARLOS FERMIN FITZCARRALD,207,base.state_pe_02,,base.pe
+ubigeos_020701,SAN LUIS,20701,base.state_pe_02,ubigeos_0207,base.pe
+ubigeos_020702,SAN NICOLAS,20702,base.state_pe_02,ubigeos_0207,base.pe
+ubigeos_020703,YAUYA,20703,base.state_pe_02,ubigeos_0207,base.pe
+ubigeos_0208,CASMA,208,base.state_pe_02,,base.pe
+ubigeos_020801,CASMA,20801,base.state_pe_02,ubigeos_0208,base.pe
+ubigeos_020802,BUENA VISTA ALTA,20802,base.state_pe_02,ubigeos_0208,base.pe
+ubigeos_020803,COMANDANTE NOEL,20803,base.state_pe_02,ubigeos_0208,base.pe
+ubigeos_020804,YAUTAN,20804,base.state_pe_02,ubigeos_0208,base.pe
+ubigeos_0209,CORONGO,209,base.state_pe_02,,base.pe
+ubigeos_020901,CORONGO,20901,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020902,ACO,20902,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020903,BAMBAS,20903,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020904,CUSCA,20904,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020905,LA PAMPA,20905,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020906,YANAC,20906,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_020907,YUPAN,20907,base.state_pe_02,ubigeos_0209,base.pe
+ubigeos_0210,HUARI,210,base.state_pe_02,,base.pe
+ubigeos_021001,HUARI,21001,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021002,ANRA,21002,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021003,CAJAY,21003,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021004,CHAVIN DE HUANTAR,21004,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021005,HUACACHI,21005,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021006,HUACCHIS,21006,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021007,HUACHIS,21007,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021008,HUANTAR,21008,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021009,MASIN,21009,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021010,PAUCAS,21010,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021011,PONTO,21011,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021012,RAHUAPAMPA,21012,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021013,RAPAYAN,21013,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021014,SAN MARCOS,21014,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021015,SAN PEDRO DE CHANA,21015,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_021016,UCO,21016,base.state_pe_02,ubigeos_0210,base.pe
+ubigeos_0211,HUARMEY,211,base.state_pe_02,,base.pe
+ubigeos_021101,HUARMEY,21101,base.state_pe_02,ubigeos_0211,base.pe
+ubigeos_021102,COCHAPETI,21102,base.state_pe_02,ubigeos_0211,base.pe
+ubigeos_021103,CULEBRAS,21103,base.state_pe_02,ubigeos_0211,base.pe
+ubigeos_021104,HUAYAN,21104,base.state_pe_02,ubigeos_0211,base.pe
+ubigeos_021105,MALVAS,21105,base.state_pe_02,ubigeos_0211,base.pe
+ubigeos_0212,HUAYLAS,212,base.state_pe_02,,base.pe
+ubigeos_021201,CARAZ,21201,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021202,HUALLANCA,21202,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021203,HUATA,21203,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021204,HUAYLAS,21204,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021205,MATO,21205,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021206,PAMPAROMAS,21206,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021207,PUEBLO LIBRE,21207,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021208,SANTA CRUZ,21208,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021209,SANTO TORIBIO,21209,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_021210,YURACMARCA,21210,base.state_pe_02,ubigeos_0212,base.pe
+ubigeos_0213,MARISCAL LUZURIAGA,213,base.state_pe_02,,base.pe
+ubigeos_021301,PISCOBAMBA,21301,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021302,CASCA,21302,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021303,ELEAZAR GUZMAN BARRON,21303,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021304,FIDEL OLIVAS ESCUDERO,21304,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021305,LLAMA,21305,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021306,LLUMPA,21306,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021307,LUCMA,21307,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_021308,MUSGA,21308,base.state_pe_02,ubigeos_0213,base.pe
+ubigeos_0214,OCROS,214,base.state_pe_02,,base.pe
+ubigeos_021401,OCROS,21401,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021402,ACAS,21402,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021403,CAJAMARQUILLA,21403,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021404,CARHUAPAMPA,21404,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021405,COCHAS,21405,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021406,CONGAS,21406,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021407,LLIPA,21407,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021408,SAN CRISTOBAL DE RAJAN,21408,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021409,SAN PEDRO,21409,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_021410,SANTIAGO DE CHILCAS,21410,base.state_pe_02,ubigeos_0214,base.pe
+ubigeos_0215,PALLASCA,215,base.state_pe_02,,base.pe
+ubigeos_021501,CABANA,21501,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021502,BOLOGNESI,21502,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021503,CONCHUCOS,21503,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021504,HUACASCHUQUE,21504,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021505,HUANDOVAL,21505,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021506,LACABAMBA,21506,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021507,LLAPO,21507,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021508,PALLASCA,21508,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021509,PAMPAS,21509,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021510,SANTA ROSA,21510,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_021511,TAUCA,21511,base.state_pe_02,ubigeos_0215,base.pe
+ubigeos_0216,POMABAMBA,216,base.state_pe_02,,base.pe
+ubigeos_021601,POMABAMBA,21601,base.state_pe_02,ubigeos_0216,base.pe
+ubigeos_021602,HUAYLLAN,21602,base.state_pe_02,ubigeos_0216,base.pe
+ubigeos_021603,PAROBAMBA,21603,base.state_pe_02,ubigeos_0216,base.pe
+ubigeos_021604,QUINUABAMBA,21604,base.state_pe_02,ubigeos_0216,base.pe
+ubigeos_0217,RECUAY,217,base.state_pe_02,,base.pe
+ubigeos_021701,RECUAY,21701,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021702,CATAC,21702,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021703,COTAPARACO,21703,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021704,HUAYLLAPAMPA,21704,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021705,LLACLLIN,21705,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021706,MARCA,21706,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021707,PAMPAS CHICO,21707,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021708,PARARIN,21708,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021709,TAPACOCHA,21709,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_021710,TICAPAMPA,21710,base.state_pe_02,ubigeos_0217,base.pe
+ubigeos_0218,SANTA,218,base.state_pe_02,,base.pe
+ubigeos_021801,CHIMBOTE,21801,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021802,CACERES DEL PERU,21802,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021803,COISHCO,21803,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021804,MACATE,21804,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021805,MORO,21805,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021806,NEPEÑA,21806,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021807,SAMANCO,21807,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021808,SANTA,21808,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_021809,NUEVO CHIMBOTE,21809,base.state_pe_02,ubigeos_0218,base.pe
+ubigeos_0219,SIHUAS,219,base.state_pe_02,,base.pe
+ubigeos_021901,SIHUAS,21901,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021902,ACOBAMBA,21902,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021903,ALFONSO UGARTE,21903,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021904,CASHAPAMPA,21904,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021905,CHINGALPO,21905,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021906,HUAYLLABAMBA,21906,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021907,QUICHES,21907,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021908,RAGASH,21908,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021909,SAN JUAN,21909,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_021910,SICSIBAMBA,21910,base.state_pe_02,ubigeos_0219,base.pe
+ubigeos_0220,YUNGAY,220,base.state_pe_02,,base.pe
+ubigeos_022001,YUNGAY,22001,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022002,CASCAPARA,22002,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022003,MANCOS,22003,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022004,MATACOTO,22004,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022005,QUILLO,22005,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022006,RANRAHIRCA,22006,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022007,SHUPLUY,22007,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_022008,YANAMA,22008,base.state_pe_02,ubigeos_0220,base.pe
+ubigeos_0301,ABANCAY,301,base.state_pe_03,,base.pe
+ubigeos_030101,ABANCAY,30101,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030102,CHACOCHE,30102,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030103,CIRCA,30103,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030104,CURAHUASI,30104,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030105,HUANIPACA,30105,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030106,LAMBRAMA,30106,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030107,PICHIRHUA,30107,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030108,SAN PEDRO DE CACHORA,30108,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_030109,TAMBURCO,30109,base.state_pe_03,ubigeos_0301,base.pe
+ubigeos_0302,ANDAHUAYLAS,302,base.state_pe_03,,base.pe
+ubigeos_030201,ANDAHUAYLAS,30201,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030202,ANDARAPA,30202,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030203,CHIARA,30203,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030204,HUANCARAMA,30204,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030205,HUANCARAY,30205,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030206,HUAYANA,30206,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030207,KISHUARA,30207,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030208,PACOBAMBA,30208,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030209,PACUCHA,30209,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030210,PAMPACHIRI,30210,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030211,POMACOCHA,30211,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030212,SAN ANTONIO DE CACHI,30212,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030213,SAN JERONIMO,30213,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030214,SAN MIGUEL DE CHACCRAMPA,30214,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030215,SANTA MARIA DE CHICMO,30215,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030216,TALAVERA,30216,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030217,TUMAY HUARACA,30217,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030218,TURPO,30218,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030219,KAQUIABAMBA,30219,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_030220,JOSE MARIA ARGUEDAS,30220,base.state_pe_03,ubigeos_0302,base.pe
+ubigeos_0303,ANTABAMBA,303,base.state_pe_03,,base.pe
+ubigeos_030301,ANTABAMBA,30301,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030302,EL ORO,30302,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030303,HUAQUIRCA,30303,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030304,JUAN ESPINOZA MEDRANO,30304,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030305,OROPESA,30305,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030306,PACHACONAS,30306,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_030307,SABAINO,30307,base.state_pe_03,ubigeos_0303,base.pe
+ubigeos_0304,AYMARAES,304,base.state_pe_03,,base.pe
+ubigeos_030401,CHALHUANCA,30401,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030402,CAPAYA,30402,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030403,CARAYBAMBA,30403,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030404,CHAPIMARCA,30404,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030405,COLCABAMBA,30405,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030406,COTARUSE,30406,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030407,IHUAYLLO,30407,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030408,JUSTO APU SAHUARAURA,30408,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030409,LUCRE,30409,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030410,POCOHUANCA,30410,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030411,SAN JUAN DE CHACÑA,30411,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030412,SAÑAYCA,30412,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030413,SORAYA,30413,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030414,TAPAIRIHUA,30414,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030415,TINTAY,30415,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030416,TORAYA,30416,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_030417,YANACA,30417,base.state_pe_03,ubigeos_0304,base.pe
+ubigeos_0305,COTABAMBAS,305,base.state_pe_03,,base.pe
+ubigeos_030501,TAMBOBAMBA,30501,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_030502,COTABAMBAS,30502,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_030503,COYLLURQUI,30503,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_030504,HAQUIRA,30504,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_030505,MARA,30505,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_030506,CHALLHUAHUACHO,30506,base.state_pe_03,ubigeos_0305,base.pe
+ubigeos_0306,CHINCHEROS,306,base.state_pe_03,,base.pe
+ubigeos_030601,CHINCHEROS,30601,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030602,ANCO_HUALLO,30602,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030603,COCHARCAS,30603,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030604,HUACCANA,30604,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030605,OCOBAMBA,30605,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030606,ONGOY,30606,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030607,URANMARCA,30607,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030608,RANRACANCHA,30608,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030609,ROCCHACC,30609,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030610,EL PORVENIR,30610,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_030611,LOS CHANKAS,30611,base.state_pe_03,ubigeos_0306,base.pe
+ubigeos_0307,GRAU,307,base.state_pe_03,,base.pe
+ubigeos_030701,CHUQUIBAMBILLA,30701,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030702,CURPAHUASI,30702,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030703,GAMARRA,30703,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030704,HUAYLLATI,30704,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030705,MAMARA,30705,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030706,MICAELA BASTIDAS,30706,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030707,PATAYPAMPA,30707,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030708,PROGRESO,30708,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030709,SAN ANTONIO,30709,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030710,SANTA ROSA,30710,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030711,TURPAY,30711,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030712,VILCABAMBA,30712,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030713,VIRUNDO,30713,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_030714,CURASCO,30714,base.state_pe_03,ubigeos_0307,base.pe
+ubigeos_0401,AREQUIPA,401,base.state_pe_04,,base.pe
+ubigeos_040101,AREQUIPA,40101,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040102,ALTO SELVA ALEGRE,40102,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040103,CAYMA,40103,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040104,CERRO COLORADO,40104,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040105,CHARACATO,40105,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040106,CHIGUATA,40106,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040107,JACOBO HUNTER,40107,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040108,LA JOYA,40108,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040109,MARIANO MELGAR,40109,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040110,MIRAFLORES,40110,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040111,MOLLEBAYA,40111,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040112,PAUCARPATA,40112,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040113,POCSI,40113,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040114,POLOBAYA,40114,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040115,QUEQUEÑA,40115,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040116,SABANDIA,40116,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040117,SACHACA,40117,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040118,SAN JUAN DE SIGUAS,40118,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040119,SAN JUAN DE TARUCANI,40119,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040120,SANTA ISABEL DE SIGUAS,40120,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040121,SANTA RITA DE SIGUAS,40121,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040122,SOCABAYA,40122,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040123,TIABAYA,40123,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040124,UCHUMAYO,40124,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040125,VITOR,40125,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040126,YANAHUARA,40126,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040127,YARABAMBA,40127,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040128,YURA,40128,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_040129,JOSE LUIS BUSTAMANTE Y RIVERO,40129,base.state_pe_04,ubigeos_0401,base.pe
+ubigeos_0402,CAMANA,402,base.state_pe_04,,base.pe
+ubigeos_040201,CAMANA,40201,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040202,JOSE MARIA QUIMPER,40202,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040203,MARIANO NICOLAS VALCARCEL,40203,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040204,MARISCAL CACERES,40204,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040205,NICOLAS DE PIEROLA,40205,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040206,OCOÑA,40206,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040207,QUILCA,40207,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_040208,SAMUEL PASTOR,40208,base.state_pe_04,ubigeos_0402,base.pe
+ubigeos_0403,CARAVELI,403,base.state_pe_04,,base.pe
+ubigeos_040301,CARAVELI,40301,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040302,ACARI,40302,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040303,ATICO,40303,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040304,ATIQUIPA,40304,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040305,BELLA UNION,40305,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040306,CAHUACHO,40306,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040307,CHALA,40307,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040308,CHAPARRA,40308,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040309,HUANUHUANU,40309,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040310,JAQUI,40310,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040311,LOMAS,40311,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040312,QUICACHA,40312,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_040313,YAUCA,40313,base.state_pe_04,ubigeos_0403,base.pe
+ubigeos_0404,CASTILLA,404,base.state_pe_04,,base.pe
+ubigeos_040401,APLAO,40401,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040402,ANDAGUA,40402,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040403,AYO,40403,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040404,CHACHAS,40404,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040405,CHILCAYMARCA,40405,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040406,CHOCO,40406,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040407,HUANCARQUI,40407,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040408,MACHAGUAY,40408,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040409,ORCOPAMPA,40409,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040410,PAMPACOLCA,40410,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040411,TIPAN,40411,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040412,UÑON,40412,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040413,URACA,40413,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_040414,VIRACO,40414,base.state_pe_04,ubigeos_0404,base.pe
+ubigeos_0405,CAYLLOMA,405,base.state_pe_04,,base.pe
+ubigeos_040501,CHIVAY,40501,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040502,ACHOMA,40502,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040503,CABANACONDE,40503,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040504,CALLALLI,40504,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040505,CAYLLOMA,40505,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040506,COPORAQUE,40506,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040507,HUAMBO,40507,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040508,HUANCA,40508,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040509,ICHUPAMPA,40509,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040510,LARI,40510,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040511,LLUTA,40511,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040512,MACA,40512,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040513,MADRIGAL,40513,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040514,SAN ANTONIO DE CHUCA,40514,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040515,SIBAYO,40515,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040516,TAPAY,40516,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040517,TISCO,40517,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040518,TUTI,40518,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040519,YANQUE,40519,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_040520,MAJES,40520,base.state_pe_04,ubigeos_0405,base.pe
+ubigeos_0406,CONDESUYOS,406,base.state_pe_04,,base.pe
+ubigeos_040601,CHUQUIBAMBA,40601,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040602,ANDARAY,40602,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040603,CAYARANI,40603,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040604,CHICHAS,40604,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040605,IRAY,40605,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040606,RIO GRANDE,40606,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040607,SALAMANCA,40607,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_040608,YANAQUIHUA,40608,base.state_pe_04,ubigeos_0406,base.pe
+ubigeos_0407,ISLAY,407,base.state_pe_04,,base.pe
+ubigeos_040701,MOLLENDO,40701,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_040702,COCACHACRA,40702,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_040703,DEAN VALDIVIA,40703,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_040704,ISLAY,40704,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_040705,MEJIA,40705,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_040706,PUNTA DE BOMBON,40706,base.state_pe_04,ubigeos_0407,base.pe
+ubigeos_0408,LA UNION,408,base.state_pe_04,,base.pe
+ubigeos_040801,COTAHUASI,40801,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040802,ALCA,40802,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040803,CHARCANA,40803,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040804,HUAYNACOTAS,40804,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040805,PAMPAMARCA,40805,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040806,PUYCA,40806,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040807,QUECHUALLA,40807,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040808,SAYLA,40808,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040809,TAURIA,40809,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040810,TOMEPAMPA,40810,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_040811,TORO,40811,base.state_pe_04,ubigeos_0408,base.pe
+ubigeos_0501,HUAMANGA,501,base.state_pe_05,,base.pe
+ubigeos_050101,AYACUCHO,50101,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050102,ACOCRO,50102,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050103,ACOS VINCHOS,50103,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050104,CARMEN ALTO,50104,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050105,CHIARA,50105,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050106,OCROS,50106,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050107,PACAYCASA,50107,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050108,QUINUA,50108,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050109,SAN JOSE DE TICLLAS,50109,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050110,SAN JUAN BAUTISTA,50110,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050111,SANTIAGO DE PISCHA,50111,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050112,SOCOS,50112,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050113,TAMBILLO,50113,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050114,VINCHOS,50114,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050115,JESUS NAZARENO,50115,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_050116,ANDRES AVELINO CACERES DORREGARAY,50116,base.state_pe_05,ubigeos_0501,base.pe
+ubigeos_0502,CANGALLO,502,base.state_pe_05,,base.pe
+ubigeos_050201,CANGALLO,50201,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_050202,CHUSCHI,50202,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_050203,LOS MOROCHUCOS,50203,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_050204,MARIA PARADO DE BELLIDO,50204,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_050205,PARAS,50205,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_050206,TOTOS,50206,base.state_pe_05,ubigeos_0502,base.pe
+ubigeos_0503,HUANCA SANCOS,503,base.state_pe_05,,base.pe
+ubigeos_050301,SANCOS,50301,base.state_pe_05,ubigeos_0503,base.pe
+ubigeos_050302,CARAPO,50302,base.state_pe_05,ubigeos_0503,base.pe
+ubigeos_050303,SACSAMARCA,50303,base.state_pe_05,ubigeos_0503,base.pe
+ubigeos_050304,SANTIAGO DE LUCANAMARCA,50304,base.state_pe_05,ubigeos_0503,base.pe
+ubigeos_0504,HUANTA,504,base.state_pe_05,,base.pe
+ubigeos_050401,HUANTA,50401,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050402,AYAHUANCO,50402,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050403,HUAMANGUILLA,50403,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050404,IGUAIN,50404,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050405,LURICOCHA,50405,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050406,SANTILLANA,50406,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050407,SIVIA,50407,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050408,LLOCHEGUA,50408,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050409,CANAYRE,50409,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050410,UCHURACCAY,50410,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050411,PUCACOLPA,50411,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_050412,CHACA,50412,base.state_pe_05,ubigeos_0504,base.pe
+ubigeos_0505,LA MAR,505,base.state_pe_05,,base.pe
+ubigeos_050501,SAN MIGUEL,50501,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050502,ANCO,50502,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050503,AYNA,50503,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050504,CHILCAS,50504,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050505,CHUNGUI,50505,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050506,LUIS CARRANZA,50506,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050507,SANTA ROSA,50507,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050508,TAMBO,50508,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050509,SAMUGARI,50509,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050510,ANCHIHUAY,50510,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_050511,ORONCCOY,50511,base.state_pe_05,ubigeos_0505,base.pe
+ubigeos_0506,LUCANAS,506,base.state_pe_05,,base.pe
+ubigeos_050601,PUQUIO,50601,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050602,AUCARA,50602,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050603,CABANA,50603,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050604,CARMEN SALCEDO,50604,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050605,CHAVIÑA,50605,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050606,CHIPAO,50606,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050607,HUAC-HUAS,50607,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050608,LARAMATE,50608,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050609,LEONCIO PRADO,50609,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050610,LLAUTA,50610,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050611,LUCANAS,50611,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050612,OCAÑA,50612,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050613,OTOCA,50613,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050614,SAISA,50614,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050615,SAN CRISTOBAL,50615,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050616,SAN JUAN,50616,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050617,SAN PEDRO,50617,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050618,SAN PEDRO DE PALCO,50618,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050619,SANCOS,50619,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050620,SANTA ANA DE HUAYCAHUACHO,50620,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_050621,SANTA LUCIA,50621,base.state_pe_05,ubigeos_0506,base.pe
+ubigeos_0507,PARINACOCHAS,507,base.state_pe_05,,base.pe
+ubigeos_050701,CORACORA,50701,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050702,CHUMPI,50702,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050703,CORONEL CASTAÑEDA,50703,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050704,PACAPAUSA,50704,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050705,PULLO,50705,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050706,PUYUSCA,50706,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050707,SAN FRANCISCO DE RAVACAYCO,50707,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_050708,UPAHUACHO,50708,base.state_pe_05,ubigeos_0507,base.pe
+ubigeos_0508,PAUCAR DEL SARA SARA,508,base.state_pe_05,,base.pe
+ubigeos_050801,PAUSA,50801,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050802,COLTA,50802,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050803,CORCULLA,50803,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050804,LAMPA,50804,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050805,MARCABAMBA,50805,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050806,OYOLO,50806,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050807,PARARCA,50807,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050808,SAN JAVIER DE ALPABAMBA,50808,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050809,SAN JOSE DE USHUA,50809,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_050810,SARA SARA,50810,base.state_pe_05,ubigeos_0508,base.pe
+ubigeos_0509,SUCRE,509,base.state_pe_05,,base.pe
+ubigeos_050901,QUEROBAMBA,50901,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050902,BELEN,50902,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050903,CHALCOS,50903,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050904,CHILCAYOC,50904,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050905,HUACAÑA,50905,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050906,MORCOLLA,50906,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050907,PAICO,50907,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050908,SAN PEDRO DE LARCAY,50908,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050909,SAN SALVADOR DE QUIJE,50909,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050910,SANTIAGO DE PAUCARAY,50910,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_050911,SORAS,50911,base.state_pe_05,ubigeos_0509,base.pe
+ubigeos_0510,VICTOR FAJARDO,510,base.state_pe_05,,base.pe
+ubigeos_051001,HUANCAPI,51001,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051002,ALCAMENCA,51002,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051003,APONGO,51003,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051004,ASQUIPATA,51004,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051005,CANARIA,51005,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051006,CAYARA,51006,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051007,COLCA,51007,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051008,HUAMANQUIQUIA,51008,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051009,HUANCARAYLLA,51009,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051010,HUAYA,51010,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051011,SARHUA,51011,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_051012,VILCANCHOS,51012,base.state_pe_05,ubigeos_0510,base.pe
+ubigeos_0511,VILCAS HUAMAN,511,base.state_pe_05,,base.pe
+ubigeos_051101,VILCAS HUAMAN,51101,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051102,ACCOMARCA,51102,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051103,CARHUANCA,51103,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051104,CONCEPCION,51104,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051105,HUAMBALPA,51105,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051106,INDEPENDENCIA,51106,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051107,SAURAMA,51107,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_051108,VISCHONGO,51108,base.state_pe_05,ubigeos_0511,base.pe
+ubigeos_0601,CAJAMARCA,601,base.state_pe_06,,base.pe
+ubigeos_060101,CAJAMARCA,60101,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060102,ASUNCION,60102,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060103,CHETILLA,60103,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060104,COSPAN,60104,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060105,ENCAÑADA,60105,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060106,JESUS,60106,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060107,LLACANORA,60107,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060108,LOS BAÑOS DEL INCA,60108,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060109,MAGDALENA,60109,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060110,MATARA,60110,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060111,NAMORA,60111,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_060112,SAN JUAN,60112,base.state_pe_06,ubigeos_0601,base.pe
+ubigeos_0602,CAJABAMBA,602,base.state_pe_06,,base.pe
+ubigeos_060201,CAJABAMBA,60201,base.state_pe_06,ubigeos_0602,base.pe
+ubigeos_060202,CACHACHI,60202,base.state_pe_06,ubigeos_0602,base.pe
+ubigeos_060203,CONDEBAMBA,60203,base.state_pe_06,ubigeos_0602,base.pe
+ubigeos_060204,SITACOCHA,60204,base.state_pe_06,ubigeos_0602,base.pe
+ubigeos_0603,CELENDIN,603,base.state_pe_06,,base.pe
+ubigeos_060301,CELENDIN,60301,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060302,CHUMUCH,60302,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060303,CORTEGANA,60303,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060304,HUASMIN,60304,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060305,JORGE CHAVEZ,60305,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060306,JOSE GALVEZ,60306,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060307,MIGUEL IGLESIAS,60307,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060308,OXAMARCA,60308,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060309,SOROCHUCO,60309,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060310,SUCRE,60310,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060311,UTCO,60311,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_060312,LA LIBERTAD DE PALLAN,60312,base.state_pe_06,ubigeos_0603,base.pe
+ubigeos_0604,CHOTA,604,base.state_pe_06,,base.pe
+ubigeos_060401,CHOTA,60401,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060402,ANGUIA,60402,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060403,CHADIN,60403,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060404,CHIGUIRIP,60404,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060405,CHIMBAN,60405,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060406,CHOROPAMPA,60406,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060407,COCHABAMBA,60407,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060408,CONCHAN,60408,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060409,HUAMBOS,60409,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060410,LAJAS,60410,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060411,LLAMA,60411,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060412,MIRACOSTA,60412,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060413,PACCHA,60413,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060414,PION,60414,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060415,QUEROCOTO,60415,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060416,SAN JUAN DE LICUPIS,60416,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060417,TACABAMBA,60417,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060418,TOCMOCHE,60418,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_060419,CHALAMARCA,60419,base.state_pe_06,ubigeos_0604,base.pe
+ubigeos_0605,CONTUMAZA,605,base.state_pe_06,,base.pe
+ubigeos_060501,CONTUMAZA,60501,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060502,CHILETE,60502,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060503,CUPISNIQUE,60503,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060504,GUZMANGO,60504,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060505,SAN BENITO,60505,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060506,SANTA CRUZ DE TOLEDO,60506,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060507,TANTARICA,60507,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_060508,YONAN,60508,base.state_pe_06,ubigeos_0605,base.pe
+ubigeos_0606,CUTERVO,606,base.state_pe_06,,base.pe
+ubigeos_060601,CUTERVO,60601,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060602,CALLAYUC,60602,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060603,CHOROS,60603,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060604,CUJILLO,60604,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060605,LA RAMADA,60605,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060606,PIMPINGOS,60606,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060607,QUEROCOTILLO,60607,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060608,SAN ANDRES DE CUTERVO,60608,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060609,SAN JUAN DE CUTERVO,60609,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060610,SAN LUIS DE LUCMA,60610,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060611,SANTA CRUZ,60611,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060612,SANTO DOMINGO DE LA CAPILLA,60612,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060613,SANTO TOMAS,60613,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060614,SOCOTA,60614,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_060615,TORIBIO CASANOVA,60615,base.state_pe_06,ubigeos_0606,base.pe
+ubigeos_0607,HUALGAYOC,607,base.state_pe_06,,base.pe
+ubigeos_060701,BAMBAMARCA,60701,base.state_pe_06,ubigeos_0607,base.pe
+ubigeos_060702,CHUGUR,60702,base.state_pe_06,ubigeos_0607,base.pe
+ubigeos_060703,HUALGAYOC,60703,base.state_pe_06,ubigeos_0607,base.pe
+ubigeos_0608,JAEN,608,base.state_pe_06,,base.pe
+ubigeos_060801,JAEN,60801,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060802,BELLAVISTA,60802,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060803,CHONTALI,60803,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060804,COLASAY,60804,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060805,HUABAL,60805,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060806,LAS PIRIAS,60806,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060807,POMAHUACA,60807,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060808,PUCARA,60808,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060809,SALLIQUE,60809,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060810,SAN FELIPE,60810,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060811,SAN JOSE DEL ALTO,60811,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_060812,SANTA ROSA,60812,base.state_pe_06,ubigeos_0608,base.pe
+ubigeos_0609,SAN IGNACIO,609,base.state_pe_06,,base.pe
+ubigeos_060901,SAN IGNACIO,60901,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060902,CHIRINOS,60902,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060903,HUARANGO,60903,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060904,LA COIPA,60904,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060905,NAMBALLE,60905,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060906,SAN JOSE DE LOURDES,60906,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_060907,TABACONAS,60907,base.state_pe_06,ubigeos_0609,base.pe
+ubigeos_0610,SAN MARCOS,610,base.state_pe_06,,base.pe
+ubigeos_061001,PEDRO GALVEZ,61001,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061002,CHANCAY,61002,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061003,EDUARDO VILLANUEVA,61003,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061004,GREGORIO PITA,61004,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061005,ICHOCAN,61005,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061006,JOSE MANUEL QUIROZ,61006,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_061007,JOSE SABOGAL,61007,base.state_pe_06,ubigeos_0610,base.pe
+ubigeos_0611,SAN MIGUEL,611,base.state_pe_06,,base.pe
+ubigeos_061101,SAN MIGUEL,61101,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061102,BOLIVAR,61102,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061103,CALQUIS,61103,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061104,CATILLUC,61104,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061105,EL PRADO,61105,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061106,LA FLORIDA,61106,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061107,LLAPA,61107,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061108,NANCHOC,61108,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061109,NIEPOS,61109,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061110,SAN GREGORIO,61110,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061111,SAN SILVESTRE DE COCHAN,61111,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061112,TONGOD,61112,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_061113,UNION AGUA BLANCA,61113,base.state_pe_06,ubigeos_0611,base.pe
+ubigeos_0612,SAN PABLO,612,base.state_pe_06,,base.pe
+ubigeos_061201,SAN PABLO,61201,base.state_pe_06,ubigeos_0612,base.pe
+ubigeos_061202,SAN BERNARDINO,61202,base.state_pe_06,ubigeos_0612,base.pe
+ubigeos_061203,SAN LUIS,61203,base.state_pe_06,ubigeos_0612,base.pe
+ubigeos_061204,TUMBADEN,61204,base.state_pe_06,ubigeos_0612,base.pe
+ubigeos_0613,SANTA CRUZ,613,base.state_pe_06,,base.pe
+ubigeos_061301,SANTA CRUZ,61301,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061302,ANDABAMBA,61302,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061303,CATACHE,61303,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061304,CHANCAYBAÑOS,61304,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061305,LA ESPERANZA,61305,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061306,NINABAMBA,61306,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061307,PULAN,61307,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061308,SAUCEPAMPA,61308,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061309,SEXI,61309,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061310,UTICYACU,61310,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_061311,YAUYUCAN,61311,base.state_pe_06,ubigeos_0613,base.pe
+ubigeos_0701,PROV. CONST. DEL CALLAO,701,base.state_pe_07,,base.pe
+ubigeos_070101,CALLAO,70101,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070102,BELLAVISTA,70102,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070103,CARMEN DE LA LEGUA REYNOSO,70103,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070104,LA PERLA,70104,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070105,LA PUNTA,70105,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070106,VENTANILLA,70106,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_070107,MI PERU,70107,base.state_pe_07,ubigeos_0701,base.pe
+ubigeos_0801,CUSCO,801,base.state_pe_08,,base.pe
+ubigeos_080101,CUSCO,80101,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080102,CCORCA,80102,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080103,POROY,80103,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080104,SAN JERONIMO,80104,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080105,SAN SEBASTIAN,80105,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080106,SANTIAGO,80106,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080107,SAYLLA,80107,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_080108,WANCHAQ,80108,base.state_pe_08,ubigeos_0801,base.pe
+ubigeos_0802,ACOMAYO,802,base.state_pe_08,,base.pe
+ubigeos_080201,ACOMAYO,80201,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080202,ACOPIA,80202,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080203,ACOS,80203,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080204,MOSOC LLACTA,80204,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080205,POMACANCHI,80205,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080206,RONDOCAN,80206,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_080207,SANGARARA,80207,base.state_pe_08,ubigeos_0802,base.pe
+ubigeos_0803,ANTA,803,base.state_pe_08,,base.pe
+ubigeos_080301,ANTA,80301,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080302,ANCAHUASI,80302,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080303,CACHIMAYO,80303,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080304,CHINCHAYPUJIO,80304,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080305,HUAROCONDO,80305,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080306,LIMATAMBO,80306,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080307,MOLLEPATA,80307,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080308,PUCYURA,80308,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_080309,ZURITE,80309,base.state_pe_08,ubigeos_0803,base.pe
+ubigeos_0804,CALCA,804,base.state_pe_08,,base.pe
+ubigeos_080401,CALCA,80401,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080402,COYA,80402,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080403,LAMAY,80403,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080404,LARES,80404,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080405,PISAC,80405,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080406,SAN SALVADOR,80406,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080407,TARAY,80407,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_080408,YANATILE,80408,base.state_pe_08,ubigeos_0804,base.pe
+ubigeos_0805,CANAS,805,base.state_pe_08,,base.pe
+ubigeos_080501,YANAOCA,80501,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080502,CHECCA,80502,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080503,KUNTURKANKI,80503,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080504,LANGUI,80504,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080505,LAYO,80505,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080506,PAMPAMARCA,80506,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080507,QUEHUE,80507,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_080508,TUPAC AMARU,80508,base.state_pe_08,ubigeos_0805,base.pe
+ubigeos_0806,CANCHIS,806,base.state_pe_08,,base.pe
+ubigeos_080601,SICUANI,80601,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080602,CHECACUPE,80602,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080603,COMBAPATA,80603,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080604,MARANGANI,80604,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080605,PITUMARCA,80605,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080606,SAN PABLO,80606,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080607,SAN PEDRO,80607,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_080608,TINTA,80608,base.state_pe_08,ubigeos_0806,base.pe
+ubigeos_0807,CHUMBIVILCAS,807,base.state_pe_08,,base.pe
+ubigeos_080701,SANTO TOMAS,80701,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080702,CAPACMARCA,80702,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080703,CHAMACA,80703,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080704,COLQUEMARCA,80704,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080705,LIVITACA,80705,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080706,LLUSCO,80706,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080707,QUIÑOTA,80707,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_080708,VELILLE,80708,base.state_pe_08,ubigeos_0807,base.pe
+ubigeos_0808,ESPINAR,808,base.state_pe_08,,base.pe
+ubigeos_080801,ESPINAR,80801,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080802,CONDOROMA,80802,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080803,COPORAQUE,80803,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080804,OCORURO,80804,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080805,PALLPATA,80805,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080806,PICHIGUA,80806,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080807,SUYCKUTAMBO,80807,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_080808,ALTO PICHIGUA,80808,base.state_pe_08,ubigeos_0808,base.pe
+ubigeos_0809,LA CONVENCION,809,base.state_pe_08,,base.pe
+ubigeos_080901,SANTA ANA,80901,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080902,ECHARATE,80902,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080903,HUAYOPATA,80903,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080904,MARANURA,80904,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080905,OCOBAMBA,80905,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080906,QUELLOUNO,80906,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080907,KIMBIRI,80907,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080908,SANTA TERESA,80908,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080909,VILCABAMBA,80909,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080910,PICHARI,80910,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080911,INKAWASI,80911,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080912,VILLA VIRGEN,80912,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080913,VILLA KINTIARINA,80913,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_080914,MEGANTONI,80914,base.state_pe_08,ubigeos_0809,base.pe
+ubigeos_0810,PARURO,810,base.state_pe_08,,base.pe
+ubigeos_081001,PARURO,81001,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081002,ACCHA,81002,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081003,CCAPI,81003,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081004,COLCHA,81004,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081005,HUANOQUITE,81005,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081006,OMACHA,81006,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081007,PACCARITAMBO,81007,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081008,PILLPINTO,81008,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_081009,YAURISQUE,81009,base.state_pe_08,ubigeos_0810,base.pe
+ubigeos_0811,PAUCARTAMBO,811,base.state_pe_08,,base.pe
+ubigeos_081101,PAUCARTAMBO,81101,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_081102,CAICAY,81102,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_081103,CHALLABAMBA,81103,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_081104,COLQUEPATA,81104,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_081105,HUANCARANI,81105,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_081106,KOSÑIPATA,81106,base.state_pe_08,ubigeos_0811,base.pe
+ubigeos_0812,QUISPICANCHI,812,base.state_pe_08,,base.pe
+ubigeos_081201,URCOS,81201,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081202,ANDAHUAYLILLAS,81202,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081203,CAMANTI,81203,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081204,CCARHUAYO,81204,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081205,CCATCA,81205,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081206,CUSIPATA,81206,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081207,HUARO,81207,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081208,LUCRE,81208,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081209,MARCAPATA,81209,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081210,OCONGATE,81210,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081211,OROPESA,81211,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_081212,QUIQUIJANA,81212,base.state_pe_08,ubigeos_0812,base.pe
+ubigeos_0813,URUBAMBA,813,base.state_pe_08,,base.pe
+ubigeos_081301,URUBAMBA,81301,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081302,CHINCHERO,81302,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081303,HUAYLLABAMBA,81303,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081304,MACHUPICCHU,81304,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081305,MARAS,81305,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081306,OLLANTAYTAMBO,81306,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_081307,YUCAY,81307,base.state_pe_08,ubigeos_0813,base.pe
+ubigeos_0901,HUANCAVELICA,901,base.state_pe_09,,base.pe
+ubigeos_090101,HUANCAVELICA,90101,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090102,ACOBAMBILLA,90102,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090103,ACORIA,90103,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090104,CONAYCA,90104,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090105,CUENCA,90105,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090106,HUACHOCOLPA,90106,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090107,HUAYLLAHUARA,90107,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090108,IZCUCHACA,90108,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090109,LARIA,90109,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090110,MANTA,90110,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090111,MARISCAL CACERES,90111,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090112,MOYA,90112,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090113,NUEVO OCCORO,90113,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090114,PALCA,90114,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090115,PILCHACA,90115,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090116,VILCA,90116,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090117,YAULI,90117,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090118,ASCENSION,90118,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_090119,HUANDO,90119,base.state_pe_09,ubigeos_0901,base.pe
+ubigeos_0902,ACOBAMBA,902,base.state_pe_09,,base.pe
+ubigeos_090201,ACOBAMBA,90201,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090202,ANDABAMBA,90202,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090203,ANTA,90203,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090204,CAJA,90204,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090205,MARCAS,90205,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090206,PAUCARA,90206,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090207,POMACOCHA,90207,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_090208,ROSARIO,90208,base.state_pe_09,ubigeos_0902,base.pe
+ubigeos_0903,ANGARAES,903,base.state_pe_09,,base.pe
+ubigeos_090301,LIRCAY,90301,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090302,ANCHONGA,90302,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090303,CALLANMARCA,90303,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090304,CCOCHACCASA,90304,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090305,CHINCHO,90305,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090306,CONGALLA,90306,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090307,HUANCA-HUANCA,90307,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090308,HUAYLLAY GRANDE,90308,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090309,JULCAMARCA,90309,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090310,SAN ANTONIO DE ANTAPARCO,90310,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090311,SANTO TOMAS DE PATA,90311,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_090312,SECCLLA,90312,base.state_pe_09,ubigeos_0903,base.pe
+ubigeos_0904,CASTROVIRREYNA,904,base.state_pe_09,,base.pe
+ubigeos_090401,CASTROVIRREYNA,90401,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090402,ARMA,90402,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090403,AURAHUA,90403,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090404,CAPILLAS,90404,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090405,CHUPAMARCA,90405,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090406,COCAS,90406,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090407,HUACHOS,90407,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090408,HUAMATAMBO,90408,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090409,MOLLEPAMPA,90409,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090410,SAN JUAN,90410,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090411,SANTA ANA,90411,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090412,TANTARA,90412,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_090413,TICRAPO,90413,base.state_pe_09,ubigeos_0904,base.pe
+ubigeos_0905,CHURCAMPA,905,base.state_pe_09,,base.pe
+ubigeos_090501,CHURCAMPA,90501,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090502,ANCO,90502,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090503,CHINCHIHUASI,90503,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090504,EL CARMEN,90504,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090505,LA MERCED,90505,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090506,LOCROJA,90506,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090507,PAUCARBAMBA,90507,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090508,SAN MIGUEL DE MAYOCC,90508,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090509,SAN PEDRO DE CORIS,90509,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090510,PACHAMARCA,90510,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_090511,COSME,90511,base.state_pe_09,ubigeos_0905,base.pe
+ubigeos_0906,HUAYTARA,906,base.state_pe_09,,base.pe
+ubigeos_090601,HUAYTARA,90601,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090602,AYAVI,90602,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090603,CORDOVA,90603,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090604,HUAYACUNDO ARMA,90604,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090605,LARAMARCA,90605,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090606,OCOYO,90606,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090607,PILPICHACA,90607,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090608,QUERCO,90608,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090609,QUITO-ARMA,90609,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090610,SAN ANTONIO DE CUSICANCHA,90610,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090611,SAN FRANCISCO DE SANGAYAICO,90611,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090612,SAN ISIDRO,90612,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090613,SANTIAGO DE CHOCORVOS,90613,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090614,SANTIAGO DE QUIRAHUARA,90614,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090615,SANTO DOMINGO DE CAPILLAS,90615,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_090616,TAMBO,90616,base.state_pe_09,ubigeos_0906,base.pe
+ubigeos_0907,TAYACAJA,907,base.state_pe_09,,base.pe
+ubigeos_090701,PAMPAS,90701,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090702,ACOSTAMBO,90702,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090703,ACRAQUIA,90703,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090704,AHUAYCHA,90704,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090705,COLCABAMBA,90705,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090706,DANIEL HERNANDEZ,90706,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090707,HUACHOCOLPA,90707,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090709,HUARIBAMBA,90709,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090710,ÑAHUIMPUQUIO,90710,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090711,PAZOS,90711,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090713,QUISHUAR,90713,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090714,SALCABAMBA,90714,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090715,SALCAHUASI,90715,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090716,SAN MARCOS DE ROCCHAC,90716,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090717,SURCUBAMBA,90717,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090718,TINTAY PUNCU,90718,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090719,QUICHUAS,90719,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090720,ANDAYMARCA,90720,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090721,ROBLE,90721,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090722,PICHOS,90722,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_090723,SANTIAGO DE TUCUMA,90723,base.state_pe_09,ubigeos_0907,base.pe
+ubigeos_1001,HUANUCO,1001,base.state_pe_10,,base.pe
+ubigeos_100101,HUANUCO,100101,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100102,AMARILIS,100102,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100103,CHINCHAO,100103,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100104,CHURUBAMBA,100104,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100105,MARGOS,100105,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100106,QUISQUI (KICHKI),100106,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100107,SAN FRANCISCO DE CAYRAN,100107,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100108,SAN PEDRO DE CHAULAN,100108,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100109,SANTA MARIA DEL VALLE,100109,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100110,YARUMAYO,100110,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100111,PILLCO MARCA,100111,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100112,YACUS,100112,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_100113,SAN PABLO DE PILLAO,100113,base.state_pe_10,ubigeos_1001,base.pe
+ubigeos_1002,AMBO,1002,base.state_pe_10,,base.pe
+ubigeos_100201,AMBO,100201,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100202,CAYNA,100202,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100203,COLPAS,100203,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100204,CONCHAMARCA,100204,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100205,HUACAR,100205,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100206,SAN FRANCISCO,100206,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100207,SAN RAFAEL,100207,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_100208,TOMAY KICHWA,100208,base.state_pe_10,ubigeos_1002,base.pe
+ubigeos_1003,DOS DE MAYO,1003,base.state_pe_10,,base.pe
+ubigeos_100301,LA UNION,100301,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100307,CHUQUIS,100307,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100311,MARIAS,100311,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100313,PACHAS,100313,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100316,QUIVILLA,100316,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100317,RIPAN,100317,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100321,SHUNQUI,100321,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100322,SILLAPATA,100322,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_100323,YANAS,100323,base.state_pe_10,ubigeos_1003,base.pe
+ubigeos_1004,HUACAYBAMBA,1004,base.state_pe_10,,base.pe
+ubigeos_100401,HUACAYBAMBA,100401,base.state_pe_10,ubigeos_1004,base.pe
+ubigeos_100402,CANCHABAMBA,100402,base.state_pe_10,ubigeos_1004,base.pe
+ubigeos_100403,COCHABAMBA,100403,base.state_pe_10,ubigeos_1004,base.pe
+ubigeos_100404,PINRA,100404,base.state_pe_10,ubigeos_1004,base.pe
+ubigeos_1005,HUAMALIES,1005,base.state_pe_10,,base.pe
+ubigeos_100501,LLATA,100501,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100502,ARANCAY,100502,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100503,CHAVIN DE PARIARCA,100503,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100504,JACAS GRANDE,100504,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100505,JIRCAN,100505,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100506,MIRAFLORES,100506,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100507,MONZON,100507,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100508,PUNCHAO,100508,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100509,PUÑOS,100509,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100510,SINGA,100510,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_100511,TANTAMAYO,100511,base.state_pe_10,ubigeos_1005,base.pe
+ubigeos_1006,LEONCIO PRADO,1006,base.state_pe_10,,base.pe
+ubigeos_100601,RUPA-RUPA,100601,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100602,DANIEL ALOMIA ROBLES,100602,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100603,HERMILIO VALDIZAN,100603,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100604,JOSE CRESPO Y CASTILLO,100604,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100605,LUYANDO,100605,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100606,MARIANO DAMASO BERAUN,100606,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100607,PUCAYACU,100607,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100608,CASTILLO GRANDE,100608,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100609,PUEBLO NUEVO,100609,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_100610,SANTO DOMINGO DE ANDA,100610,base.state_pe_10,ubigeos_1006,base.pe
+ubigeos_1007,MARAÑON,1007,base.state_pe_10,,base.pe
+ubigeos_100701,HUACRACHUCO,100701,base.state_pe_10,ubigeos_1007,base.pe
+ubigeos_100702,CHOLON,100702,base.state_pe_10,ubigeos_1007,base.pe
+ubigeos_100703,SAN BUENAVENTURA,100703,base.state_pe_10,ubigeos_1007,base.pe
+ubigeos_100704,LA MORADA,100704,base.state_pe_10,ubigeos_1007,base.pe
+ubigeos_100705,SANTA ROSA DE ALTO YANAJANCA,100705,base.state_pe_10,ubigeos_1007,base.pe
+ubigeos_1008,PACHITEA,1008,base.state_pe_10,,base.pe
+ubigeos_100801,PANAO,100801,base.state_pe_10,ubigeos_1008,base.pe
+ubigeos_100802,CHAGLLA,100802,base.state_pe_10,ubigeos_1008,base.pe
+ubigeos_100803,MOLINO,100803,base.state_pe_10,ubigeos_1008,base.pe
+ubigeos_100804,UMARI,100804,base.state_pe_10,ubigeos_1008,base.pe
+ubigeos_1009,PUERTO INCA,1009,base.state_pe_10,,base.pe
+ubigeos_100901,PUERTO INCA,100901,base.state_pe_10,ubigeos_1009,base.pe
+ubigeos_100902,CODO DEL POZUZO,100902,base.state_pe_10,ubigeos_1009,base.pe
+ubigeos_100903,HONORIA,100903,base.state_pe_10,ubigeos_1009,base.pe
+ubigeos_100904,TOURNAVISTA,100904,base.state_pe_10,ubigeos_1009,base.pe
+ubigeos_100905,YUYAPICHIS,100905,base.state_pe_10,ubigeos_1009,base.pe
+ubigeos_1010,LAURICOCHA ,1010,base.state_pe_10,,base.pe
+ubigeos_101001,JESUS,101001,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101002,BAÑOS,101002,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101003,JIVIA,101003,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101004,QUEROPALCA,101004,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101005,RONDOS,101005,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101006,SAN FRANCISCO DE ASIS,101006,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_101007,SAN MIGUEL DE CAURI,101007,base.state_pe_10,ubigeos_1010,base.pe
+ubigeos_1011,YAROWILCA ,1011,base.state_pe_10,,base.pe
+ubigeos_101101,CHAVINILLO,101101,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101102,CAHUAC,101102,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101103,CHACABAMBA,101103,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101104,APARICIO POMARES,101104,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101105,JACAS CHICO,101105,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101106,OBAS,101106,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101107,PAMPAMARCA,101107,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_101108,CHORAS,101108,base.state_pe_10,ubigeos_1011,base.pe
+ubigeos_1101,ICA ,1101,base.state_pe_11,,base.pe
+ubigeos_110101,ICA,110101,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110102,LA TINGUIÑA,110102,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110103,LOS AQUIJES,110103,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110104,OCUCAJE,110104,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110105,PACHACUTEC,110105,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110106,PARCONA,110106,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110107,PUEBLO NUEVO,110107,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110108,SALAS,110108,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110109,SAN JOSE DE LOS MOLINOS,110109,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110110,SAN JUAN BAUTISTA,110110,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110111,SANTIAGO,110111,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110112,SUBTANJALLA,110112,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110113,TATE,110113,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_110114,YAUCA DEL ROSARIO,110114,base.state_pe_11,ubigeos_1101,base.pe
+ubigeos_1102,CHINCHA ,1102,base.state_pe_11,,base.pe
+ubigeos_110201,CHINCHA ALTA,110201,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110202,ALTO LARAN,110202,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110203,CHAVIN,110203,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110204,CHINCHA BAJA,110204,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110205,EL CARMEN,110205,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110206,GROCIO PRADO,110206,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110207,PUEBLO NUEVO,110207,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110208,SAN JUAN DE YANAC,110208,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110209,SAN PEDRO DE HUACARPANA,110209,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110210,SUNAMPE,110210,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_110211,TAMBO DE MORA,110211,base.state_pe_11,ubigeos_1102,base.pe
+ubigeos_1103,NASCA ,1103,base.state_pe_11,,base.pe
+ubigeos_110301,NASCA,110301,base.state_pe_11,ubigeos_1103,base.pe
+ubigeos_110302,CHANGUILLO,110302,base.state_pe_11,ubigeos_1103,base.pe
+ubigeos_110303,EL INGENIO,110303,base.state_pe_11,ubigeos_1103,base.pe
+ubigeos_110304,MARCONA,110304,base.state_pe_11,ubigeos_1103,base.pe
+ubigeos_110305,VISTA ALEGRE,110305,base.state_pe_11,ubigeos_1103,base.pe
+ubigeos_1104,PALPA ,1104,base.state_pe_11,,base.pe
+ubigeos_110401,PALPA,110401,base.state_pe_11,ubigeos_1104,base.pe
+ubigeos_110402,LLIPATA,110402,base.state_pe_11,ubigeos_1104,base.pe
+ubigeos_110403,RIO GRANDE,110403,base.state_pe_11,ubigeos_1104,base.pe
+ubigeos_110404,SANTA CRUZ,110404,base.state_pe_11,ubigeos_1104,base.pe
+ubigeos_110405,TIBILLO,110405,base.state_pe_11,ubigeos_1104,base.pe
+ubigeos_1105,PISCO ,1105,base.state_pe_11,,base.pe
+ubigeos_110501,PISCO,110501,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110502,HUANCANO,110502,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110503,HUMAY,110503,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110504,INDEPENDENCIA,110504,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110505,PARACAS,110505,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110506,SAN ANDRES,110506,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110507,SAN CLEMENTE,110507,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_110508,TUPAC AMARU INCA,110508,base.state_pe_11,ubigeos_1105,base.pe
+ubigeos_1201,HUANCAYO ,1201,base.state_pe_12,,base.pe
+ubigeos_120101,HUANCAYO,120101,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120104,CARHUACALLANGA,120104,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120105,CHACAPAMPA,120105,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120106,CHICCHE,120106,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120107,CHILCA,120107,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120108,CHONGOS ALTO,120108,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120111,CHUPURO,120111,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120112,COLCA,120112,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120113,CULLHUAS,120113,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120114,EL TAMBO,120114,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120116,HUACRAPUQUIO,120116,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120117,HUALHUAS,120117,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120119,HUANCAN,120119,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120120,HUASICANCHA,120120,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120121,HUAYUCACHI,120121,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120122,INGENIO,120122,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120124,PARIAHUANCA,120124,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120125,PILCOMAYO,120125,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120126,PUCARA,120126,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120127,QUICHUAY,120127,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120128,QUILCAS,120128,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120129,SAN AGUSTIN,120129,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120130,SAN JERONIMO DE TUNAN,120130,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120132,SAÑO,120132,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120133,SAPALLANGA,120133,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120134,SICAYA,120134,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120135,SANTO DOMINGO DE ACOBAMBA,120135,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_120136,VIQUES,120136,base.state_pe_12,ubigeos_1201,base.pe
+ubigeos_1202,CONCEPCION ,1202,base.state_pe_12,,base.pe
+ubigeos_120201,CONCEPCION,120201,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120202,ACO,120202,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120203,ANDAMARCA,120203,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120204,CHAMBARA,120204,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120205,COCHAS,120205,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120206,COMAS,120206,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120207,HEROINAS TOLEDO,120207,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120208,MANZANARES,120208,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120209,MARISCAL CASTILLA,120209,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120210,MATAHUASI,120210,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120211,MITO,120211,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120212,NUEVE DE JULIO,120212,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120213,ORCOTUNA,120213,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120214,SAN JOSE DE QUERO,120214,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_120215,SANTA ROSA DE OCOPA,120215,base.state_pe_12,ubigeos_1202,base.pe
+ubigeos_1203,CHANCHAMAYO ,1203,base.state_pe_12,,base.pe
+ubigeos_120301,CHANCHAMAYO,120301,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_120302,PERENE,120302,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_120303,PICHANAQUI,120303,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_120304,SAN LUIS DE SHUARO,120304,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_120305,SAN RAMON,120305,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_120306,VITOC,120306,base.state_pe_12,ubigeos_1203,base.pe
+ubigeos_1204,JAUJA ,1204,base.state_pe_12,,base.pe
+ubigeos_120401,JAUJA,120401,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120402,ACOLLA,120402,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120403,APATA,120403,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120404,ATAURA,120404,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120405,CANCHAYLLO,120405,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120406,CURICACA,120406,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120407,EL MANTARO,120407,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120408,HUAMALI,120408,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120409,HUARIPAMPA,120409,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120410,HUERTAS,120410,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120411,JANJAILLO,120411,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120412,JULCAN,120412,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120413,LEONOR ORDOÑEZ,120413,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120414,LLOCLLAPAMPA,120414,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120415,MARCO,120415,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120416,MASMA,120416,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120417,MASMA CHICCHE,120417,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120418,MOLINOS,120418,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120419,MONOBAMBA,120419,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120420,MUQUI,120420,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120421,MUQUIYAUYO,120421,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120422,PACA,120422,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120423,PACCHA,120423,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120424,PANCAN,120424,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120425,PARCO,120425,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120426,POMACANCHA,120426,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120427,RICRAN,120427,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120428,SAN LORENZO,120428,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120429,SAN PEDRO DE CHUNAN,120429,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120430,SAUSA,120430,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120431,SINCOS,120431,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120432,TUNAN MARCA,120432,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120433,YAULI,120433,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_120434,YAUYOS,120434,base.state_pe_12,ubigeos_1204,base.pe
+ubigeos_1205,JUNIN ,1205,base.state_pe_12,,base.pe
+ubigeos_120501,JUNIN,120501,base.state_pe_12,ubigeos_1205,base.pe
+ubigeos_120502,CARHUAMAYO,120502,base.state_pe_12,ubigeos_1205,base.pe
+ubigeos_120503,ONDORES,120503,base.state_pe_12,ubigeos_1205,base.pe
+ubigeos_120504,ULCUMAYO,120504,base.state_pe_12,ubigeos_1205,base.pe
+ubigeos_1206,SATIPO ,1206,base.state_pe_12,,base.pe
+ubigeos_120601,SATIPO,120601,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120602,COVIRIALI,120602,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120603,LLAYLLA,120603,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120604,MAZAMARI,120604,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120605,PAMPA HERMOSA,120605,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120606,PANGOA,120606,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120607,RIO NEGRO,120607,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120608,RIO TAMBO,120608,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_120609,VIZCATAN DEL ENE,120609,base.state_pe_12,ubigeos_1206,base.pe
+ubigeos_1207,TARMA ,1207,base.state_pe_12,,base.pe
+ubigeos_120701,TARMA,120701,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120702,ACOBAMBA,120702,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120703,HUARICOLCA,120703,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120704,HUASAHUASI,120704,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120705,LA UNION,120705,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120706,PALCA,120706,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120707,PALCAMAYO,120707,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120708,SAN PEDRO DE CAJAS,120708,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_120709,TAPO,120709,base.state_pe_12,ubigeos_1207,base.pe
+ubigeos_1208,YAULI ,1208,base.state_pe_12,,base.pe
+ubigeos_120801,LA OROYA,120801,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120802,CHACAPALPA,120802,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120803,HUAY-HUAY,120803,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120804,MARCAPOMACOCHA,120804,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120805,MOROCOCHA,120805,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120806,PACCHA,120806,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120807,SANTA BARBARA DE CARHUACAYAN,120807,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120808,SANTA ROSA DE SACCO,120808,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120809,SUITUCANCHA,120809,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_120810,YAULI,120810,base.state_pe_12,ubigeos_1208,base.pe
+ubigeos_1209,CHUPACA ,1209,base.state_pe_12,,base.pe
+ubigeos_120901,CHUPACA,120901,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120902,AHUAC,120902,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120903,CHONGOS BAJO,120903,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120904,HUACHAC,120904,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120905,HUAMANCACA CHICO,120905,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120906,SAN JUAN DE ISCOS,120906,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120907,SAN JUAN DE JARPA,120907,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120908,TRES DE DICIEMBRE,120908,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_120909,YANACANCHA,120909,base.state_pe_12,ubigeos_1209,base.pe
+ubigeos_1301,TRUJILLO ,1301,base.state_pe_13,,base.pe
+ubigeos_130101,TRUJILLO,130101,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130102,EL PORVENIR,130102,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130103,FLORENCIA DE MORA,130103,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130104,HUANCHACO,130104,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130105,LA ESPERANZA,130105,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130106,LAREDO,130106,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130107,MOCHE,130107,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130108,POROTO,130108,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130109,SALAVERRY,130109,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130110,SIMBAL,130110,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_130111,VICTOR LARCO HERRERA,130111,base.state_pe_13,ubigeos_1301,base.pe
+ubigeos_1302,ASCOPE ,1302,base.state_pe_13,,base.pe
+ubigeos_130201,ASCOPE,130201,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130202,CHICAMA,130202,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130203,CHOCOPE,130203,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130204,MAGDALENA DE CAO,130204,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130205,PAIJAN,130205,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130206,RAZURI,130206,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130207,SANTIAGO DE CAO,130207,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_130208,CASA GRANDE,130208,base.state_pe_13,ubigeos_1302,base.pe
+ubigeos_1303,BOLIVAR ,1303,base.state_pe_13,,base.pe
+ubigeos_130301,BOLIVAR,130301,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_130302,BAMBAMARCA,130302,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_130303,CONDORMARCA,130303,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_130304,LONGOTEA,130304,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_130305,UCHUMARCA,130305,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_130306,UCUNCHA,130306,base.state_pe_13,ubigeos_1303,base.pe
+ubigeos_1304,CHEPEN ,1304,base.state_pe_13,,base.pe
+ubigeos_130401,CHEPEN,130401,base.state_pe_13,ubigeos_1304,base.pe
+ubigeos_130402,PACANGA,130402,base.state_pe_13,ubigeos_1304,base.pe
+ubigeos_130403,PUEBLO NUEVO,130403,base.state_pe_13,ubigeos_1304,base.pe
+ubigeos_1305,JULCAN ,1305,base.state_pe_13,,base.pe
+ubigeos_130501,JULCAN,130501,base.state_pe_13,ubigeos_1305,base.pe
+ubigeos_130502,CALAMARCA,130502,base.state_pe_13,ubigeos_1305,base.pe
+ubigeos_130503,CARABAMBA,130503,base.state_pe_13,ubigeos_1305,base.pe
+ubigeos_130504,HUASO,130504,base.state_pe_13,ubigeos_1305,base.pe
+ubigeos_1306,OTUZCO ,1306,base.state_pe_13,,base.pe
+ubigeos_130601,OTUZCO,130601,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130602,AGALLPAMPA,130602,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130604,CHARAT,130604,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130605,HUARANCHAL,130605,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130606,LA CUESTA,130606,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130608,MACHE,130608,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130610,PARANDAY,130610,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130611,SALPO,130611,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130613,SINSICAP,130613,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_130614,USQUIL,130614,base.state_pe_13,ubigeos_1306,base.pe
+ubigeos_1307,PACASMAYO ,1307,base.state_pe_13,,base.pe
+ubigeos_130701,SAN PEDRO DE LLOC,130701,base.state_pe_13,ubigeos_1307,base.pe
+ubigeos_130702,GUADALUPE,130702,base.state_pe_13,ubigeos_1307,base.pe
+ubigeos_130703,JEQUETEPEQUE,130703,base.state_pe_13,ubigeos_1307,base.pe
+ubigeos_130704,PACASMAYO,130704,base.state_pe_13,ubigeos_1307,base.pe
+ubigeos_130705,SAN JOSE,130705,base.state_pe_13,ubigeos_1307,base.pe
+ubigeos_1308,PATAZ ,1308,base.state_pe_13,,base.pe
+ubigeos_130801,TAYABAMBA,130801,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130802,BULDIBUYO,130802,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130803,CHILLIA,130803,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130804,HUANCASPATA,130804,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130805,HUAYLILLAS,130805,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130806,HUAYO,130806,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130807,ONGON,130807,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130808,PARCOY,130808,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130809,PATAZ,130809,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130810,PIAS,130810,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130811,SANTIAGO DE CHALLAS,130811,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130812,TAURIJA,130812,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_130813,URPAY,130813,base.state_pe_13,ubigeos_1308,base.pe
+ubigeos_1309,SANCHEZ CARRION ,1309,base.state_pe_13,,base.pe
+ubigeos_130901,HUAMACHUCO,130901,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130902,CHUGAY,130902,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130903,COCHORCO,130903,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130904,CURGOS,130904,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130905,MARCABAL,130905,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130906,SANAGORAN,130906,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130907,SARIN,130907,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_130908,SARTIMBAMBA,130908,base.state_pe_13,ubigeos_1309,base.pe
+ubigeos_1310,SANTIAGO DE CHUCO ,1310,base.state_pe_13,,base.pe
+ubigeos_131001,SANTIAGO DE CHUCO,131001,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131002,ANGASMARCA,131002,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131003,CACHICADAN,131003,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131004,MOLLEBAMBA,131004,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131005,MOLLEPATA,131005,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131006,QUIRUVILCA,131006,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131007,SANTA CRUZ DE CHUCA,131007,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_131008,SITABAMBA,131008,base.state_pe_13,ubigeos_1310,base.pe
+ubigeos_1311,GRAN CHIMU ,1311,base.state_pe_13,,base.pe
+ubigeos_131101,CASCAS,131101,base.state_pe_13,ubigeos_1311,base.pe
+ubigeos_131102,LUCMA,131102,base.state_pe_13,ubigeos_1311,base.pe
+ubigeos_131103,MARMOT,131103,base.state_pe_13,ubigeos_1311,base.pe
+ubigeos_131104,SAYAPULLO,131104,base.state_pe_13,ubigeos_1311,base.pe
+ubigeos_1312,VIRU ,1312,base.state_pe_13,,base.pe
+ubigeos_131201,VIRU,131201,base.state_pe_13,ubigeos_1312,base.pe
+ubigeos_131202,CHAO,131202,base.state_pe_13,ubigeos_1312,base.pe
+ubigeos_131203,GUADALUPITO,131203,base.state_pe_13,ubigeos_1312,base.pe
+ubigeos_1401,CHICLAYO ,1401,base.state_pe_14,,base.pe
+ubigeos_140101,CHICLAYO,140101,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140102,CHONGOYAPE,140102,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140103,ETEN,140103,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140104,ETEN PUERTO,140104,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140105,JOSE LEONARDO ORTIZ,140105,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140106,LA VICTORIA,140106,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140107,LAGUNAS,140107,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140108,MONSEFU,140108,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140109,NUEVA ARICA,140109,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140110,OYOTUN,140110,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140111,PICSI,140111,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140112,PIMENTEL,140112,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140113,REQUE,140113,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140114,SANTA ROSA,140114,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140115,SAÑA,140115,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140116,CAYALTI,140116,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140117,PATAPO,140117,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140118,POMALCA,140118,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140119,PUCALA,140119,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_140120,TUMAN,140120,base.state_pe_14,ubigeos_1401,base.pe
+ubigeos_1402,FERREÑAFE ,1402,base.state_pe_14,,base.pe
+ubigeos_140201,FERREÑAFE,140201,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_140202,CAÑARIS,140202,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_140203,INCAHUASI,140203,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_140204,MANUEL ANTONIO MESONES MURO,140204,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_140205,PITIPO,140205,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_140206,PUEBLO NUEVO,140206,base.state_pe_14,ubigeos_1402,base.pe
+ubigeos_1403,LAMBAYEQUE ,1403,base.state_pe_14,,base.pe
+ubigeos_140301,LAMBAYEQUE,140301,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140302,CHOCHOPE,140302,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140303,ILLIMO,140303,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140304,JAYANCA,140304,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140305,MOCHUMI,140305,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140306,MORROPE,140306,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140307,MOTUPE,140307,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140308,OLMOS,140308,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140309,PACORA,140309,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140310,SALAS,140310,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140311,SAN JOSE,140311,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_140312,TUCUME,140312,base.state_pe_14,ubigeos_1403,base.pe
+ubigeos_1501,LIMA ,1501,base.state_pe_15,,base.pe
+ubigeos_150101,LIMA,150101,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150102,ANCON,150102,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150103,ATE,150103,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150104,BARRANCO,150104,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150105,BREÑA,150105,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150106,CARABAYLLO,150106,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150107,CHACLACAYO,150107,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150108,CHORRILLOS,150108,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150109,CIENEGUILLA,150109,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150110,COMAS,150110,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150111,EL AGUSTINO,150111,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150112,INDEPENDENCIA,150112,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150113,JESUS MARIA,150113,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150114,LA MOLINA,150114,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150115,LA VICTORIA,150115,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150116,LINCE,150116,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150117,LOS OLIVOS,150117,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150118,LURIGANCHO,150118,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150119,LURIN,150119,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150120,MAGDALENA DEL MAR,150120,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150121,PUEBLO LIBRE,150121,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150122,MIRAFLORES,150122,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150123,PACHACAMAC,150123,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150124,PUCUSANA,150124,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150125,PUENTE PIEDRA,150125,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150126,PUNTA HERMOSA,150126,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150127,PUNTA NEGRA,150127,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150128,RIMAC,150128,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150129,SAN BARTOLO,150129,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150130,SAN BORJA,150130,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150131,SAN ISIDRO,150131,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150132,SAN JUAN DE LURIGANCHO,150132,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150133,SAN JUAN DE MIRAFLORES,150133,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150134,SAN LUIS,150134,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150135,SAN MARTIN DE PORRES,150135,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150136,SAN MIGUEL,150136,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150137,SANTA ANITA,150137,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150138,SANTA MARIA DEL MAR,150138,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150139,SANTA ROSA,150139,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150140,SANTIAGO DE SURCO,150140,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150141,SURQUILLO,150141,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150142,VILLA EL SALVADOR,150142,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_150143,VILLA MARIA DEL TRIUNFO,150143,base.state_pe_15,ubigeos_1501,base.pe
+ubigeos_1502,BARRANCA ,1502,base.state_pe_15,,base.pe
+ubigeos_150201,BARRANCA,150201,base.state_pe_15,ubigeos_1502,base.pe
+ubigeos_150202,PARAMONGA,150202,base.state_pe_15,ubigeos_1502,base.pe
+ubigeos_150203,PATIVILCA,150203,base.state_pe_15,ubigeos_1502,base.pe
+ubigeos_150204,SUPE,150204,base.state_pe_15,ubigeos_1502,base.pe
+ubigeos_150205,SUPE PUERTO,150205,base.state_pe_15,ubigeos_1502,base.pe
+ubigeos_1503,CAJATAMBO ,1503,base.state_pe_15,,base.pe
+ubigeos_150301,CAJATAMBO,150301,base.state_pe_15,ubigeos_1503,base.pe
+ubigeos_150302,COPA,150302,base.state_pe_15,ubigeos_1503,base.pe
+ubigeos_150303,GORGOR,150303,base.state_pe_15,ubigeos_1503,base.pe
+ubigeos_150304,HUANCAPON,150304,base.state_pe_15,ubigeos_1503,base.pe
+ubigeos_150305,MANAS,150305,base.state_pe_15,ubigeos_1503,base.pe
+ubigeos_1504,CANTA ,1504,base.state_pe_15,,base.pe
+ubigeos_150401,CANTA,150401,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150402,ARAHUAY,150402,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150403,HUAMANTANGA,150403,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150404,HUAROS,150404,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150405,LACHAQUI,150405,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150406,SAN BUENAVENTURA,150406,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_150407,SANTA ROSA DE QUIVES,150407,base.state_pe_15,ubigeos_1504,base.pe
+ubigeos_1505,CAÑETE ,1505,base.state_pe_15,,base.pe
+ubigeos_150501,SAN VICENTE DE CAÑETE,150501,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150502,ASIA,150502,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150503,CALANGO,150503,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150504,CERRO AZUL,150504,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150505,CHILCA,150505,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150506,COAYLLO,150506,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150507,IMPERIAL,150507,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150508,LUNAHUANA,150508,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150509,MALA,150509,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150510,NUEVO IMPERIAL,150510,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150511,PACARAN,150511,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150512,QUILMANA,150512,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150513,SAN ANTONIO,150513,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150514,SAN LUIS,150514,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150515,SANTA CRUZ DE FLORES,150515,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_150516,ZUÑIGA,150516,base.state_pe_15,ubigeos_1505,base.pe
+ubigeos_1506,HUARAL ,1506,base.state_pe_15,,base.pe
+ubigeos_150601,HUARAL,150601,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150602,ATAVILLOS ALTO,150602,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150603,ATAVILLOS BAJO,150603,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150604,AUCALLAMA,150604,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150605,CHANCAY,150605,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150606,IHUARI,150606,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150607,LAMPIAN,150607,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150608,PACARAOS,150608,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150609,SAN MIGUEL DE ACOS,150609,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150610,SANTA CRUZ DE ANDAMARCA,150610,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150611,SUMBILCA,150611,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_150612,VEINTISIETE DE NOVIEMBRE,150612,base.state_pe_15,ubigeos_1506,base.pe
+ubigeos_1507,HUAROCHIRI ,1507,base.state_pe_15,,base.pe
+ubigeos_150701,MATUCANA,150701,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150702,ANTIOQUIA,150702,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150703,CALLAHUANCA,150703,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150704,CARAMPOMA,150704,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150705,CHICLA,150705,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150706,CUENCA,150706,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150707,HUACHUPAMPA,150707,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150708,HUANZA,150708,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150709,HUAROCHIRI,150709,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150710,LAHUAYTAMBO,150710,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150711,LANGA,150711,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150712,LARAOS,150712,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150713,MARIATANA,150713,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150714,RICARDO PALMA,150714,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150715,SAN ANDRES DE TUPICOCHA,150715,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150716,SAN ANTONIO,150716,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150717,SAN BARTOLOME,150717,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150718,SAN DAMIAN,150718,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150719,SAN JUAN DE IRIS,150719,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150720,SAN JUAN DE TANTARANCHE,150720,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150721,SAN LORENZO DE QUINTI,150721,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150722,SAN MATEO,150722,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150723,SAN MATEO DE OTAO,150723,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150724,SAN PEDRO DE CASTA,150724,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150725,SAN PEDRO DE HUANCAYRE,150725,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150726,SANGALLAYA,150726,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150727,SANTA CRUZ DE COCACHACRA,150727,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150728,SANTA EULALIA,150728,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150729,SANTIAGO DE ANCHUCAYA,150729,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150730,SANTIAGO DE TUNA,150730,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150731,SANTO DOMINGO DE LOS OLLEROS,150731,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_150732,SURCO,150732,base.state_pe_15,ubigeos_1507,base.pe
+ubigeos_1508,HUAURA ,1508,base.state_pe_15,,base.pe
+ubigeos_150801,HUACHO,150801,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150802,AMBAR,150802,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150803,CALETA DE CARQUIN,150803,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150804,CHECRAS,150804,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150805,HUALMAY,150805,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150806,HUAURA,150806,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150807,LEONCIO PRADO,150807,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150808,PACCHO,150808,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150809,SANTA LEONOR,150809,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150810,SANTA MARIA,150810,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150811,SAYAN,150811,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_150812,VEGUETA,150812,base.state_pe_15,ubigeos_1508,base.pe
+ubigeos_1509,OYON ,1509,base.state_pe_15,,base.pe
+ubigeos_150901,OYON,150901,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_150902,ANDAJES,150902,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_150903,CAUJUL,150903,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_150904,COCHAMARCA,150904,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_150905,NAVAN,150905,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_150906,PACHANGARA,150906,base.state_pe_15,ubigeos_1509,base.pe
+ubigeos_1510,YAUYOS ,1510,base.state_pe_15,,base.pe
+ubigeos_151001,YAUYOS,151001,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151002,ALIS,151002,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151003,ALLAUCA,151003,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151004,AYAVIRI,151004,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151005,AZANGARO,151005,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151006,CACRA,151006,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151007,CARANIA,151007,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151008,CATAHUASI,151008,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151009,CHOCOS,151009,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151010,COCHAS,151010,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151011,COLONIA,151011,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151012,HONGOS,151012,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151013,HUAMPARA,151013,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151014,HUANCAYA,151014,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151015,HUANGASCAR,151015,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151016,HUANTAN,151016,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151017,HUAÑEC,151017,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151018,LARAOS,151018,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151019,LINCHA,151019,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151020,MADEAN,151020,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151021,MIRAFLORES,151021,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151022,OMAS,151022,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151023,PUTINZA,151023,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151024,QUINCHES,151024,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151025,QUINOCAY,151025,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151026,SAN JOAQUIN,151026,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151027,SAN PEDRO DE PILAS,151027,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151028,TANTA,151028,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151029,TAURIPAMPA,151029,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151030,TOMAS,151030,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151031,TUPE,151031,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151032,VIÑAC,151032,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_151033,VITIS,151033,base.state_pe_15,ubigeos_1510,base.pe
+ubigeos_1601,MAYNAS ,1601,base.state_pe_16,,base.pe
+ubigeos_160101,IQUITOS,160101,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160102,ALTO NANAY,160102,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160103,FERNANDO LORES,160103,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160104,INDIANA,160104,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160105,LAS AMAZONAS,160105,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160106,MAZAN,160106,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160107,NAPO,160107,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160108,PUNCHANA,160108,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160110,TORRES CAUSANA,160110,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160112,BELEN,160112,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_160113,SAN JUAN BAUTISTA,160113,base.state_pe_16,ubigeos_1601,base.pe
+ubigeos_1602,ALTO AMAZONAS ,1602,base.state_pe_16,,base.pe
+ubigeos_160201,YURIMAGUAS,160201,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_160202,BALSAPUERTO,160202,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_160205,JEBEROS,160205,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_160206,LAGUNAS,160206,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_160210,SANTA CRUZ,160210,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_160211,TENIENTE CESAR LOPEZ ROJAS,160211,base.state_pe_16,ubigeos_1602,base.pe
+ubigeos_1603,LORETO ,1603,base.state_pe_16,,base.pe
+ubigeos_160301,NAUTA,160301,base.state_pe_16,ubigeos_1603,base.pe
+ubigeos_160302,PARINARI,160302,base.state_pe_16,ubigeos_1603,base.pe
+ubigeos_160303,TIGRE,160303,base.state_pe_16,ubigeos_1603,base.pe
+ubigeos_160304,TROMPETEROS,160304,base.state_pe_16,ubigeos_1603,base.pe
+ubigeos_160305,URARINAS,160305,base.state_pe_16,ubigeos_1603,base.pe
+ubigeos_1604,MARISCAL RAMON CASTILLA ,1604,base.state_pe_16,,base.pe
+ubigeos_160401,RAMON CASTILLA,160401,base.state_pe_16,ubigeos_1604,base.pe
+ubigeos_160402,PEBAS,160402,base.state_pe_16,ubigeos_1604,base.pe
+ubigeos_160403,YAVARI,160403,base.state_pe_16,ubigeos_1604,base.pe
+ubigeos_160404,SAN PABLO,160404,base.state_pe_16,ubigeos_1604,base.pe
+ubigeos_1605,REQUENA ,1605,base.state_pe_16,,base.pe
+ubigeos_160501,REQUENA,160501,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160502,ALTO TAPICHE,160502,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160503,CAPELO,160503,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160504,EMILIO SAN MARTIN,160504,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160505,MAQUIA,160505,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160506,PUINAHUA,160506,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160507,SAQUENA,160507,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160508,SOPLIN,160508,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160509,TAPICHE,160509,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160510,JENARO HERRERA,160510,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_160511,YAQUERANA,160511,base.state_pe_16,ubigeos_1605,base.pe
+ubigeos_1606,UCAYALI ,1606,base.state_pe_16,,base.pe
+ubigeos_160601,CONTAMANA,160601,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_160602,INAHUAYA,160602,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_160603,PADRE MARQUEZ,160603,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_160604,PAMPA HERMOSA,160604,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_160605,SARAYACU,160605,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_160606,VARGAS GUERRA,160606,base.state_pe_16,ubigeos_1606,base.pe
+ubigeos_1607,DATEM DEL MARAÑON ,1607,base.state_pe_16,,base.pe
+ubigeos_160701,BARRANCA,160701,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_160702,CAHUAPANAS,160702,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_160703,MANSERICHE,160703,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_160704,MORONA,160704,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_160705,PASTAZA,160705,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_160706,ANDOAS,160706,base.state_pe_16,ubigeos_1607,base.pe
+ubigeos_1608,PUTUMAYO,1608,base.state_pe_16,,base.pe
+ubigeos_160801,PUTUMAYO,160801,base.state_pe_16,ubigeos_1608,base.pe
+ubigeos_160802,ROSA PANDURO,160802,base.state_pe_16,ubigeos_1608,base.pe
+ubigeos_160803,TENIENTE MANUEL CLAVERO,160803,base.state_pe_16,ubigeos_1608,base.pe
+ubigeos_160804,YAGUAS,160804,base.state_pe_16,ubigeos_1608,base.pe
+ubigeos_1701,TAMBOPATA ,1701,base.state_pe_17,,base.pe
+ubigeos_170101,TAMBOPATA,170101,base.state_pe_17,ubigeos_1701,base.pe
+ubigeos_170102,INAMBARI,170102,base.state_pe_17,ubigeos_1701,base.pe
+ubigeos_170103,LAS PIEDRAS,170103,base.state_pe_17,ubigeos_1701,base.pe
+ubigeos_170104,LABERINTO,170104,base.state_pe_17,ubigeos_1701,base.pe
+ubigeos_1702,MANU ,1702,base.state_pe_17,,base.pe
+ubigeos_170201,MANU,170201,base.state_pe_17,ubigeos_1702,base.pe
+ubigeos_170202,FITZCARRALD,170202,base.state_pe_17,ubigeos_1702,base.pe
+ubigeos_170203,MADRE DE DIOS,170203,base.state_pe_17,ubigeos_1702,base.pe
+ubigeos_170204,HUEPETUHE,170204,base.state_pe_17,ubigeos_1702,base.pe
+ubigeos_1703,TAHUAMANU ,1703,base.state_pe_17,,base.pe
+ubigeos_170301,IÑAPARI,170301,base.state_pe_17,ubigeos_1703,base.pe
+ubigeos_170302,IBERIA,170302,base.state_pe_17,ubigeos_1703,base.pe
+ubigeos_170303,TAHUAMANU,170303,base.state_pe_17,ubigeos_1703,base.pe
+ubigeos_1801,MARISCAL NIETO ,1801,base.state_pe_18,,base.pe
+ubigeos_180101,MOQUEGUA,180101,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_180102,CARUMAS,180102,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_180103,CUCHUMBAYA,180103,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_180104,SAMEGUA,180104,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_180105,SAN CRISTOBAL,180105,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_180106,TORATA,180106,base.state_pe_18,ubigeos_1801,base.pe
+ubigeos_1802,GENERAL SANCHEZ CERRO ,1802,base.state_pe_18,,base.pe
+ubigeos_180201,OMATE,180201,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180202,CHOJATA,180202,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180203,COALAQUE,180203,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180204,ICHUÑA,180204,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180205,LA CAPILLA,180205,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180206,LLOQUE,180206,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180207,MATALAQUE,180207,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180208,PUQUINA,180208,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180209,QUINISTAQUILLAS,180209,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180210,UBINAS,180210,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_180211,YUNGA,180211,base.state_pe_18,ubigeos_1802,base.pe
+ubigeos_1803,ILO ,1803,base.state_pe_18,,base.pe
+ubigeos_180301,ILO,180301,base.state_pe_18,ubigeos_1803,base.pe
+ubigeos_180302,EL ALGARROBAL,180302,base.state_pe_18,ubigeos_1803,base.pe
+ubigeos_180303,PACOCHA,180303,base.state_pe_18,ubigeos_1803,base.pe
+ubigeos_1901,PASCO ,1901,base.state_pe_19,,base.pe
+ubigeos_190101,CHAUPIMARCA,190101,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190102,HUACHON,190102,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190103,HUARIACA,190103,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190104,HUAYLLAY,190104,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190105,NINACACA,190105,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190106,PALLANCHACRA,190106,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190107,PAUCARTAMBO,190107,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190108,SAN FRANCISCO DE ASIS DE YARUSYACAN,190108,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190109,SIMON BOLIVAR,190109,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190110,TICLACAYAN,190110,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190111,TINYAHUARCO,190111,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190112,VICCO,190112,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_190113,YANACANCHA,190113,base.state_pe_19,ubigeos_1901,base.pe
+ubigeos_1902,DANIEL ALCIDES CARRION ,1902,base.state_pe_19,,base.pe
+ubigeos_190201,YANAHUANCA,190201,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190202,CHACAYAN,190202,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190203,GOYLLARISQUIZGA,190203,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190204,PAUCAR,190204,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190205,SAN PEDRO DE PILLAO,190205,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190206,SANTA ANA DE TUSI,190206,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190207,TAPUC,190207,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_190208,VILCABAMBA,190208,base.state_pe_19,ubigeos_1902,base.pe
+ubigeos_1903,OXAPAMPA ,1903,base.state_pe_19,,base.pe
+ubigeos_190301,OXAPAMPA,190301,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190302,CHONTABAMBA,190302,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190303,HUANCABAMBA,190303,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190304,PALCAZU,190304,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190305,POZUZO,190305,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190306,PUERTO BERMUDEZ,190306,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190307,VILLA RICA,190307,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_190308,CONSTITUCION,190308,base.state_pe_19,ubigeos_1903,base.pe
+ubigeos_2001,PIURA ,2001,base.state_pe_20,,base.pe
+ubigeos_200101,PIURA,200101,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200104,CASTILLA,200104,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200105,CATACAOS,200105,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200107,CURA MORI,200107,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200108,EL TALLAN,200108,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200109,LA ARENA,200109,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200110,LA UNION,200110,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200111,LAS LOMAS,200111,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200114,TAMBO GRANDE,200114,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_200115,VEINTISEIS DE OCTUBRE,200115,base.state_pe_20,ubigeos_2001,base.pe
+ubigeos_2002,AYABACA ,2002,base.state_pe_20,,base.pe
+ubigeos_200201,AYABACA,200201,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200202,FRIAS,200202,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200203,JILILI,200203,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200204,LAGUNAS,200204,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200205,MONTERO,200205,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200206,PACAIPAMPA,200206,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200207,PAIMAS,200207,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200208,SAPILLICA,200208,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200209,SICCHEZ,200209,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_200210,SUYO,200210,base.state_pe_20,ubigeos_2002,base.pe
+ubigeos_2003,HUANCABAMBA ,2003,base.state_pe_20,,base.pe
+ubigeos_200301,HUANCABAMBA,200301,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200302,CANCHAQUE,200302,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200303,EL CARMEN DE LA FRONTERA,200303,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200304,HUARMACA,200304,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200305,LALAQUIZ,200305,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200306,SAN MIGUEL DE EL FAIQUE,200306,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200307,SONDOR,200307,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_200308,SONDORILLO,200308,base.state_pe_20,ubigeos_2003,base.pe
+ubigeos_2004,MORROPON ,2004,base.state_pe_20,,base.pe
+ubigeos_200401,CHULUCANAS,200401,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200402,BUENOS AIRES,200402,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200403,CHALACO,200403,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200404,LA MATANZA,200404,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200405,MORROPON,200405,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200406,SALITRAL,200406,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200407,SAN JUAN DE BIGOTE,200407,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200408,SANTA CATALINA DE MOSSA,200408,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200409,SANTO DOMINGO,200409,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_200410,YAMANGO,200410,base.state_pe_20,ubigeos_2004,base.pe
+ubigeos_2005,PAITA ,2005,base.state_pe_20,,base.pe
+ubigeos_200501,PAITA,200501,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200502,AMOTAPE,200502,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200503,ARENAL,200503,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200504,COLAN,200504,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200505,LA HUACA,200505,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200506,TAMARINDO,200506,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_200507,VICHAYAL,200507,base.state_pe_20,ubigeos_2005,base.pe
+ubigeos_2006,SULLANA ,2006,base.state_pe_20,,base.pe
+ubigeos_200601,SULLANA,200601,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200602,BELLAVISTA,200602,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200603,IGNACIO ESCUDERO,200603,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200604,LANCONES,200604,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200605,MARCAVELICA,200605,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200606,MIGUEL CHECA,200606,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200607,QUERECOTILLO,200607,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_200608,SALITRAL,200608,base.state_pe_20,ubigeos_2006,base.pe
+ubigeos_2007,TALARA ,2007,base.state_pe_20,,base.pe
+ubigeos_200701,PARIÑAS,200701,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_200702,EL ALTO,200702,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_200703,LA BREA,200703,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_200704,LOBITOS,200704,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_200705,LOS ORGANOS,200705,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_200706,MANCORA,200706,base.state_pe_20,ubigeos_2007,base.pe
+ubigeos_2008,SECHURA ,2008,base.state_pe_20,,base.pe
+ubigeos_200801,SECHURA,200801,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_200802,BELLAVISTA DE LA UNION,200802,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_200803,BERNAL,200803,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_200804,CRISTO NOS VALGA,200804,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_200805,VICE,200805,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_200806,RINCONADA LLICUAR,200806,base.state_pe_20,ubigeos_2008,base.pe
+ubigeos_2101,PUNO ,2101,base.state_pe_21,,base.pe
+ubigeos_210101,PUNO,210101,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210102,ACORA,210102,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210103,AMANTANI,210103,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210104,ATUNCOLLA,210104,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210105,CAPACHICA,210105,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210106,CHUCUITO,210106,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210107,COATA,210107,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210108,HUATA,210108,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210109,MAÑAZO,210109,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210110,PAUCARCOLLA,210110,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210111,PICHACANI,210111,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210112,PLATERIA,210112,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210113,SAN ANTONIO,210113,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210114,TIQUILLACA,210114,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_210115,VILQUE,210115,base.state_pe_21,ubigeos_2101,base.pe
+ubigeos_2102,AZANGARO ,2102,base.state_pe_21,,base.pe
+ubigeos_210201,AZANGARO,210201,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210202,ACHAYA,210202,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210203,ARAPA,210203,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210204,ASILLO,210204,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210205,CAMINACA,210205,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210206,CHUPA,210206,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210207,JOSE DOMINGO CHOQUEHUANCA,210207,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210208,MUÑANI,210208,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210209,POTONI,210209,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210210,SAMAN,210210,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210211,SAN ANTON,210211,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210212,SAN JOSE,210212,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210213,SAN JUAN DE SALINAS,210213,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210214,SANTIAGO DE PUPUJA,210214,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_210215,TIRAPATA,210215,base.state_pe_21,ubigeos_2102,base.pe
+ubigeos_2103,CARABAYA ,2103,base.state_pe_21,,base.pe
+ubigeos_210301,MACUSANI,210301,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210302,AJOYANI,210302,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210303,AYAPATA,210303,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210304,COASA,210304,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210305,CORANI,210305,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210306,CRUCERO,210306,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210307,ITUATA,210307,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210308,OLLACHEA,210308,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210309,SAN GABAN,210309,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_210310,USICAYOS,210310,base.state_pe_21,ubigeos_2103,base.pe
+ubigeos_2104,CHUCUITO ,2104,base.state_pe_21,,base.pe
+ubigeos_210401,JULI,210401,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210402,DESAGUADERO,210402,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210403,HUACULLANI,210403,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210404,KELLUYO,210404,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210405,PISACOMA,210405,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210406,POMATA,210406,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_210407,ZEPITA,210407,base.state_pe_21,ubigeos_2104,base.pe
+ubigeos_2105,EL COLLAO ,2105,base.state_pe_21,,base.pe
+ubigeos_210501,ILAVE,210501,base.state_pe_21,ubigeos_2105,base.pe
+ubigeos_210502,CAPAZO,210502,base.state_pe_21,ubigeos_2105,base.pe
+ubigeos_210503,PILCUYO,210503,base.state_pe_21,ubigeos_2105,base.pe
+ubigeos_210504,SANTA ROSA,210504,base.state_pe_21,ubigeos_2105,base.pe
+ubigeos_210505,CONDURIRI,210505,base.state_pe_21,ubigeos_2105,base.pe
+ubigeos_2106,HUANCANE ,2106,base.state_pe_21,,base.pe
+ubigeos_210601,HUANCANE,210601,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210602,COJATA,210602,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210603,HUATASANI,210603,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210604,INCHUPALLA,210604,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210605,PUSI,210605,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210606,ROSASPATA,210606,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210607,TARACO,210607,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_210608,VILQUE CHICO,210608,base.state_pe_21,ubigeos_2106,base.pe
+ubigeos_2107,LAMPA ,2107,base.state_pe_21,,base.pe
+ubigeos_210701,LAMPA,210701,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210702,CABANILLA,210702,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210703,CALAPUJA,210703,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210704,NICASIO,210704,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210705,OCUVIRI,210705,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210706,PALCA,210706,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210707,PARATIA,210707,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210708,PUCARA,210708,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210709,SANTA LUCIA,210709,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_210710,VILAVILA,210710,base.state_pe_21,ubigeos_2107,base.pe
+ubigeos_2108,MELGAR ,2108,base.state_pe_21,,base.pe
+ubigeos_210801,AYAVIRI,210801,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210802,ANTAUTA,210802,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210803,CUPI,210803,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210804,LLALLI,210804,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210805,MACARI,210805,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210806,NUÑOA,210806,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210807,ORURILLO,210807,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210808,SANTA ROSA,210808,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_210809,UMACHIRI,210809,base.state_pe_21,ubigeos_2108,base.pe
+ubigeos_2109,MOHO ,2109,base.state_pe_21,,base.pe
+ubigeos_210901,MOHO,210901,base.state_pe_21,ubigeos_2109,base.pe
+ubigeos_210902,CONIMA,210902,base.state_pe_21,ubigeos_2109,base.pe
+ubigeos_210903,HUAYRAPATA,210903,base.state_pe_21,ubigeos_2109,base.pe
+ubigeos_210904,TILALI,210904,base.state_pe_21,ubigeos_2109,base.pe
+ubigeos_2110,SAN ANTONIO DE PUTINA ,2110,base.state_pe_21,,base.pe
+ubigeos_211001,PUTINA,211001,base.state_pe_21,ubigeos_2110,base.pe
+ubigeos_211002,ANANEA,211002,base.state_pe_21,ubigeos_2110,base.pe
+ubigeos_211003,PEDRO VILCA APAZA,211003,base.state_pe_21,ubigeos_2110,base.pe
+ubigeos_211004,QUILCAPUNCU,211004,base.state_pe_21,ubigeos_2110,base.pe
+ubigeos_211005,SINA,211005,base.state_pe_21,ubigeos_2110,base.pe
+ubigeos_2111,SAN ROMAN ,2111,base.state_pe_21,,base.pe
+ubigeos_211101,JULIACA,211101,base.state_pe_21,ubigeos_2111,base.pe
+ubigeos_211102,CABANA,211102,base.state_pe_21,ubigeos_2111,base.pe
+ubigeos_211103,CABANILLAS,211103,base.state_pe_21,ubigeos_2111,base.pe
+ubigeos_211104,CARACOTO,211104,base.state_pe_21,ubigeos_2111,base.pe
+ubigeos_211105,SAN MIGUEL,211105,base.state_pe_21,ubigeos_2111,base.pe
+ubigeos_2112,SANDIA ,2112,base.state_pe_21,,base.pe
+ubigeos_211201,SANDIA,211201,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211202,CUYOCUYO,211202,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211203,LIMBANI,211203,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211204,PATAMBUCO,211204,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211205,PHARA,211205,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211206,QUIACA,211206,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211207,SAN JUAN DEL ORO,211207,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211208,YANAHUAYA,211208,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211209,ALTO INAMBARI,211209,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_211210,SAN PEDRO DE PUTINA PUNCO,211210,base.state_pe_21,ubigeos_2112,base.pe
+ubigeos_2113,YUNGUYO ,2113,base.state_pe_21,,base.pe
+ubigeos_211301,YUNGUYO,211301,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211302,ANAPIA,211302,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211303,COPANI,211303,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211304,CUTURAPI,211304,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211305,OLLARAYA,211305,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211306,TINICACHI,211306,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_211307,UNICACHI,211307,base.state_pe_21,ubigeos_2113,base.pe
+ubigeos_2201,MOYOBAMBA ,2201,base.state_pe_22,,base.pe
+ubigeos_220101,MOYOBAMBA,220101,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_220102,CALZADA,220102,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_220103,HABANA,220103,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_220104,JEPELACIO,220104,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_220105,SORITOR,220105,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_220106,YANTALO,220106,base.state_pe_22,ubigeos_2201,base.pe
+ubigeos_2202,BELLAVISTA ,2202,base.state_pe_22,,base.pe
+ubigeos_220201,BELLAVISTA,220201,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_220202,ALTO BIAVO,220202,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_220203,BAJO BIAVO,220203,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_220204,HUALLAGA,220204,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_220205,SAN PABLO,220205,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_220206,SAN RAFAEL,220206,base.state_pe_22,ubigeos_2202,base.pe
+ubigeos_2203,EL DORADO ,2203,base.state_pe_22,,base.pe
+ubigeos_220301,SAN JOSE DE SISA,220301,base.state_pe_22,ubigeos_2203,base.pe
+ubigeos_220302,AGUA BLANCA,220302,base.state_pe_22,ubigeos_2203,base.pe
+ubigeos_220303,SAN MARTIN,220303,base.state_pe_22,ubigeos_2203,base.pe
+ubigeos_220304,SANTA ROSA,220304,base.state_pe_22,ubigeos_2203,base.pe
+ubigeos_220305,SHATOJA,220305,base.state_pe_22,ubigeos_2203,base.pe
+ubigeos_2204,HUALLAGA ,2204,base.state_pe_22,,base.pe
+ubigeos_220401,SAPOSOA,220401,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_220402,ALTO SAPOSOA,220402,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_220403,EL ESLABON,220403,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_220404,PISCOYACU,220404,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_220405,SACANCHE,220405,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_220406,TINGO DE SAPOSOA,220406,base.state_pe_22,ubigeos_2204,base.pe
+ubigeos_2205,LAMAS ,2205,base.state_pe_22,,base.pe
+ubigeos_220501,LAMAS,220501,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220502,ALONSO DE ALVARADO,220502,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220503,BARRANQUITA,220503,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220504,CAYNARACHI,220504,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220505,CUÑUMBUQUI,220505,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220506,PINTO RECODO,220506,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220507,RUMISAPA,220507,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220508,SAN ROQUE DE CUMBAZA,220508,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220509,SHANAO,220509,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220510,TABALOSOS,220510,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_220511,ZAPATERO,220511,base.state_pe_22,ubigeos_2205,base.pe
+ubigeos_2206,MARISCAL CACERES ,2206,base.state_pe_22,,base.pe
+ubigeos_220601,JUANJUI,220601,base.state_pe_22,ubigeos_2206,base.pe
+ubigeos_220602,CAMPANILLA,220602,base.state_pe_22,ubigeos_2206,base.pe
+ubigeos_220603,HUICUNGO,220603,base.state_pe_22,ubigeos_2206,base.pe
+ubigeos_220604,PACHIZA,220604,base.state_pe_22,ubigeos_2206,base.pe
+ubigeos_220605,PAJARILLO,220605,base.state_pe_22,ubigeos_2206,base.pe
+ubigeos_2207,PICOTA ,2207,base.state_pe_22,,base.pe
+ubigeos_220701,PICOTA,220701,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220702,BUENOS AIRES,220702,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220703,CASPISAPA,220703,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220704,PILLUANA,220704,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220705,PUCACACA,220705,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220706,SAN CRISTOBAL,220706,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220707,SAN HILARION,220707,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220708,SHAMBOYACU,220708,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220709,TINGO DE PONASA,220709,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_220710,TRES UNIDOS,220710,base.state_pe_22,ubigeos_2207,base.pe
+ubigeos_2208,RIOJA ,2208,base.state_pe_22,,base.pe
+ubigeos_220801,RIOJA,220801,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220802,AWAJUN,220802,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220803,ELIAS SOPLIN VARGAS,220803,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220804,NUEVA CAJAMARCA,220804,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220805,PARDO MIGUEL,220805,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220806,POSIC,220806,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220807,SAN FERNANDO,220807,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220808,YORONGOS,220808,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_220809,YURACYACU,220809,base.state_pe_22,ubigeos_2208,base.pe
+ubigeos_2209,SAN MARTIN ,2209,base.state_pe_22,,base.pe
+ubigeos_220901,TARAPOTO,220901,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220902,ALBERTO LEVEAU,220902,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220903,CACATACHI,220903,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220904,CHAZUTA,220904,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220905,CHIPURANA,220905,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220906,EL PORVENIR,220906,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220907,HUIMBAYOC,220907,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220908,JUAN GUERRA,220908,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220909,LA BANDA DE SHILCAYO,220909,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220910,MORALES,220910,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220911,PAPAPLAYA,220911,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220912,SAN ANTONIO,220912,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220913,SAUCE,220913,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_220914,SHAPAJA,220914,base.state_pe_22,ubigeos_2209,base.pe
+ubigeos_2210,TOCACHE ,2210,base.state_pe_22,,base.pe
+ubigeos_221001,TOCACHE,221001,base.state_pe_22,ubigeos_2210,base.pe
+ubigeos_221002,NUEVO PROGRESO,221002,base.state_pe_22,ubigeos_2210,base.pe
+ubigeos_221003,POLVORA,221003,base.state_pe_22,ubigeos_2210,base.pe
+ubigeos_221004,SHUNTE,221004,base.state_pe_22,ubigeos_2210,base.pe
+ubigeos_221005,UCHIZA,221005,base.state_pe_22,ubigeos_2210,base.pe
+ubigeos_2301,TACNA ,2301,base.state_pe_23,,base.pe
+ubigeos_230101,TACNA,230101,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230102,ALTO DE LA ALIANZA,230102,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230103,CALANA,230103,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230104,CIUDAD NUEVA,230104,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230105,INCLAN,230105,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230106,PACHIA,230106,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230107,PALCA,230107,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230108,POCOLLAY,230108,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230109,SAMA,230109,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230110,CORONEL GREGORIO ALBARRACIN LANCHIPA,230110,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_230111,LA YARADA LOS PALOS,230111,base.state_pe_23,ubigeos_2301,base.pe
+ubigeos_2302,CANDARAVE ,2302,base.state_pe_23,,base.pe
+ubigeos_230201,CANDARAVE,230201,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_230202,CAIRANI,230202,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_230203,CAMILACA,230203,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_230204,CURIBAYA,230204,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_230205,HUANUARA,230205,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_230206,QUILAHUANI,230206,base.state_pe_23,ubigeos_2302,base.pe
+ubigeos_2303,JORGE BASADRE ,2303,base.state_pe_23,,base.pe
+ubigeos_230301,LOCUMBA,230301,base.state_pe_23,ubigeos_2303,base.pe
+ubigeos_230302,ILABAYA,230302,base.state_pe_23,ubigeos_2303,base.pe
+ubigeos_230303,ITE,230303,base.state_pe_23,ubigeos_2303,base.pe
+ubigeos_2304,TARATA ,2304,base.state_pe_23,,base.pe
+ubigeos_230401,TARATA,230401,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230402,HEROES ALBARRACIN,230402,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230403,ESTIQUE,230403,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230404,ESTIQUE-PAMPA,230404,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230405,SITAJARA,230405,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230406,SUSAPAYA,230406,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230407,TARUCACHI,230407,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_230408,TICACO,230408,base.state_pe_23,ubigeos_2304,base.pe
+ubigeos_2401,TUMBES ,2401,base.state_pe_24,,base.pe
+ubigeos_240101,TUMBES,240101,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_240102,CORRALES,240102,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_240103,LA CRUZ,240103,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_240104,PAMPAS DE HOSPITAL,240104,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_240105,SAN JACINTO,240105,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_240106,SAN JUAN DE LA VIRGEN,240106,base.state_pe_24,ubigeos_2401,base.pe
+ubigeos_2402,CONTRALMIRANTE VILLAR ,2402,base.state_pe_24,,base.pe
+ubigeos_240201,ZORRITOS,240201,base.state_pe_24,ubigeos_2402,base.pe
+ubigeos_240202,CASITAS,240202,base.state_pe_24,ubigeos_2402,base.pe
+ubigeos_240203,CANOAS DE PUNTA SAL,240203,base.state_pe_24,ubigeos_2402,base.pe
+ubigeos_2403,ZARUMILLA ,2403,base.state_pe_24,,base.pe
+ubigeos_240301,ZARUMILLA,240301,base.state_pe_24,ubigeos_2403,base.pe
+ubigeos_240302,AGUAS VERDES,240302,base.state_pe_24,ubigeos_2403,base.pe
+ubigeos_240303,MATAPALO,240303,base.state_pe_24,ubigeos_2403,base.pe
+ubigeos_240304,PAPAYAL,240304,base.state_pe_24,ubigeos_2403,base.pe
+ubigeos_2501,CORONEL PORTILLO ,2501,base.state_pe_25,,base.pe
+ubigeos_250101,CALLERIA,250101,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250102,CAMPOVERDE,250102,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250103,IPARIA,250103,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250104,MASISEA,250104,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250105,YARINACOCHA,250105,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250106,NUEVA REQUENA,250106,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_250107,MANANTAY,250107,base.state_pe_25,ubigeos_2501,base.pe
+ubigeos_2502,ATALAYA ,2502,base.state_pe_25,,base.pe
+ubigeos_250201,RAYMONDI,250201,base.state_pe_25,ubigeos_2502,base.pe
+ubigeos_250202,SEPAHUA,250202,base.state_pe_25,ubigeos_2502,base.pe
+ubigeos_250203,TAHUANIA,250203,base.state_pe_25,ubigeos_2502,base.pe
+ubigeos_250204,YURUA,250204,base.state_pe_25,ubigeos_2502,base.pe
+ubigeos_2503,PADRE ABAD ,2503,base.state_pe_25,,base.pe
+ubigeos_250301,PADRE ABAD,250301,base.state_pe_25,ubigeos_2503,base.pe
+ubigeos_250302,IRAZOLA,250302,base.state_pe_25,ubigeos_2503,base.pe
+ubigeos_250303,CURIMANA,250303,base.state_pe_25,ubigeos_2503,base.pe
+ubigeos_250304,NESHUYA,250304,base.state_pe_25,ubigeos_2503,base.pe
+ubigeos_250305,ALEXANDER VON HUMBOLDT,250305,base.state_pe_25,ubigeos_2503,base.pe
+ubigeos_2504,PURUS,2504,base.state_pe_25,,base.pe
+ubigeos_250401,PURUS,250401,base.state_pe_25,ubigeos_2504,base.pe

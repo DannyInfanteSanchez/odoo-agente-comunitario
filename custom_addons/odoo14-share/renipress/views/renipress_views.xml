@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== VISTAS DE DIRESA ===== -->
+    <!-- VISTA SEARCH -->
+    <record id="view_diresa_search" model="ir.ui.view">
+        <field name="name">renipress.diresa.search</field>
+        <field name="model">renipress.diresa</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="codigo_diresa"/>
+            </search>
+        </field>
+    </record>
+    <!-- VISTA TREE -->
+    <record id="view_diresa_tree" model="ir.ui.view">
+        <field name="name">renipress.diresa.tree</field>
+        <field name="model">renipress.diresa</field>
+        <field name="arch" type="xml">
+            <tree string="Diresas">
+                <field name="codigo_diresa"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- VISTA FORM -->
+    <record id="view_diresa_form" model="ir.ui.view">
+        <field name="name">renipress.diresa.form</field>
+        <field name="model">renipress.diresa</field>
+        <field name="arch" type="xml">
+            <form string="Diresa">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" groups="base.group_system" name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <field name="codigo_diresa"/>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="departamento_id"/>
+                            <field name="provincia_id"/>
+                            <field name="distrito_id"/>
+                            <field name="ubigeo"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="departamento_ids"/>
+                        <field name="red_ids">
+                            <tree>
+                                <field name='codigo_red'/>
+                                <field name='name'/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_diresa_action" model="ir.actions.act_window">
+        <field name="name">Diresas</field>
+        <field name="res_model">renipress.diresa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_diresa_tree"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- ========== VISTAS DE RED ===== -->
+    <!-- VISTA SEARCH -->
+    <record id="view_red_search" model="ir.ui.view">
+        <field name="name">renipress.red.search</field>
+        <field name="model">renipress.red</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="codigo_red"/>
+                <field name="diresa_id"/>
+                <group string="Agrupar por" expand="0" name="groupby">
+                    <filter string="Diresa" context="{'group_by':'diresa_id'}" name="groupby_diresa_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- VISTA TREE -->
+    <record id="view_red_tree" model="ir.ui.view">
+        <field name="name">renipress.red.tree</field>
+        <field name="model">renipress.red</field>
+        <field name="arch" type="xml">
+            <tree string="Redes">
+                <field name="diresa_id"/>
+                <field name="codigo_red"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_red_form" model="ir.ui.view">
+        <field name="name">renipress.red.form</field>
+        <field name="model">renipress.red</field>
+        <field name="arch" type="xml">
+            <form string="Red">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" groups="base.group_system"  name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <field name="codigo_red"/>
+                        <field name="name"/>
+                        <field name="diresa_id"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="departamento_id"/>
+                            <field name="provincia_id"/>
+                            <field name="distrito_id"/>
+                            <field name="ubigeo"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="microred_ids">
+                            <tree>
+                                <field name="codigo_microred"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_red_action" model="ir.actions.act_window">
+        <field name="name">Red</field>
+        <field name="res_model">renipress.red</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_red_tree"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- ========== VISTAS DE MICRORED ===== -->
+    <!-- VISTA SEARCH -->
+    <record id="view_microred_search" model="ir.ui.view">
+        <field name="name">renipress.microred.search</field>
+        <field name="model">renipress.microred</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="codigo_microred"/>
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <group string="Agrupar por" expand="0" name="groupby">
+                    <filter string="Diresa" context="{'group_by':'diresa_id'}" name="groupby_diresa_id"/>
+                    <filter string="Red" context="{'group_by':'red_id'}" name="groupby_red_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- VISTA TREE -->
+    <record id="view_microred_tree" model="ir.ui.view">
+        <field name="name">renipress.microred.tree</field>
+        <field name="model">renipress.microred</field>
+        <field name="arch" type="xml">
+            <tree string="Microredes">
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <field name="codigo_microred"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <!-- VISTA FORM -->
+    <record id="view_microred_form" model="ir.ui.view">
+        <field name="name">renipress.microred.form</field>
+        <field name="model">renipress.microred</field>
+        <field name="arch" type="xml">
+            <form string="Microred">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" groups="base.group_system"  name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <field name="codigo_microred"/>
+                        <field name="name"/>
+                        <field name="diresa_id"/>
+                        <field name="red_id"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="departamento_id"/>
+                            <field name="provincia_id"/>
+                            <field name="distrito_id"/>
+                            <field name="ubigeo"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="eess_ids">
+                            <tree>
+                                <field name="codigo_eess"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_microred_action" model="ir.actions.act_window">
+        <field name="name">MicroRed</field>
+        <field name="res_model">renipress.microred</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_microred_tree"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- ========== VISTAS DE EESS ===== -->
+    <!-- VISTA SEARCH -->
+    <record id="view_eess_search" model="ir.ui.view">
+        <field name="name">renipress.eess.search</field>
+        <field name="model">renipress.eess</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="codigo_eess"/>
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <field name="microred_id"/>
+                <group string="Agrupar por" expand="0" name="groupby">
+                    <filter string="Diresa" context="{'group_by':'diresa_id'}" name="groupby_diresa_id"/>
+                    <filter string="Red" context="{'group_by':'red_id'}" name="groupby_red_id"/>
+                    <filter string="microred" context="{'group_by':'microred_id'}" name="groupby_microred_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_eess_tree" model="ir.ui.view">
+        <field name="name">renipress.eess.tree</field>
+        <field name="model">renipress.eess</field>
+        <field name="arch" type="xml">
+            <tree string="Establecimiento de Salud">
+                <field name="codigo_eess"/>
+                <field name="name"/>
+                <field name="condicion"/>
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <field name="microred_id"/>
+                <field name="departamento_id"/>
+                <field name="provincia_id"/>
+                <field name="distrito_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eess_form" model="ir.ui.view">
+        <field name="name">renipress.eess.form</field>
+        <field name="model">renipress.eess</field>
+        <field name="arch" type="xml">
+            <form string="Establecimiento de Salud">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" groups="base.group_system" name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <field name="codigo_eess"/>
+                        <field name="name"/>
+                        <field name="categoria"/>
+                        <field name="inicio_actividad"/>
+                        <field name="ruc"/>
+                        <field name="telefono"/>
+                        <field name="responsable"/>
+                        <field name="direccion"/>                        
+                        <field name="institucion"/>
+                        <field name="estado"/>
+                        <field name="condicion"/>                        
+                        <field name="diresa_id"/>
+                        <field name="red_id"/>
+                        <field name="microred_id"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="departamento_id"/>
+                            <field name="provincia_id"/>
+                            <field name="distrito_id"/>
+                            <field name="ubigeo"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="coor_norte"/>
+                            <field name="coor_este"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_eess_action" model="ir.actions.act_window">
+        <field name="name">Establecimientos de Salud</field>
+        <field name="res_model">renipress.eess</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="view_id" ref="view_eess_tree"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- MENUS -->
+    <menuitem id="menu_renipress" name="Renipress" groups="base.group_user" sequence="3" web_icon="renipress,static/description/icon.png"/>
+    <menuitem id="menu_settings_minsa_renipress"
+            name="Información de IPRESS"
+            parent="menu_renipress"/>
+    <menuitem id="menu_diresas"
+        parent="menu_settings_minsa_renipress"
+        sequence="2"
+        action="view_diresa_action"/>
+
+    <menuitem id="menu_redes"
+        parent="menu_settings_minsa_renipress"
+        sequence="3"
+        action="view_red_action"/>
+
+    <menuitem id="menu_microredes"
+        parent="menu_settings_minsa_renipress"
+        sequence="4"
+        action="view_microred_action"/>
+
+    <menuitem id="menu_eess"
+        parent="menu_settings_minsa_renipress"
+        sequence="1"
+        action="view_eess_action"/>
+</odoo>
+

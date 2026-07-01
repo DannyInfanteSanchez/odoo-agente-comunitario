@@ -1,0 +1,965 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <record id="red_11_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_11_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">CUSCO SUR</field>
+        </record>
+        <record id="red_11_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">CUSCO NORTE</field>
+        </record>
+        <record id="red_11_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">LA CONVENCION</field>
+        </record>
+        <record id="red_11_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">CANAS-CANCHIS-ESPINAR</field>
+        </record>
+        <record id="red_11_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">KIMBIRI PICHARI</field>
+        </record>
+        <record id="red_11_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_11"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CHUMBIVILCAS</field>
+        </record>
+        <record id="red_13_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_13_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">HUANCAVELICA</field>
+        </record>
+        <record id="red_13_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">ACOBAMBA</field>
+        </record>
+        <record id="red_13_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">TAYACAJA</field>
+        </record>
+        <record id="red_13_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">ANGARAES</field>
+        </record>
+        <record id="red_13_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">CASTROVIRREYNA</field>
+        </record>
+        <record id="red_13_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CHURCAMPA</field>
+        </record>
+        <record id="red_13_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_13"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">HUAYTARA</field>
+        </record>
+        <record id="red_14_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_14_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">HUANUCO</field>
+        </record>
+        <record id="red_14_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">MARAÑON</field>
+        </record>
+        <record id="red_14_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">LEONCIO PRADO</field>
+        </record>
+        <record id="red_14_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">DOS DE MAYO</field>
+        </record>
+        <record id="red_14_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">HUAMALIES</field>
+        </record>
+        <record id="red_14_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">AMBO</field>
+        </record>
+        <record id="red_14_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">PUERTO INCA</field>
+        </record>
+        <record id="red_14_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">LAURICOCHA (RED FUNCIONAL)</field>
+        </record>
+        <record id="red_14_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">HUACAYBAMBA (RED FUNCIONAL)</field>
+        </record>
+        <record id="red_14_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">YAROWILCA</field>
+        </record>
+        <record id="red_14_11" model="renipress.red">
+            <field name="diresa_id" ref="diresa_14"/>
+            <field name="codigo_red" eval="'11'"/>
+            <field name="name">PACHITEA</field>
+        </record>
+        <record id="red_15_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_15"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_15_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_15"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">ICA-PALPA-NAZCA</field>
+        </record>
+        <record id="red_15_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_15"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">CHINCHA - PISCO</field>
+        </record>
+        <record id="red_17_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_17_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">VALLE DEL MANTARO</field>
+        </record>
+        <record id="red_17_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">JAUJA</field>
+        </record>
+        <record id="red_17_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">TARMA</field>
+        </record>
+        <record id="red_17_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">CHANCHAMAYO</field>
+        </record>
+        <record id="red_17_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">SATIPO</field>
+        </record>
+        <record id="red_17_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">JUNIN</field>
+        </record>
+        <record id="red_17_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">PICHANAKI</field>
+        </record>
+        <record id="red_17_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">SAN MARTIN DE PANGOA</field>
+        </record>
+        <record id="red_17_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_17"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">RED DE SALUD CHUPACA</field>
+        </record>
+        <record id="red_18_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_18_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">RED CHEPEN</field>
+        </record>
+        <record id="red_18_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">RED ASCOPE</field>
+        </record>
+        <record id="red_18_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">RED OTUZCO</field>
+        </record>
+        <record id="red_18_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">RED PACASMAYO</field>
+        </record>
+        <record id="red_18_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">RED TRUJILLO</field>
+        </record>
+        <record id="red_18_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">RED VIRU</field>
+        </record>
+        <record id="red_18_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">RED GRAN CHIMU</field>
+        </record>
+        <record id="red_18_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">RED BOLIVAR</field>
+        </record>
+        <record id="red_18_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">RED PATAZ</field>
+        </record>
+        <record id="red_18_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">RED SANCHEZ CARRION</field>
+        </record>
+        <record id="red_18_11" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'11'"/>
+            <field name="name">RED SANTIAGO DE CHUCO</field>
+        </record>
+        <record id="red_18_12" model="renipress.red">
+            <field name="diresa_id" ref="diresa_18"/>
+            <field name="codigo_red" eval="'12'"/>
+            <field name="name">RED JULCAN</field>
+        </record>
+        <record id="red_19_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_19"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_19_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_19"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">CHICLAYO</field>
+        </record>
+        <record id="red_19_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_19"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">FERREÐAFE</field>
+        </record>
+        <record id="red_19_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_19"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">LAMBAYEQUE</field>
+        </record>
+        <record id="red_1_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_1"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_1_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_1"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">CHACHAPOYAS</field>
+        </record>
+        <record id="red_1_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_1"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">BAGUA</field>
+        </record>
+        <record id="red_1_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_1"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">UTCUBAMBA</field>
+        </record>
+        <record id="red_1_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_1"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">CONDORCANQUI</field>
+        </record>
+        <record id="red_21_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_21"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_21_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_21"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">LIMA ESTE METROPOLITANA</field>
+        </record>
+        <record id="red_22_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_22_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">RED I BARRANCA - CAJATAMBO</field>
+        </record>
+        <record id="red_22_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">RED II HUAURA - OYON</field>
+        </record>
+        <record id="red_22_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">RED III HUARAL - CHANCAY</field>
+        </record>
+        <record id="red_22_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">RED VII CA¥ETE - YAUYOS</field>
+        </record>
+        <record id="red_22_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">RED VIII CHILCA - MALA</field>
+        </record>
+        <record id="red_22_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">RED IX HUAROCHIRI</field>
+        </record>
+        <record id="red_22_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_22"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">CANTA</field>
+        </record>
+        <record id="red_23_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_23"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_23_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_23"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">BARRANCO - CHORRILLOS - SURCO</field>
+        </record>
+        <record id="red_23_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_23"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">SAN JUAN DE MIRAFLORES - VILLA MARIA DEL TRIUNFO</field>
+        </record>
+        <record id="red_23_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_23"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">VILLA EL SALVADOR - LURIN - PACHACAMAC - PUCUSANA</field>
+        </record>
+        <record id="red_24_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_24_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">UCAYALI  (Inactivo)</field>
+        </record>
+        <record id="red_24_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">ALTO AMAZONAS  (Inactivo)</field>
+        </record>
+        <record id="red_24_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">MAYNAS CIUDAD</field>
+        </record>
+        <record id="red_24_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">MAYNAS PERIFERIE</field>
+        </record>
+        <record id="red_24_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">RAMON CASTILLA</field>
+        </record>
+        <record id="red_24_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">LORETO</field>
+        </record>
+        <record id="red_24_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">UCAYALI</field>
+        </record>
+        <record id="red_24_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">REQUENA</field>
+        </record>
+        <record id="red_24_11" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'11'"/>
+            <field name="name">ALTO AMAZONAS</field>
+        </record>
+        <record id="red_24_12" model="renipress.red">
+            <field name="diresa_id" ref="diresa_24"/>
+            <field name="codigo_red" eval="'12'"/>
+            <field name="name">DATEM DEL MARAÑON</field>
+        </record>
+        <record id="red_25_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_25"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_25_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_25"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">MADRE DE DIOS</field>
+        </record>
+        <record id="red_26_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_26"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_26_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_26"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">MOQUEGUA</field>
+        </record>
+        <record id="red_26_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_26"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">ILO</field>
+        </record>
+        <record id="red_27_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_27"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_27_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_27"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">PASCO</field>
+        </record>
+        <record id="red_27_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_27"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">DANIEL CARRION</field>
+        </record>
+        <record id="red_27_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_27"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">OXAPAMPA</field>
+        </record>
+        <record id="red_28_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_28_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">PIURA CASTILLA</field>
+        </record>
+        <record id="red_28_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">BAJO PIURA</field>
+        </record>
+        <record id="red_28_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">MORROPON CHULUCANAS</field>
+        </record>
+        <record id="red_28_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">HUANCABAMBA</field>
+        </record>
+        <record id="red_28_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">HUARMACA</field>
+        </record>
+        <record id="red_28_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">SULLANA</field>
+        </record>
+        <record id="red_28_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_28"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">AYABACA</field>
+        </record>
+        <record id="red_29_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_29_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">PUNO</field>
+        </record>
+        <record id="red_29_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">AZANGARO</field>
+        </record>
+        <record id="red_29_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">SANDIA</field>
+        </record>
+        <record id="red_29_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">YUNGUYO</field>
+        </record>
+        <record id="red_29_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">MACUSANI</field>
+        </record>
+        <record id="red_29_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CHUCUITO</field>
+        </record>
+        <record id="red_29_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">COLLAO</field>
+        </record>
+        <record id="red_29_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">HUANCANE</field>
+        </record>
+        <record id="red_29_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">LAMPA</field>
+        </record>
+        <record id="red_29_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">MELGAR</field>
+        </record>
+        <record id="red_29_11" model="renipress.red">
+            <field name="diresa_id" ref="diresa_29"/>
+            <field name="codigo_red" eval="'11'"/>
+            <field name="name">SAN ROMAN</field>
+        </record>
+        <record id="red_2_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_2_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">HUAYLAS SUR</field>
+        </record>
+        <record id="red_2_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">HUAYLAS NORTE</field>
+        </record>
+        <record id="red_2_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">PACIFICO SUR</field>
+        </record>
+        <record id="red_2_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">PACIFICO NORTE</field>
+        </record>
+        <record id="red_2_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">CONCHUCOS SUR</field>
+        </record>
+        <record id="red_2_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_2"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CONCHUCOS NORTE</field>
+        </record>
+        <record id="red_30_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_30_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">SAN MARTIN</field>
+        </record>
+        <record id="red_30_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">LAMAS</field>
+        </record>
+        <record id="red_30_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">EL DORADO</field>
+        </record>
+        <record id="red_30_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">PICOTA</field>
+        </record>
+        <record id="red_30_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">MOYOBAMBA</field>
+        </record>
+        <record id="red_30_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">RIOJA</field>
+        </record>
+        <record id="red_30_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">MARISCAL CACERES</field>
+        </record>
+        <record id="red_30_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">HUALLAGA</field>
+        </record>
+        <record id="red_30_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">BELLAVISTA</field>
+        </record>
+        <record id="red_30_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_30"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">TOCACHE</field>
+        </record>
+        <record id="red_32_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_32"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_32_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_32"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">TACNA</field>
+        </record>
+        <record id="red_33_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_33"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_33_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_33"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">TUMBES</field>
+        </record>
+        <record id="red_34_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_34"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_34_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_34"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">CORONEL  PORTILLO</field>
+        </record>
+        <record id="red_34_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_34"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">FEDERICO BASADRE - YARINACOCHA</field>
+        </record>
+        <record id="red_34_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_34"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">ATALAYA</field>
+        </record>
+        <record id="red_34_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_34"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">AGUAYTIA</field>
+        </record>
+        <record id="red_35_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_35"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_35_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_35"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">RED V RIMAC - SAN MARTIN DE PORRES - LOS OLIV (Inactivo)</field>
+        </record>
+        <record id="red_35_24" model="renipress.red">
+            <field name="diresa_id" ref="diresa_35"/>
+            <field name="codigo_red" eval="'24'"/>
+            <field name="name">TUPAC AMARU</field>
+        </record>
+        <record id="red_35_25" model="renipress.red">
+            <field name="diresa_id" ref="diresa_35"/>
+            <field name="codigo_red" eval="'25'"/>
+            <field name="name">V  RIMAC-SMP-LO</field>
+        </record>
+        <record id="red_35_26" model="renipress.red">
+            <field name="diresa_id" ref="diresa_35"/>
+            <field name="codigo_red" eval="'26'"/>
+            <field name="name">RED DE SALUD LIMA NORTE IV</field>
+        </record>
+        <record id="red_36_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_36"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_36_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_36"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">SAN JUAN DE LURIGANCHO</field>
+        </record>
+        <record id="red_36_21" model="renipress.red">
+            <field name="diresa_id" ref="diresa_36"/>
+            <field name="codigo_red" eval="'21'"/>
+            <field name="name">LIMA CIUDAD</field>
+        </record>
+        <record id="red_3_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_3_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">ABANCAY</field>
+        </record>
+        <record id="red_3_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">GRAU</field>
+        </record>
+        <record id="red_3_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">SONDOR</field>
+        </record>
+        <record id="red_3_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">COCHARCAS</field>
+        </record>
+        <record id="red_3_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">JOSE MARIA ARGUEDAS</field>
+        </record>
+        <record id="red_3_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">ANTABAMBA</field>
+        </record>
+        <record id="red_3_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">AYMARAES</field>
+        </record>
+        <record id="red_3_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_3"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">COTABAMBAS</field>
+        </record>
+        <record id="red_4_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_4"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_4_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_4"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">CAMANA CARAVELLI</field>
+        </record>
+        <record id="red_4_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_4"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">CASTILLA CONDESUYOS - LA UNION</field>
+        </record>
+        <record id="red_4_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_4"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">AREQUIPA CAYLLOMA</field>
+        </record>
+        <record id="red_4_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_4"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">ISLAY</field>
+        </record>
+        <record id="red_5_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_5_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">HUAMANGA</field>
+        </record>
+        <record id="red_5_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">HUANTA</field>
+        </record>
+        <record id="red_5_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">SAN MIGUEL</field>
+        </record>
+        <record id="red_5_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">SAN FRANCISCO</field>
+        </record>
+        <record id="red_5_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">AYACUCHO CENTRO</field>
+        </record>
+        <record id="red_5_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CORACORA</field>
+        </record>
+        <record id="red_5_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_5"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">LUCANAS</field>
+        </record>
+        <record id="red_7_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_7_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">CAJAMARCA</field>
+        </record>
+        <record id="red_7_04" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'04'"/>
+            <field name="name">CELENDIN</field>
+        </record>
+        <record id="red_7_05" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'05'"/>
+            <field name="name">CAJABAMBA</field>
+        </record>
+        <record id="red_7_06" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'06'"/>
+            <field name="name">CONTUMAZA</field>
+        </record>
+        <record id="red_7_07" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'07'"/>
+            <field name="name">SAN MARCOS</field>
+        </record>
+        <record id="red_7_08" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'08'"/>
+            <field name="name">SAN MIGUEL</field>
+        </record>
+        <record id="red_7_09" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'09'"/>
+            <field name="name">SAN PABLO</field>
+        </record>
+        <record id="red_7_10" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'10'"/>
+            <field name="name">CHOTA</field>
+        </record>
+        <record id="red_7_11" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'11'"/>
+            <field name="name">BAMBAMARCA</field>
+        </record>
+        <record id="red_7_12" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'12'"/>
+            <field name="name">SANTA CRUZ</field>
+        </record>
+        <record id="red_7_13" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'13'"/>
+            <field name="name">CUTERVO</field>
+        </record>
+        <record id="red_7_14" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'14'"/>
+            <field name="name">SOCOTA</field>
+        </record>
+        <record id="red_7_15" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'15'"/>
+            <field name="name">JAEN</field>
+        </record>
+        <record id="red_7_16" model="renipress.red">
+            <field name="diresa_id" ref="diresa_7"/>
+            <field name="codigo_red" eval="'16'"/>
+            <field name="name">SAN IGNACIO</field>
+        </record>
+        <record id="red_8_00" model="renipress.red">
+            <field name="diresa_id" ref="diresa_8"/>
+            <field name="codigo_red" eval="'00'"/>
+            <field name="name">NO PERTENECE A NINGUNA RED</field>
+        </record>
+        <record id="red_8_01" model="renipress.red">
+            <field name="diresa_id" ref="diresa_8"/>
+            <field name="codigo_red" eval="'01'"/>
+            <field name="name">BONILLA - LA PUNTA</field>
+        </record>
+        <record id="red_8_02" model="renipress.red">
+            <field name="diresa_id" ref="diresa_8"/>
+            <field name="codigo_red" eval="'02'"/>
+            <field name="name">BEPECA</field>
+        </record>
+        <record id="red_8_03" model="renipress.red">
+            <field name="diresa_id" ref="diresa_8"/>
+            <field name="codigo_red" eval="'03'"/>
+            <field name="name">VENTANILLA</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="minsa_anho_tree" model="ir.ui.view">
+            <field name="name">minsa.anho.tree</field>
+            <field name="model">minsa.anho</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree decoration-muted="state == 'done'" string="Año Fiscal">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="minsa_periodo_tree" model="ir.ui.view">
+            <field name="name">minsa.periodo.tree</field>
+            <field name="model">minsa.periodo</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree decoration-muted="state == 'done'" string="Periodo">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                    <field name="special"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
