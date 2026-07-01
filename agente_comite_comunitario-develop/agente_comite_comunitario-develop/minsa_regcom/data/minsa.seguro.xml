@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="minsa_seguro_001" model="minsa.seguro"><field name="codigo">01</field><field name="name">SIS</field></record>
+    <record id="minsa_seguro_002" model="minsa.seguro"><field name="codigo">02</field><field name="name">EsSalud</field></record>
+    <record id="minsa_seguro_003" model="minsa.seguro"><field name="codigo">03</field><field name="name">FFAA.PNP</field></record>
+    <record id="minsa_seguro_004" model="minsa.seguro"><field name="codigo">04</field><field name="name">EPS</field></record>
+    <record id="minsa_seguro_005" model="minsa.seguro"><field name="codigo">05</field><field name="name">PREPAGAS</field></record>
+    <record id="minsa_seguro_006" model="minsa.seguro"><field name="codigo">06</field><field name="name">AUTOSEGUROS</field></record>
+    <record id="minsa_seguro_007" model="minsa.seguro"><field name="codigo">07</field><field name="name">EMPRESAS DE SEGURO</field></record>
+    <record id="minsa_seguro_008" model="minsa.seguro"><field name="codigo">08</field><field name="name">Otros</field></record>
+    <record id="minsa_seguro_009" model="minsa.seguro"><field name="codigo">09</field><field name="name">Ninguno</field></record>
+</odoo>

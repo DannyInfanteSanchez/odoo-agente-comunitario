@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_users_form_inherit_ext" model="ir.ui.view">
+            <field name="name">res.user.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <field name='tz' position="before">
+                    <field name="nro_documento" required="1"/>
+                    <field name="diresa_id"  options="{'no_create': True, 'no_open': True}"/>
+                    <field name="red_id"  options="{'no_create': True, 'no_open': True}"/>
+                    <field name='establecimiento_id' options="{'no_create': True, 'no_open': True}"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_users_search_ext" model="ir.ui.view">
+            <field name="name">res.user.form.ext</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="diresa_id"/>
+                    <field name="red_id"/>
+                    <field name="establecimiento_id"/>
+                    <field name="nro_documento"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_users_tree_ext" model="ir.ui.view">
+            <field name="name">res.user.tree.ext</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <field name='login' position="after">
+                    <field name="nro_documento"/>
+                    <field name="diresa_id"/>
+                    <field name="red_id"/>
+                    <field name="establecimiento_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_users_form_ext" model="ir.ui.view">
+            <field name="name">res.user.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button string="Enviar restablecimiento de contraseña"
+                                    type="object" name="action_reset_password"
+                                    attrs="{'invisible': [('state', '!=', 'active')]}"/>
+                        <button string="Enviar correo de invitación"
+                                    type="object" name="action_reset_password" context="{'create_user': 1}"
+                                    attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                </xpath>
+            
+                <field name='phone' position="before">
+                    <field name="es_grupo_diresa" invisible='1'/>
+                    <field name="es_grupo_red" invisible='1'/>
+                    <field name="es_grupo_establecimiento" invisible='1'/>
+                    <field name="es_grupo_admin" invisible='1'/>
+                    <group>
+                        <field name="diresa_id" attrs="{'readonly': True, 'required': ['|','|',('es_grupo_diresa','=',True),('es_grupo_red','=',True),('es_grupo_establecimiento','=',True)]}" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="red_id" attrs="{'readonly': ['|',('es_grupo_red','=',True),('es_grupo_establecimiento','=',True)], 'required': False}" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="establecimiento_id" attrs="{'invisible': [('es_grupo_diresa','=',True)],'readonly': False, 'required': False}"/>
+                        <field name="nro_documento" attrs="{'required': True}"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+        <record id="res_user_action" model="ir.actions.act_window">
+            <field name="name">Usuarios</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'form_view_ref': 'minsa_regcom.view_users_form_ext',
+                'origen': 'agente',
+            }</field>
+        </record>
+
+    </data>
+</odoo>

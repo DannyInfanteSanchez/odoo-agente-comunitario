@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="minsa_grado_instruccion_001" model="minsa.grado.instruccion"><field name="codigo">001</field><field name="name">Primaria Completo</field></record>
+    <record id="minsa_grado_instruccion_002" model="minsa.grado.instruccion"><field name="codigo">002</field><field name="name">Primaria Incompleto</field></record>
+    <record id="minsa_grado_instruccion_003" model="minsa.grado.instruccion"><field name="codigo">003</field><field name="name">Secundaria Completa</field></record>
+    <record id="minsa_grado_instruccion_004" model="minsa.grado.instruccion"><field name="codigo">004</field><field name="name">Secundaria Incompleto</field></record>
+    <record id="minsa_grado_instruccion_005" model="minsa.grado.instruccion"><field name="codigo">005</field><field name="name">Superior Completo</field></record>
+    <record id="minsa_grado_instruccion_006" model="minsa.grado.instruccion"><field name="codigo">006</field><field name="name">Superior Incompleto</field></record>
+    <record id="minsa_grado_instruccion_007" model="minsa.grado.instruccion"><field name="codigo">007</field><field name="name">Superior Técnico Completo</field></record>
+    <record id="minsa_grado_instruccion_008" model="minsa.grado.instruccion"><field name="codigo">008</field><field name="name">Superior Técnico Incompleto</field></record>
+    <record id="minsa_grado_instruccion_009" model="minsa.grado.instruccion"><field name="codigo">009</field><field name="name">Superior Universitario Completo</field></record>
+    <record id="minsa_grado_instruccion_010" model="minsa.grado.instruccion"><field name="codigo">010</field><field name="name">Superior Universitario Incompleto</field></record>
+</odoo>

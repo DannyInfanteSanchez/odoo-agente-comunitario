@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="minsa_etnia_001" model="minsa.etnia"><field name="codigo">01</field><field name="name">Achuar</field></record>
+    <record id="minsa_etnia_002" model="minsa.etnia"><field name="codigo">02</field><field name="name">Aimara</field></record>
+    <record id="minsa_etnia_003" model="minsa.etnia"><field name="codigo">03</field><field name="name">Amahuaca</field></record>
+    <record id="minsa_etnia_004" model="minsa.etnia"><field name="codigo">04</field><field name="name">Arabela</field></record>
+    <record id="minsa_etnia_005" model="minsa.etnia"><field name="codigo">05</field><field name="name">Ashaninka</field></record>
+    <record id="minsa_etnia_006" model="minsa.etnia"><field name="codigo">06</field><field name="name">Asheninka</field></record>
+    <record id="minsa_etnia_007" model="minsa.etnia"><field name="codigo">07</field><field name="name">Awajún</field></record>
+    <record id="minsa_etnia_008" model="minsa.etnia"><field name="codigo">08</field><field name="name">Bora</field></record>
+    <record id="minsa_etnia_009" model="minsa.etnia"><field name="codigo">09</field><field name="name">Capanahua</field></record>
+    <record id="minsa_etnia_010" model="minsa.etnia"><field name="codigo">10</field><field name="name">Cashinahua</field></record>
+    <record id="minsa_etnia_011" model="minsa.etnia"><field name="codigo">11</field><field name="name">Chamicuro</field></record>
+    <record id="minsa_etnia_012" model="minsa.etnia"><field name="codigo">12</field><field name="name">Chapra</field></record>
+    <record id="minsa_etnia_013" model="minsa.etnia"><field name="codigo">13</field><field name="name">Chitonahua</field></record>
+    <record id="minsa_etnia_014" model="minsa.etnia"><field name="codigo">14</field><field name="name">Ese eja</field></record>
+    <record id="minsa_etnia_015" model="minsa.etnia"><field name="codigo">15</field><field name="name">Harakbut</field></record>
+    <record id="minsa_etnia_016" model="minsa.etnia"><field name="codigo">16</field><field name="name">Ikitu</field></record>
+    <record id="minsa_etnia_017" model="minsa.etnia"><field name="codigo">17</field><field name="name">Iñapari</field></record>
+    <record id="minsa_etnia_018" model="minsa.etnia"><field name="codigo">18</field><field name="name">Isconahua</field></record>
+    <record id="minsa_etnia_019" model="minsa.etnia"><field name="codigo">19</field><field name="name">Jaqaru</field></record>
+    <record id="minsa_etnia_020" model="minsa.etnia"><field name="codigo">20</field><field name="name">Jibaro</field></record>
+    <record id="minsa_etnia_021" model="minsa.etnia"><field name="codigo">21</field><field name="name">Kakataibo</field></record>
+    <record id="minsa_etnia_022" model="minsa.etnia"><field name="codigo">22</field><field name="name">Kandozi</field></record>
+    <record id="minsa_etnia_023" model="minsa.etnia"><field name="codigo">23</field><field name="name">Kichwa</field></record>
+    <record id="minsa_etnia_024" model="minsa.etnia"><field name="codigo">24</field><field name="name">Kukama kukamiria</field></record>
+    <record id="minsa_etnia_025" model="minsa.etnia"><field name="codigo">25</field><field name="name">Madija</field></record>
+    <record id="minsa_etnia_026" model="minsa.etnia"><field name="codigo">26</field><field name="name">Maijuna</field></record>
+    <record id="minsa_etnia_027" model="minsa.etnia"><field name="codigo">27</field><field name="name">Marinahua</field></record>
+    <record id="minsa_etnia_028" model="minsa.etnia"><field name="codigo">28</field><field name="name">Mashco Piro</field></record>
+    <record id="minsa_etnia_029" model="minsa.etnia"><field name="codigo">29</field><field name="name">Mastanahua</field></record>
+    <record id="minsa_etnia_030" model="minsa.etnia"><field name="codigo">30</field><field name="name">Matsés</field></record>
+    <record id="minsa_etnia_031" model="minsa.etnia"><field name="codigo">31</field><field name="name">Matsigenka</field></record>
+    <record id="minsa_etnia_032" model="minsa.etnia"><field name="codigo">32</field><field name="name">Muniche</field></record>
+    <record id="minsa_etnia_033" model="minsa.etnia"><field name="codigo">33</field><field name="name">Murui-muinani</field></record>
+    <record id="minsa_etnia_034" model="minsa.etnia"><field name="codigo">34</field><field name="name">Nahua</field></record>
+    <record id="minsa_etnia_035" model="minsa.etnia"><field name="codigo">35</field><field name="name">Nanti</field></record>
+    <record id="minsa_etnia_036" model="minsa.etnia"><field name="codigo">36</field><field name="name">Nomatsigenga</field></record>
+    <record id="minsa_etnia_037" model="minsa.etnia"><field name="codigo">37</field><field name="name">Ocaina</field></record>
+    <record id="minsa_etnia_038" model="minsa.etnia"><field name="codigo">38</field><field name="name">Omagua</field></record>
+    <record id="minsa_etnia_039" model="minsa.etnia"><field name="codigo">39</field><field name="name">Quechuas</field></record>
+    <record id="minsa_etnia_040" model="minsa.etnia"><field name="codigo">40</field><field name="name">Resigaro</field></record>
+    <record id="minsa_etnia_041" model="minsa.etnia"><field name="codigo">41</field><field name="name">Secoya</field></record>
+    <record id="minsa_etnia_042" model="minsa.etnia"><field name="codigo">42</field><field name="name">Sharanahua</field></record>
+    <record id="minsa_etnia_043" model="minsa.etnia"><field name="codigo">43</field><field name="name">Shawi</field></record>
+    <record id="minsa_etnia_044" model="minsa.etnia"><field name="codigo">44</field><field name="name">Shipibo-konibo</field></record>
+    <record id="minsa_etnia_045" model="minsa.etnia"><field name="codigo">45</field><field name="name">Shiwilu</field></record>
+    <record id="minsa_etnia_046" model="minsa.etnia"><field name="codigo">46</field><field name="name">Tikuna</field></record>
+    <record id="minsa_etnia_047" model="minsa.etnia"><field name="codigo">47</field><field name="name">Urarina</field></record>
+    <record id="minsa_etnia_048" model="minsa.etnia"><field name="codigo">48</field><field name="name">Uro</field></record>
+    <record id="minsa_etnia_049" model="minsa.etnia"><field name="codigo">49</field><field name="name">Vacacocha</field></record>
+    <record id="minsa_etnia_050" model="minsa.etnia"><field name="codigo">50</field><field name="name">Wampis</field></record>
+    <record id="minsa_etnia_051" model="minsa.etnia"><field name="codigo">51</field><field name="name">Yagua</field></record>
+    <record id="minsa_etnia_052" model="minsa.etnia"><field name="codigo">52</field><field name="name">Yaminagua</field></record>
+    <record id="minsa_etnia_053" model="minsa.etnia"><field name="codigo">53</field><field name="name">Yanesha</field></record>
+    <record id="minsa_etnia_054" model="minsa.etnia"><field name="codigo">54</field><field name="name">Yine</field></record>
+    <record id="minsa_etnia_055" model="minsa.etnia"><field name="codigo">55</field><field name="name">Afrodescendiente</field></record>
+    <record id="minsa_etnia_056" model="minsa.etnia"><field name="codigo">56</field><field name="name">Blanco</field></record>
+    <record id="minsa_etnia_057" model="minsa.etnia"><field name="codigo">57</field><field name="name">Meztizo</field></record>
+    <record id="minsa_etnia_058" model="minsa.etnia"><field name="codigo">58</field><field name="name">Andino</field></record>
+    <record id="minsa_etnia_059" model="minsa.etnia"><field name="codigo">59</field><field name="name">Indigeno Amazónico</field></record>
+    <record id="minsa_etnia_060" model="minsa.etnia"><field name="codigo">60</field><field name="name">Otro</field></record>
+    <record id="minsa_etnia_061" model="minsa.etnia"><field name="codigo">61</field><field name="name">No sabe/ No responde</field></record>
+</odoo>

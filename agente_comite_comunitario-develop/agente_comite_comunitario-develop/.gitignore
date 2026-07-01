@@ -1,0 +1,79 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Archivos temporales de Odoo
+*.log
+*.pid
+*.sqlite
+*.swp
+*.swo
+
+# Configuración de Odoo
+odoo.conf
+*.spec
+
+# Base de datos local (dump o test)
+*.sql
+*.sql.gz
+*.db
+
+# Archivos de entorno virtual
+.env
+.venv/
+venv/
+ENV/
+env/
+Pipfile.lock
+
+# Archivos de caché y empaquetado
+*.egg-info/
+*.eggs/
+dist/
+build/
+*.manifest
+*.pot
+
+# Archivos de lock
+poetry.lock
+package-lock.json
+yarn.lock
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Archivos de JetBrains / PyCharm
+.idea/
+
+# Archivos de VSCode
+.vscode/
+
+# Carpeta de dependencias de node (si usas OWL, Webpack, etc.)
+node_modules/
+npm-debug.log*
+
+# Archivos de pruebas
+.coverage
+.tox/
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# Archivos de addons descargados
+addons/*/node_modules/
+
+# Carpeta de librerías externas
+external_libs/

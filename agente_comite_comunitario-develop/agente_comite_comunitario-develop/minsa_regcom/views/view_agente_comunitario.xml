@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="agente_comunitario_view_voluntario_tree" model="ir.ui.view">
+        <field name="name">Registro Agente Comunitario de Salud</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml" >
+            <tree>
+                <field name="tipo_documento" readonly="1"/>
+                <field name="numero_documento" readonly="1"/>
+                <field name="ape_paterno" readonly="1"/>
+                <field name="ape_materno" readonly="1"/>
+                <field name="nombres" readonly="1"/>
+                <field name="fecha_nacimiento" readonly="1"/>
+                <field name="edad" readonly="1"/>
+                <field name="celular" readonly="1"/>
+                <field name="direccion" readonly="1"/>
+                <field name="state_id" readonly="1"/>
+                <field name="province_id" readonly="1"/>
+                <field name="district_id" readonly="1"/>
+                <field name="diresa_id" readonly="1"/>
+                <field name="red_id" readonly="1"/>
+                <field name="establecimiento_id" readonly="1"/>
+                <field name="genero_id" readonly="1"/>
+                <field name="tipo_voluntariado_id" readonly="1"/>
+                <field name="name_dialectos" string="Idiomas" readonly="1"/>
+                <field name="seguro_id" readonly="1"/>
+                <field name="operador_id" readonly="1"/>
+                <field name="grado_instruccion_id" readonly="1"/>
+                <field name="etnia_id" readonly="1"/>
+                <field name="nivel_agente_id" readonly="1"/>
+                <field name="estandar_laboral_id" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="agente_comunitario_view_calendar" model="ir.ui.view">
+        <field name="name">Agente Comunitario Calendar</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml">
+            <calendar string="Agente Comunitario" date_start="create_date">
+                <field name="name"/>
+                <field name="direccion" />
+                <field name="diresa_id" />
+                <field name="red_id" />
+                <field name="establecimiento_id" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="agente_comunitario_view_pivot" model="ir.ui.view">
+        <field name="name">Registro Comunitario Pivot</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="diresa_id" type="row"/>
+                <field name="cuenta_field" type='measure'/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="agente_comunitario_view_bar" model="ir.ui.view">
+        <field name="name">Agente Comunitario Barras</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="diresa_id"/>
+                <field name="cuenta_field" type='measure'/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_search_agente_comunitario" model="ir.ui.view">
+        <field name="name">Buscar Agente Comunitario</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml">
+            <search string="Buscar por">
+                <field name="numero_documento"/>
+                <field name="name"/>
+                <field name="diresa_id"/>
+                <field name="red_id"/>
+                <field name="establecimiento_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="agente_comunitario_view_voluntario_form" model="ir.ui.view">
+        <field name="name">minsa.agente.comunitario.form</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <sheet>
+                    <header>
+                        <button
+                            class="oe_stat_button"
+                            name="open_map"
+                            type="object"
+                            string="Map"
+                            icon="fa-map-marker"
+                        />
+                    </header>
+                    <field name="es_voluntario" attrs="{'invisible': True}"/>
+                    <field name="es_grupo_nacional" invisible='1'/>
+                    <field name="es_grupo_diresa" invisible='1'/>
+                    <field name="es_grupo_red" invisible='1'/>
+                    <field name="es_grupo_establecimiento" invisible='1'/>
+                    <field name="es_grupo_admin" invisible='1'/>
+                    <field name="foto" widget="image" class="oe_avatar" options="{'preview_image': 'foto', 'size': [90, 90]}"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Apellidos y nombres" attrs="{'required' : True, 'readonly': True}"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="tipo_documento" default_focus="1" required="1"/>
+                            <field name="numero_documento" required="1"/>
+                            <field name="ape_paterno" attrs="{'readonly' : [('tipo_documento','in',['01'])], 'required': True}"/>
+                            <field name="ape_materno" attrs="{'readonly' : [('tipo_documento','in',['01'])]}"/>
+                            <field name="nombres" attrs="{'readonly' : [('tipo_documento','in',['01'])], 'required': True}"/>
+                            <field name="fecha_nacimiento" attrs="{'readonly' : [('tipo_documento','in',['01'])]}"/>
+                            <field name="edad" readonly="1"/>
+                            <b>Dirección</b>
+                            <div class="o_address_format" string="Dirección">
+                                <field name="direccion" placeholder="Ejemplo: Avenida Salaverry 801,jesus maria,lima (direccion Nro, distrito, provincia, departamento" class="o_address_street" required="0"/>
+                                <button name="open_location_modal" string="Buscar Dirección" type="object" class="oe_highlight"/>
+                                <br/><br/>
+                                <field name="country_id" placeholder="País" class="o_address_city" options="{'no_open': True, 'no_create': True}" readonly="1"/> 
+                                <field name="state_id" readonly="1" class="o_address_city" placeholder="Departamento" options="{'no_open': True, 'no_create': True}" domain="[('country_id', '=', country_id),('state_id', '=', False),('province_id', '=', False)]"/>
+                                <field name="province_id" readonly="1" class="o_address_city" placeholder="Provincia" options="{'no_open': True, 'no_create': True}" domain="[('country_id', '=', country_id),('state_id', '=', state_id),('province_id', '=', False)]"/>
+                                <field name="district_id" readonly="1" class="o_address_city" placeholder="Distrito" options="{'no_open': True, 'no_create': True}" domain="[('country_id', '=', country_id),('state_id', '=', state_id),('province_id', '=', province_id)]"/>
+                                <field name="ubigeo" placeholder="Ubigeo" invisible="1"/>
+                            </div>
+                            <field name="nivel_agente_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="estandar_laboral_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                        </group>
+                        <group>
+                            <field name="etnia_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="seguro_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="dialecto_id" options="{'no_create': True, 'no_open': True}" required="0" invisible = "1"/>
+                            <field name="dialecto_ids" widget="many2many_tags" nolabel="0" options="{'no_create': True}" colspan="2" required="1"/>
+                            <field name="grado_instruccion_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="tipo_voluntariado_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="tipo_voluntariado_ids" widget="many2many_tags" nolabel="0" options="{'no_create': True}" colspan="2" required="1"/>
+                            <field name="telefono" required="0"/>
+                            <field name="celular" required="1"/>
+                            <field name="operador_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="email" widget="email" context="{'gravatar_image': True}" required="0"/>
+                            <field name="diresa_id" options="{'no_create': True, 'no_open': True}" attrs="{'required': True, 'readonly': ['|','|',('es_grupo_diresa','=',True),('es_grupo_red','=',True),('es_grupo_establecimiento','=',True)]}"/>
+                            <field name="red_id" options="{'no_create': True, 'no_open': True}" attrs="{'required': True, 'readonly': ['|',('es_grupo_red','=',True),('es_grupo_establecimiento','=',True)]}"/>
+                            <field name="establecimiento_id" options="{'no_create': True, 'no_open': True}" attrs="{'required': True, 'readonly': [('es_grupo_establecimiento','=',True)]}"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Localización">
+                            <group colspan="2" col="2">
+                                <separator string="Geolocalización" colspan="2"/>
+                                <div>
+                                    <span>Latitud : </span>
+                                    <field name="latitud" nolabel="1" class="oe_inline" readonly="1"/>
+                                    <span>Longitud:  </span>
+                                    <field name="longitud" nolabel="1" class="oe_inline" readonly="1"/>
+                                </div>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="agente_comunitario_view_mapa_form" model="ir.ui.view">
+        <field name="name">Ubicar dirección</field>
+        <field name="model">minsa.agente.comunitario</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <form string="Buscar por dirección">
+                <sheet>
+                    <group>
+                        <field name="dummy_field" nolabel="1" invisible="0" widget="html"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button class="oe_highlight" name="recupera_map_sigrid" string="Guardar Ubicación" type="object"/>
+                    <button class="oe_link" special="cancel" string="Cancelar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_voluntario" model="ir.actions.act_window">
+        <field name="name">Agente Comunitario de Salud</field>
+        <field name="res_model">minsa.agente.comunitario</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph</field>
+        <field name="domain">[('es_voluntario','=',True)]</field>
+        <field name="context">{'default_es_voluntario': True}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Click en crear para registrar un nuevo agente comunitario de salud
+            </p>
+        </field>
+    </record>
+
+    <record id="action_voluntario_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="30"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="agente_comunitario_view_voluntario_tree"/>
+        <field name="act_window_id" ref="action_voluntario"/>
+    </record>
+
+    <record id="action_voluntario_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="31"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="agente_comunitario_view_voluntario_form"/>
+        <field name="act_window_id" ref="action_voluntario"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- ==== MENU DE APLICACION ADMIN (SUPERIOR) === -->
+        <menuitem id="menu_aplic" name="AGENTE"
+            groups="group_base_user"
+            sequence="10"
+            />
+
+        <!-- ==== MENU AGENTE REGISTRO COMUNITARIO DE SALUD === -->
+        <menuitem id="menu_registro" name="Registro de Agente Comunitario de Salud"
+            parent="menu_aplic"
+            groups="group_base_user"
+            sequence="10"/>
+
+        <!-- ==== MENU AGENTE / FICHA DE REGISTRO === -->
+        <menuitem id="item_ficha_registro" name="Ficha de Registro"
+            parent="menu_registro"
+            action="action_registro"
+            groups="group_base_user"
+            sequence="10"/>
+
+        <!-- ==== MENU AGENTE / VOLUNTARIOS === -->
+        <menuitem id="item_voluntario" name="Agente Comunitario de Salud"
+            parent="menu_registro"
+            action="action_voluntario"
+            groups="group_base_user"
+            sequence="20"/>
+
+        <!-- ==== MENU CONFIGURACION === -->
+        <menuitem id="menu_configuracion" name="Configuración"
+            parent="menu_aplic"
+            groups="group_adminregcom,group_diresa,group_red"
+            sequence="30"/>
+
+        <!-- ==== MENU CONFIGURACION/USUARIOS === -->
+        <menuitem
+            id="user_menu"
+            name="Usuarios"
+            parent="menu_configuracion"
+            action="res_user_action"
+            sequence="10"
+            groups="group_adminregcom,group_diresa,group_red"/>
+
+
+        <!-- ==== MENU CATALOGOS  === -->
+        <menuitem id="menu_catalogo" name="Catalogos"
+            parent="menu_aplic"
+            groups="group_adminregcom"
+            sequence="20"/>
+
+        <!-- ==== MENU CATALOGOS / GENERO === -->
+        <menuitem id="item_catalogo_genero" name="Genero"
+            parent="menu_catalogo"
+            action="action_genero"
+            groups="group_adminregcom"
+            sequence="10"/>
+
+        <!-- ==== MENU CATALOGOS / ETNIA === -->
+        <menuitem id="item_catalogo_etnia" name="Etnia"
+            parent="menu_catalogo"
+            action="action_etnia"
+            groups="group_adminregcom"
+            sequence="20"/>
+
+        <!-- ==== MENU CATALOGOS / SEGURO === -->
+        <menuitem id="item_catalogo_seguro" name="Tipo de seguro"
+            parent="menu_catalogo"
+            action="action_seguro"
+            groups="group_adminregcom"
+            sequence="30"/>
+
+        <!-- ==== MENU CATALOGOS / DIALECTO === -->
+        <menuitem id="item_catalogo_dialecto" name="Idioma Dialecto"
+            parent="menu_catalogo"
+            action="action_dialecto"
+            groups="group_adminregcom"
+            sequence="40"/>
+
+        <!-- ==== MENU CATALOGOS / GRADO DE INSTRUCCION === -->
+        <menuitem id="item_catalogo_grado_instruccion" name="Grado de Instrucción"
+            parent="menu_catalogo"
+            action="action_grado_instruccion"
+            groups="group_adminregcom"
+            sequence="50"/>
+
+        <!-- ==== MENU CATALOGOS / TIPO VOLUNTARIADO === -->
+        <menuitem id="item_catalogo_tipo_voluntariado" name="Tipo de Voluntariado"
+            parent="menu_catalogo"
+            action="action_tipo_voluntariado"
+            groups="group_adminregcom"
+            sequence="60"/>
+
+        <!-- ==== MENU CATALOGOS / OPERADOR MOVIL === -->
+        <menuitem id="item_catalogo_operador_mobil" name="Operador Movil"
+            parent="menu_catalogo"
+            action="action_operador_mobil"
+            groups="group_adminregcom"
+            sequence="70"/>
+
+        <!-- ==== MENU CATALOGOS / NIVEL AGENTE COMUNITARIO === -->
+        <menuitem id="item_catalogo_nivel_agente" name="Nivel Agente Comunitario"
+            parent="menu_catalogo"
+            action="action_nivel_agente"
+            groups="group_adminregcom"
+            sequence="80"/>
+
+        <!-- ==== MENU CATALOGOS / ESTÁNDAR DE COMPETENCIA LABORAL === -->
+        <menuitem id="item_catalogo_estandar_laboral" name="Estándar de Competencia Laboral"
+            parent="menu_catalogo"
+            action="action_estandar_laboral"
+            groups="group_adminregcom"
+            sequence="90"/>
+
+    </data>
+</odoo>
