@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINSA - Odoo API Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.3);
+            --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.2);
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-main: 'Outfit', sans-serif;
+            --input-bg: rgba(0, 0, 0, 0.2);
+            --modal-bg: #111827;
+            --label-bg: rgba(255, 255, 255, 0.02);
+            --tabs-nav-bg: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-theme {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --input-bg: #f9fafb;
+            --modal-bg: #ffffff;
+            --label-bg: rgba(0, 0, 0, 0.02);
+            --primary-glow: rgba(59, 130, 246, 0.1);
+            --tabs-nav-bg: #f3f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Header & Brand */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .brand-title h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-title p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Connection Status */
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .status-dot.online {
+            background-color: var(--success);
+            color: var(--success);
+        }
+
+        .status-dot.offline {
+            background-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* Main Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Configuration Panel */
+        .config-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            backdrop-filter: blur(12px);
+            height: fit-content;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            background: var(--input-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group select option {
+            background-color: var(--modal-bg);
+            color: var(--text-main);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: var(--tabs-nav-bg);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.65rem 1rem;
+            font-family: var(--font-main);
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #059669);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 4px 12px var(--success-glow);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning), #d97706);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+        }
+
+        /* Content Area */
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .table-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .search-wrapper {
+            display: flex;
+            gap: 0.75rem;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+
+        /* Data Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--modal-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #1f2937;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 200;
+            transform: translateY(150%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .toast.active {
+            transform: translateY(0);
+        }
+
+        .toast-success {
+            border-left-color: var(--success);
+        }
+
+        .toast-danger {
+            border-left-color: var(--danger);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .master-tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .master-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-main);
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .master-tab-btn.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid var(--card-border);
+        }
+
+        .agent-photo-thumb {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--card-border);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Detail labels styling */
+        .read-only-label-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            background: var(--label-bg);
+            border-radius: 6px;
+            border: 1px dashed var(--card-border);
+        }
+
+        .read-only-label-block span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Attachment Preview Cards (Odoo-like) */
+        .attachment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .attachment-card {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--label-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            position: relative;
+            max-width: 220px;
+            transition: all 0.2s ease;
+        }
+
+        .attachment-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        .attachment-card .att-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .attachment-card .att-icon.pdf { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .attachment-card .att-icon.doc { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+        .attachment-card .att-icon.img { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .attachment-card .att-icon.xls { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .attachment-card .att-icon.generic { background: rgba(156, 163, 175, 0.15); color: #9ca3af; }
+
+        .attachment-card .att-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .attachment-card .att-info .att-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+            cursor: pointer;
+        }
+
+        .attachment-card .att-info .att-name:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
+        .attachment-card .att-info .att-type {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .attachment-card .att-delete {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .attachment-card .att-delete:hover {
+            background: rgba(239, 68, 68, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header>
+        <div class="brand-section">
+            <div class="brand-logo">M</div>
+            <div class="brand-title">
+                <h1>MINSA - Odoo API Dashboard</h1>
+                <p>Consola Visual de Pruebas CRUD (Agentes, Fichas y Maestros)</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <button class="btn btn-outline" onclick="toggleTheme()" style="padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span id="theme-icon">☀️</span> Modo Claro
+            </button>
+            <div class="status-badge">
+                <div id="connection-dot" class="status-dot"></div>
+                <span id="connection-text">Verificando conexión...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <div class="main-layout">
+        
+        <!-- Left configuration sidebar -->
+        <aside class="config-card">
+            <h2 class="card-title">Configuración</h2>
+            
+            <div class="input-group">
+                <label for="bearer-token">Bearer Authorization Token</label>
+                <input type="password" id="bearer-token" placeholder="Introduce el API_BEARER_TOKEN">
+            </div>
+
+            <button class="btn" onclick="saveToken()">Guardar Credenciales</button>
+            
+            <h2 class="card-title" style="margin-top: 1.5rem;">Navegación</h2>
+            <div class="tabs-nav">
+                <button id="tab-agentes-btn" class="tab-btn active" onclick="switchTab('agentes')">Agentes</button>
+                <button id="tab-fichas-btn" class="tab-btn" onclick="switchTab('fichas')">Fichas / Registros</button>
+                <button id="tab-maestros-btn" class="tab-btn" onclick="switchTab('maestros')">Tablas Maestras (RENIPRESS)</button>
+            </div>
+        </aside>
+
+        <!-- Tab 1: Agentes Comunitarios -->
+        <main id="tab-agentes" class="content-card">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Listado de Agentes Comunitarios</h2>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Buscar por Nombre o DNI..." style="flex-grow: 1; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.5rem 1rem; color: var(--text-main);">
+                    <button class="btn" onclick="fetchAgents()">Buscar</button>
+                    <button class="btn btn-success" onclick="openCreateModal()">+ Crear Agente</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre Completo</th>
+                            <th>Nro. Documento</th>
+                            <th>Celular</th>
+                            <th>Email</th>
+                            <th>Establecimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Introduce tu Token y haz clic en Buscar para cargar los agentes.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Tab 2: Fichas de Registros -->
+        <main id="tab-fichas" class="content-card hidden">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Listado de Fichas de Registros</h2>
+                <div class="search-wrapper" style="justify-content: flex-end;">
+                    <button class="btn btn-success" onclick="openFichaModal()">+ Registrar Ficha</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Ficha</th>
+                            <th>DIRESA / RENIPRESS</th>
+                            <th>Tipo</th>
+                            <th>Miembros</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fichas-tbody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Carga las fichas desde el servidor de Odoo.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Tab 3: Tablas Maestras -->
+        <main id="tab-maestros" class="content-card hidden">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Visualización de Tablas Maestras (RENIPRESS)</h2>
+            </div>
+            
+            <div class="master-tabs">
+                <button id="mt-diresas-btn" class="master-tab-btn active" onclick="switchMasterTab('diresas')">DIRESAS</button>
+                <button id="mt-redes-btn" class="master-tab-btn" onclick="switchMasterTab('redes')">REDES</button>
+                <button id="mt-microredes-btn" class="master-tab-btn" onclick="switchMasterTab('microredes')">MICROREDES</button>
+                <button id="mt-eess-btn" class="master-tab-btn" onclick="switchMasterTab('eess')">ESTABLECIMIENTOS (EESS)</button>
+            </div>
+
+            <!-- Master Data Tables Containers -->
+            <div id="master-diresas-container" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre DIRESA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-diresas-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-redes-container" class="table-container hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre Red</th>
+                            <th>DIRESA Asociada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-redes-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-microredes-container" class="table-container hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre Microred</th>
+                            <th>Red Asociada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-microredes-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-eess-container" class="table-container hidden">
+                <div style="padding: 1rem; display: flex; gap: 1rem; border-bottom: 1px solid var(--card-border);">
+                    <input type="text" id="eess-search-input" placeholder="Buscar establecimiento por nombre o código..." style="flex-grow: 1; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.5rem 1rem; color: var(--text-main);">
+                    <button class="btn" onclick="fetchMasterEess()">Buscar Establecimientos</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código RENIPRESS</th>
+                            <th>Nombre Establecimiento</th>
+                            <th>Dirección</th>
+                            <th>Categoría</th>
+                            <th>Condición</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-eess-tbody">
+                        <tr><td colspan="6" style="text-align:center; padding: 1.5rem; color: var(--text-muted);">Haz clic en Buscar Establecimientos para cargar los datos.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Agent Modal (Create & Edit) -->
+    <div class="modal" id="create-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="agent-modal-title">Registrar Nuevo Agente Comunitario</h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeCreateModal()">X</button>
+            </div>
+            
+            <form id="agent-form" onsubmit="handleAgentSubmit(event)">
+                <input type="hidden" id="form-agent-id">
+                
+                <!-- Binary Photo Field (At the very top) -->
+                <div class="input-group" style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1.5rem; display: flex; flex-direction: row; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex-grow: 1;">
+                        <label for="form-foto" style="display: block; margin-bottom: 0.5rem;">Foto del Agente (Obligatoria) *</label>
+                        <input type="file" id="form-foto" accept="image/*" onchange="previewImage(event)">
+                    </div>
+                    <div id="photo-preview-container" style="display: none; align-items: center; gap: 1rem;">
+                        <img id="photo-preview-img" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 0 10px var(--primary-glow);">
+                        <span style="font-size: 0.85rem; color: var(--text-muted)">Vista previa de la foto cargada</span>
+                    </div>
+                </div>
+                
+                <!-- Layout in two main columns mirroring Odoo -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    
+                    <!-- Left Column: Datos Principales -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="input-group">
+                            <label for="form-tipo-doc">Tipo Documento *</label>
+                            <select id="form-tipo-doc" required>
+                                <option value="01">DNI</option>
+                                <option value="03">Carné Extranjería</option>
+                                <option value="07">Pasaporte</option>
+                                <option value="23">Carné PTP</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-num-doc">Num.Documento *</label>
+                            <input type="text" id="form-num-doc" required placeholder="Ingresar número de documento">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-ape-pat">Apellido Paterno *</label>
+                            <input type="text" id="form-ape-pat" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-ape-mat">Apellido Materno</label>
+                            <input type="text" id="form-ape-mat">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-nombres">Nombres *</label>
+                            <input type="text" id="form-nombres" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-fecha-nac">Fecha Nacimiento</label>
+                            <input type="date" id="form-fecha-nac">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-direccion">Dirección *</label>
+                            <input type="text" id="form-direccion" required placeholder="Ejemplo: Avenida Salaverry 801, jesus maria, lima">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-nivel">Nivel Agente</label>
+                            <select id="form-nivel">
+                                <option value="">Seleccione nivel...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-estandar">Estándar de Competencia Laboral</label>
+                            <select id="form-estandar">
+                                <option value="">Seleccione competencia...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-genero">Género</label>
+                            <select id="form-genero">
+                                <option value="">Seleccione género...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Datos Auxiliares y Estructurales -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="input-group">
+                            <label for="form-etnia">Etnia</label>
+                            <select id="form-etnia">
+                                <option value="">Seleccione etnia...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-seguro">Tipo de seguro</label>
+                            <select id="form-seguro">
+                                <option value="">Seleccione seguro...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-dialecto">Idioma / Dialectos <span style="color: var(--text-muted); font-weight:400;">(Ctrl+clic para varios)</span></label>
+                            <select id="form-dialecto" multiple size="4" style="height: auto; min-height: 100px;">
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-grado">Grado de Instrucción</label>
+                            <select id="form-grado">
+                                <option value="">Seleccione instrucción...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-voluntariado">Tipo de voluntariado (simple)</label>
+                            <select id="form-voluntariado">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-voluntariado-ids">Tipo de voluntariado (múltiple) <span style="color: var(--text-muted); font-weight:400;">(Ctrl+clic para varios)</span></label>
+                            <select id="form-voluntariado-ids" multiple size="4" style="height: auto; min-height: 100px;">
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-telefono">Teléfono</label>
+                            <input type="text" id="form-telefono" placeholder="Ingrese número de teléfono fijo">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-celular">Celular *</label>
+                            <input type="text" id="form-celular" required placeholder="Ingresar número de celular">
+                        </div>
+                        <div class="input-group">
+                            <label for="form-operador">Operador</label>
+                            <select id="form-operador">
+                                <option value="">Seleccione operador...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-email">Correo electrónico</label>
+                            <input type="email" id="form-email" placeholder="Ingresar el correo electrónico">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="form-diresa">Diresa *</label>
+                            <select id="form-diresa" required onchange="onDiresaChange()">
+                                <option value="">Seleccione DIRESA...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-red">Red *</label>
+                            <select id="form-red" required onchange="onRedChange()">
+                                <option value="">Seleccione Red...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="form-establecimiento">Renipress *</label>
+                            <select id="form-establecimiento" required>
+                                <option value="">Seleccione Establecimiento...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="closeCreateModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-success" id="agent-submit-btn">Guardar en Odoo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ficha Modal -->
+    <div class="modal" id="ficha-modal">
+        <div class="modal-content" style="max-width: 1200px;">
+            <div class="modal-header">
+                <h2>Registrar Nueva Ficha de Registro</h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeFichaModal()">X</button>
+            </div>
+            
+            <form id="ficha-form" onsubmit="handleFichaSubmit(event)">
+                
+                <!-- Layout in two main columns mirroring Odoo Ficha Form -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    
+                    <!-- Left Column: Ubicación y Tipo -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="input-group">
+                            <label for="ficha-diresa">Diresa *</label>
+                            <select id="ficha-diresa" required onchange="onFichaDiresaChange()">
+                                <option value="">Seleccione DIRESA...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="ficha-establecimiento">RENIPRESS *</label>
+                            <select id="ficha-establecimiento" required>
+                                <option value="">Seleccione Establecimiento...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="ficha-tipo-reg">Tipo registro *</label>
+                            <select id="ficha-tipo-reg" required onchange="onFichaTipoRegChange()">
+                                <option value="agente">Agente Comunitario de salud</option>
+                                <option value="comite">Comite Comunitario</option>
+                            </select>
+                        </div>
+                        <div class="input-group id-comite-name hidden" id="ficha-comite-name-group">
+                            <label for="ficha-name">Nombre comite *</label>
+                            <input type="text" id="ficha-name" placeholder="Ej: Comité Sector 4">
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Documento/Archivo de Ficha -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="input-group">
+                            <label for="ficha-tipo-archivo">Tipo de archivo *</label>
+                            <select id="ficha-tipo-archivo" required onchange="onFichaTipoArchivoChange()">
+                                <option value="adjunto">Archivo adjunto</option>
+                                <option value="url">URL del archivo</option>
+                            </select>
+                        </div>
+                        
+                        <!-- File Input (default) -->
+                        <div class="input-group" id="ficha-archivo-group">
+                            <label for="ficha-archivo">Archivos adjuntos <span style="color: var(--text-muted); font-weight: 400;">(máx. 2 documentos)</span> *</label>
+                            <div id="ficha-existing-attachments" class="attachment-container"></div>
+                            <input type="file" id="ficha-archivo" multiple accept="*/*" onchange="loadFichaFiles(event)">
+                            <div id="ficha-archivos-lista" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Ningún archivo seleccionado</div>
+                            <div id="ficha-archivos-warn" style="font-size: 0.8rem; color: var(--danger); margin-top: 0.3rem; display: none;">&#9888; Odoo permite un máximo de 2 archivos adjuntos por ficha.</div>
+                        </div>
+
+                        <!-- URL Input (hidden by default) -->
+                        <div class="input-group hidden" id="ficha-url-group">
+                            <label for="ficha-url-doc">URL Documento *</label>
+                            <input type="text" id="ficha-url-doc" placeholder="Ej: https://docs.google.com/...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-panel tab layout for Agente Comunitario de Salud (Lineas de Detalle) -->
+                <div style="margin-top: 2rem; border-top: 1px solid var(--card-border); padding-top: 1.5rem;">
+                    <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Agente Comunitario de Salud</h3>
+                    
+                    <div class="table-container" style="margin-bottom: 1rem;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tipo Documento</th>
+                                    <th>Num.Documento</th>
+                                    <th>Apellido y Nombres</th>
+                                    <th>Celular</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ficha-details-tbody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">
+                                        Haga clic en 'Agregar línea' para asociar agentes a esta ficha.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button type="button" class="btn btn-outline" onclick="openNestedDetailModal()">Agregar línea</button>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--card-border); padding-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="closeFichaModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Crear Ficha en Odoo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Nested Detail Modal (CrearDetalle Agente Comunitario de Salud) -->
+    <div class="modal" id="ficha-detail-nested-modal" style="z-index: 110;">
+        <div class="modal-content" style="max-width: 1000px;">
+            <div class="modal-header">
+                <h2 id="nested-modal-title">CrearDetalle Agente Comunitario de Salud</h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeNestedDetailModal()">X</button>
+            </div>
+            
+            <div class="form-grid" style="margin-top: 1rem;">
+                
+                <!-- Left Section: Datos Personales (Auto-completable) -->
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <h3 style="font-size: 0.95rem; color: var(--primary); font-weight: 600; border-bottom: 1px solid var(--card-border); padding-bottom: 0.25rem;">Datos Personales</h3>
+                    
+                    <div class="input-group">
+                        <label for="nested-agente-select">Agente Comunitario de Salud *</label>
+                        <select id="nested-agente-select" required onchange="onNestedAgentChange()">
+                            <option value="">Seleccione Agente...</option>
+                        </select>
+                    </div>
+
+                    <!-- Auto-filled values from the selected Agent -->
+                    <div class="read-only-label-block">
+                        <label style="font-size: 0.75rem; color: var(--text-muted);">Tipo Documento</label>
+                        <span id="nested-tipo-doc-label">-</span>
+                    </div>
+                    <div class="read-only-label-block">
+                        <label style="font-size: 0.75rem; color: var(--text-muted);">Num.Documento</label>
+                        <span id="nested-num-doc-label">-</span>
+                    </div>
+                    <div class="read-only-label-block">
+                        <label style="font-size: 0.75rem; color: var(--text-muted);">Apellido y Nombres</label>
+                        <span id="nested-nombre-label">-</span>
+                    </div>
+                    <div class="read-only-label-block">
+                        <label style="font-size: 0.75rem; color: var(--text-muted);">Celular</label>
+                        <span id="nested-celular-label">-</span>
+                    </div>
+                </div>
+
+                <!-- Right Section: Details Fields -->
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <h3 style="font-size: 0.95rem; color: var(--primary); font-weight: 600; border-bottom: 1px solid var(--card-border); padding-bottom: 0.25rem;">Actividad y Archivo</h3>
+                    
+                    <div class="input-group">
+                        <label for="nested-fecha-inicio">Fecha inicio Act.</label>
+                        <input type="date" id="nested-fecha-inicio">
+                    </div>
+                    <div class="input-group">
+                        <label for="nested-fecha-fin">Fecha fin Act.</label>
+                        <input type="date" id="nested-fecha-fin">
+                    </div>
+                    <div class="input-group">
+                        <label for="nested-archivo">Archivos <span style="color: var(--text-muted); font-weight:400;">(Opcional, máx. 2)</span></label>
+                        <div id="nested-existing-attachments" class="attachment-container"></div>
+                        <input type="file" id="nested-archivo" multiple accept="*/*" onchange="loadNestedFiles(event)">
+                        <div id="nested-archivos-lista" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Ningún archivo seleccionado</div>
+                        <div id="nested-archivos-warn" style="font-size: 0.8rem; color: var(--danger); margin-top: 0.3rem; display:none;">&#9888; Máximo 2 archivos por línea.</div>
+                    </div>
+                    <div class="input-group">
+                        <label for="nested-estado">Estado *</label>
+                        <select id="nested-estado" required>
+                            <option value="activo">Activo</option>
+                            <option value="noactivo">No Activo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--card-border); padding-top: 1.5rem;">
+                <button type="button" class="btn btn-outline" onclick="closeNestedDetailModal()">Descartar</button>
+                <button type="button" class="btn btn-success" onclick="saveNestedDetail()">Guardar y cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ficha Detail Modal (Read Only) -->
+    <div class="modal" id="ficha-detail-modal">
+        <div class="modal-content" style="max-width: 1100px;">
+            <div class="modal-header">
+                <h2>Detalle de Ficha de Registro #<span id="detail-ficha-id"></span></h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeFichaDetailModal()">X</button>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="form-grid" style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px;">
+                    <div><strong>Tipo Registro:</strong> <span id="detail-ficha-tipo"></span></div>
+                    <div><strong>Estado:</strong> <span id="detail-ficha-estado" class="badge"></span></div>
+                    <div><strong>Establecimiento:</strong> <span id="detail-ficha-eess"></span></div>
+                    <div><strong>DIRESA:</strong> <span id="detail-ficha-diresa"></span></div>
+                    <div style="grid-column: span 2;"><strong>Documentos Adjuntos:</strong> <span id="detail-ficha-docs"></span></div>
+                </div>
+
+                <h3>Miembros / Detalle de Agentes</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Documento</th>
+                                <th>Fecha Inicio</th>
+                                <th>Estado Agente</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detail-miembros-tbody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;" id="detail-workflow-actions">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <span id="toast-message">Notificación</span>
+    </div>
+
+    <script>
+        // Global variables to hold base64 image and document data
+        let base64Photo = null;
+        let fichaFilesList = []; // List of { name, datas } for NEW attachments
+        let existingFichaFiles = []; // List of { id, name, mimetype } for EXISTING Odoo attachments
+
+        // Ficha detail lines array representing dynamic table lines
+        let fichaDetailLines = [];
+        let editFichaId = null;
+        let nestedFilesList = []; // Multiple NEW files for nested detail
+        let existingNestedFiles = []; // EXISTING Odoo attachments for nested detail
+        let editingNestedIndex = null; // null = create mode, number = edit mode
+
+        // Cache lists to populate dropdowns easily
+        let diresasList = [];
+        let globalAgentsList = [];
+
+        // ==========================================
+        // ATTACHMENT CARD HELPERS
+        // ==========================================
+        function getFileIconClass(filename) {
+            if (!filename) return 'generic';
+            const ext = filename.split('.').pop().toLowerCase();
+            if (ext === 'pdf') return 'pdf';
+            if (['doc', 'docx'].includes(ext)) return 'doc';
+            if (['xls', 'xlsx', 'csv'].includes(ext)) return 'xls';
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(ext)) return 'img';
+            return 'generic';
+        }
+
+        function getFileIconEmoji(iconClass) {
+            switch (iconClass) {
+                case 'pdf': return '📄';
+                case 'doc': return '📝';
+                case 'xls': return '📊';
+                case 'img': return '🖼️';
+                default: return '📎';
+            }
+        }
+
+        function getFileExtLabel(filename) {
+            if (!filename) return 'FILE';
+            return filename.split('.').pop().toUpperCase();
+        }
+
+        function renderAttachmentCards(containerId, files, onDeleteCallback) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+            if (!files || files.length === 0) return;
+
+            files.forEach((file, index) => {
+                const iconClass = getFileIconClass(file.name);
+                const iconEmoji = getFileIconEmoji(iconClass);
+                const extLabel = getFileExtLabel(file.name);
+
+                const card = document.createElement('div');
+                card.className = 'attachment-card';
+                card.innerHTML = `
+                    <div class="att-icon ${iconClass}">${iconEmoji}</div>
+                    <div class="att-info">
+                        <span class="att-name" title="${file.name}" onclick="downloadAttachment(${file.id})">${file.name}</span>
+                        <span class="att-type">${extLabel}</span>
+                    </div>
+                    <button type="button" class="att-delete" title="Eliminar" onclick="(${onDeleteCallback})(${index})">✕</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function removeFichaExistingFile(index) {
+            existingFichaFiles.splice(index, 1);
+            renderAttachmentCards('ficha-existing-attachments', existingFichaFiles, 'removeFichaExistingFile');
+        }
+
+        function removeNestedExistingFile(index) {
+            existingNestedFiles.splice(index, 1);
+            renderAttachmentCards('nested-existing-attachments', existingNestedFiles, 'removeNestedExistingFile');
+        }
+
+        async function downloadAttachment(attId) {
+            if (!attId) return;
+            try {
+                const res = await fetch(`/api/attachments/${attId}`, { headers: getHeaders() });
+                if (!res.ok) { showToast("Error al descargar archivo", "danger"); return; }
+                const data = await res.json();
+                if (data.datas) {
+                    const link = document.createElement('a');
+                    const mimeType = data.mimetype || 'application/octet-stream';
+                    link.href = `data:${mimeType};base64,${data.datas}`;
+                    link.download = data.name || 'archivo';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    showToast("El archivo no tiene contenido", "warning");
+                }
+            } catch (err) {
+                showToast("Error al descargar: " + err.message, "danger");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("MINSA_THEME") || "dark";
+            if (savedTheme === "light") {
+                document.body.classList.add("light-theme");
+                document.getElementById("theme-icon").innerText = "🌙";
+                document.getElementById("theme-icon").nextSibling.textContent = " Modo Oscuro";
+            }
+            
+            const savedToken = localStorage.getItem("MINSA_BEARER_TOKEN");
+            if (savedToken) {
+                document.getElementById("bearer-token").value = savedToken;
+            }
+            checkHealth();
+            fetchAgents();
+            fetchFichas();
+            loadAuxiliarySelects();
+            setInterval(checkHealth, 30000);
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById("theme-icon");
+            const text = btn.nextSibling;
+            
+            if (body.classList.contains("light-theme")) {
+                body.classList.remove("light-theme");
+                localStorage.setItem("MINSA_THEME", "dark");
+                btn.innerText = "☀️";
+                text.textContent = " Modo Claro";
+            } else {
+                body.classList.add("light-theme");
+                localStorage.setItem("MINSA_THEME", "light");
+                btn.innerText = "🌙";
+                text.textContent = " Modo Oscuro";
+            }
+        }
+
+        // Load all the auxiliary tables on page load
+        async function loadAuxiliarySelects() {
+            try {
+                // 1. Fetch Diresas
+                const diresasRes = await fetch("/api/diresas?limit=200", { headers: getHeaders() });
+                if (diresasRes.ok) {
+                    diresasList = await diresasRes.json();
+                    populateSelect("form-diresa", diresasList);
+                    populateSelect("ficha-diresa", diresasList);
+                }
+
+                // 2. Fetch Helper Models
+                const helpers = [
+                    { name: "operadores", selectId: "form-operador" },
+                    { name: "generos", selectId: "form-genero" },
+                    { name: "etnias", selectId: "form-etnia" },
+                    { name: "seguros", selectId: "form-seguro" },
+                    { name: "dialectos", selectId: "form-dialecto", multi: true },
+                    { name: "grados", selectId: "form-grado" },
+                    { name: "voluntariados", selectId: "form-voluntariado" },
+                    { name: "voluntariados", selectId: "form-voluntariado-ids", multi: true },
+                    { name: "niveles", selectId: "form-nivel" },
+                    { name: "estandares", selectId: "form-estandar" }
+                ];
+
+                for (const h of helpers) {
+                    const res = await fetch(`/api/auxiliar/${h.name}`, { headers: getHeaders() });
+                    if (res.ok) {
+                        const items = await res.json();
+                        if (h.multi) {
+                            populateMultiSelect(h.selectId, items);
+                        } else {
+                            populateSelect(h.selectId, items);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Error loading auxiliary dropdowns:", err);
+            }
+        }
+
+        function populateSelect(selectId, list) {
+            const selectEl = document.getElementById(selectId);
+            const defaultText = selectEl.options[0] ? selectEl.options[0].text : "Seleccione...";
+            selectEl.innerHTML = `<option value="">${defaultText}</option>`;
+            list.forEach(item => {
+                selectEl.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+            });
+        }
+
+        // Populates a <select multiple> — no empty default option
+        function populateMultiSelect(selectId, list) {
+            const selectEl = document.getElementById(selectId);
+            selectEl.innerHTML = "";
+            list.forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item.id;
+                opt.text = item.name;
+                selectEl.appendChild(opt);
+            });
+        }
+
+        // Sets selected options in a <select multiple> from an array of IDs
+        function setMultiSelectValues(selectId, ids) {
+            const selectEl = document.getElementById(selectId);
+            const idSet = new Set(ids.map(String));
+            for (const opt of selectEl.options) {
+                opt.selected = idSet.has(opt.value);
+            }
+        }
+
+        // Returns an array of integers from a <select multiple> (or empty array)
+        function getMultiSelectVals(selectId) {
+            const selectEl = document.getElementById(selectId);
+            return Array.from(selectEl.selectedOptions).map(o => parseInt(o.value)).filter(v => !isNaN(v));
+        }
+
+        // Handle structural cascades
+        async function onDiresaChange() {
+            const diresaId = document.getElementById("form-diresa").value;
+            const redSelect = document.getElementById("form-red");
+            const eessSelect = document.getElementById("form-establecimiento");
+            
+            redSelect.innerHTML = `<option value="">Cargando Redes...</option>`;
+            eessSelect.innerHTML = `<option value="">Seleccione Establecimiento...</option>`;
+
+            if (!diresaId) {
+                redSelect.innerHTML = `<option value="">Seleccione Red...</option>`;
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/redes?diresa_id=${diresaId}&limit=100`, { headers: getHeaders() });
+                if (res.ok) {
+                    const redes = await res.json();
+                    populateSelect("form-red", redes);
+                }
+            } catch (err) {
+                showToast("Error al cargar redes", "danger");
+            }
+        }
+
+        async function onRedChange() {
+            const redId = document.getElementById("form-red").value;
+            const eessSelect = document.getElementById("form-establecimiento");
+            
+            eessSelect.innerHTML = `<option value="">Cargando Establecimientos...</option>`;
+
+            if (!redId) {
+                eessSelect.innerHTML = `<option value="">Seleccione Establecimiento...</option>`;
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/establecimientos?red_id=${redId}&limit=150`, { headers: getHeaders() });
+                if (res.ok) {
+                    const eess = await res.json();
+                    populateSelect("form-establecimiento", eess);
+                }
+            } catch (err) {
+                showToast("Error al cargar establecimientos", "danger");
+            }
+        }
+
+        async function onFichaDiresaChange() {
+            const diresaId = document.getElementById("ficha-diresa").value;
+            const eessSelect = document.getElementById("ficha-establecimiento");
+            
+            eessSelect.innerHTML = `<option value="">Cargando Establecimientos...</option>`;
+
+            if (!diresaId) {
+                eessSelect.innerHTML = `<option value="">Seleccione Establecimiento...</option>`;
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/establecimientos?diresa_id=${diresaId}&limit=200`, { headers: getHeaders() });
+                if (res.ok) {
+                    const eess = await res.json();
+                    populateSelect("ficha-establecimiento", eess);
+                }
+            } catch (err) {
+                showToast("Error al cargar establecimientos para la Ficha", "danger");
+            }
+        }
+
+        function onFichaTipoRegChange() {
+            const tipo = document.getElementById("ficha-tipo-reg").value;
+            const nameGrp = document.getElementById("ficha-comite-name-group");
+            const nameInput = document.getElementById("ficha-name");
+            
+            if (tipo === "comite") {
+                nameGrp.classList.remove("hidden");
+                nameInput.required = true;
+            } else {
+                nameGrp.classList.add("hidden");
+                nameInput.required = false;
+                nameInput.value = "";
+            }
+        }
+
+        function onFichaTipoArchivoChange() {
+            const tipo = document.getElementById("ficha-tipo-archivo").value;
+            const fileGrp = document.getElementById("ficha-archivo-group");
+            const fileInput = document.getElementById("ficha-archivo");
+            const urlGrp = document.getElementById("ficha-url-group");
+            const urlInput = document.getElementById("ficha-url-doc");
+
+            if (tipo === "url") {
+                fileGrp.classList.add("hidden");
+                fileInput.required = false;
+                urlGrp.classList.remove("hidden");
+                urlInput.required = true;
+            } else {
+                fileGrp.classList.remove("hidden");
+                fileInput.required = true;
+                urlGrp.classList.add("hidden");
+                urlInput.required = false;
+            }
+        }
+
+        // Convert agent photo file to raw base64 string
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function() {
+                const imgEl = document.getElementById("photo-preview-img");
+                imgEl.src = reader.result;
+                document.getElementById("photo-preview-container").style.display = "flex";
+                base64Photo = reader.result.split(',')[1];
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Convert Ficha document files to raw base64 string (multiple files, max 2 by Odoo constraint)
+        function loadFichaFiles(event) {
+            const files = event.target.files;
+            const statusEl = document.getElementById("ficha-archivos-lista");
+            const warnEl = document.getElementById("ficha-archivos-warn");
+            
+            if (!files || files.length === 0) {
+                fichaFilesList = [];
+                statusEl.innerText = "Ningún archivo seleccionado";
+                warnEl.style.display = "none";
+                return;
+            }
+            
+            // Enforce 2-file max matching Odoo server constraint
+            if (files.length > 2) {
+                warnEl.style.display = "block";
+                // Truncate silently to first 2
+            } else {
+                warnEl.style.display = "none";
+            }
+
+            fichaFilesList = [];
+            let names = [];
+            const limit = Math.min(files.length, 2);
+            
+            for (let i = 0; i < limit; i++) {
+                const file = files[i];
+                names.push(file.name);
+                const reader = new FileReader();
+                reader.onload = function() {
+                    fichaFilesList.push({
+                        name: file.name,
+                        datas: reader.result.split(',')[1]
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+            statusEl.innerText = `Seleccionados: ${names.join(", ")}` + (files.length > 2 ? " (se usarán solo los 2 primeros)" : "");
+        }
+
+        // Convert Nested detail document files to raw base64 string (max 2 by Odoo constraint)
+        function loadNestedFiles(event) {
+            const files = event.target.files;
+            const statusEl = document.getElementById("nested-archivos-lista");
+            const warnEl = document.getElementById("nested-archivos-warn");
+
+            if (!files || files.length === 0) {
+                nestedFilesList = [];
+                statusEl.innerText = "Ningún archivo seleccionado";
+                warnEl.style.display = "none";
+                return;
+            }
+
+            if (files.length > 2) {
+                warnEl.style.display = "block";
+            } else {
+                warnEl.style.display = "none";
+            }
+
+            nestedFilesList = [];
+            let names = [];
+            const limit = Math.min(files.length, 2);
+
+            for (let i = 0; i < limit; i++) {
+                const file = files[i];
+                names.push(file.name);
+                const reader = new FileReader();
+                reader.onload = function() {
+                    nestedFilesList.push({ name: file.name, datas: reader.result.split(',')[1] });
+                };
+                reader.readAsDataURL(file);
+            }
+            statusEl.innerText = `Seleccionados: ${names.join(", ")}` + (files.length > 2 ? " (solo los 2 primeros)" : "");
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(`tab-${tab}-btn`).classList.add("active");
+
+            document.getElementById("tab-agentes").classList.add("hidden");
+            document.getElementById("tab-fichas").classList.add("hidden");
+            document.getElementById("tab-maestros").classList.add("hidden");
+            document.getElementById(`tab-${tab}`).classList.remove("hidden");
+
+            if (tab === 'maestros') {
+                fetchMasterDiresas();
+                fetchMasterRedes();
+                fetchMasterMicroredes();
+            }
+        }
+
+        function switchMasterTab(mTab) {
+            document.querySelectorAll(".master-tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(`mt-${mTab}-btn`).classList.add("active");
+
+            document.getElementById("master-diresas-container").classList.add("hidden");
+            document.getElementById("master-redes-container").classList.add("hidden");
+            document.getElementById("master-microredes-container").classList.add("hidden");
+            document.getElementById("master-eess-container").classList.add("hidden");
+            
+            document.getElementById(`master-${mTab}-container`).classList.remove("hidden");
+        }
+
+        function getHeaders() {
+            const token = localStorage.getItem("MINSA_BEARER_TOKEN") || "";
+            return {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            };
+        }
+
+        function saveToken() {
+            const token = document.getElementById("bearer-token").value;
+            localStorage.setItem("MINSA_BEARER_TOKEN", token);
+            showToast("Token guardado correctamente", "success");
+            checkHealth();
+            fetchAgents();
+            fetchFichas();
+            loadAuxiliarySelects();
+        }
+
+        async function checkHealth() {
+            const dot = document.getElementById("connection-dot");
+            const text = document.getElementById("connection-text");
+            
+            try {
+                const response = await fetch("/health");
+                const data = await response.json();
+                if (data.status === "online" && data.odoo_connected) {
+                    dot.className = "status-dot online";
+                    text.innerText = `Odoo Conectado (UID: ${data.odoo_uid})`;
+                } else {
+                    dot.className = "status-dot offline";
+                    text.innerText = "API Degradada - Odoo desconectado";
+                }
+            } catch (error) {
+                dot.className = "status-dot offline";
+                text.innerText = "Servidor API offline";
+            }
+        }
+
+        // ==========================================
+        // AGENTES COMUNITARIOS LOGIC
+        // ==========================================
+        async function fetchAgents() {
+            const tbody = document.getElementById("agents-tbody");
+            const search = document.getElementById("search-input").value;
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Cargando...</td></tr>`;
+            
+            let url = "/api/agentes?limit=50";
+            if (search) {
+                if (/^\d+$/.test(search)) {
+                    url += `&numero_documento=${encodeURIComponent(search)}`;
+                } else {
+                    url += `&name=${encodeURIComponent(search)}`;
+                }
+            }
+
+            try {
+                const res = await fetch(url, { headers: getHeaders() });
+                if (res.status === 401) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error 401: Token inválido.</td></tr>`;
+                    return;
+                }
+                const agents = await res.json();
+                
+                // Cache agents list to populate nested select dropdown
+                globalAgentsList = agents;
+                
+                if (agents.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No se encontraron agentes.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = agents.map(agent => {
+                    const photoSrc = agent.foto ? `data:image/png;base64,${agent.foto}` : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+                    return `
+                        <tr>
+                            <td><img src="${photoSrc}" class="agent-photo-thumb" alt="Foto"></td>
+                            <td style="font-weight: 500;">${agent.name || `${agent.ape_paterno} ${agent.nombres}`}</td>
+                            <td><span class="badge">${agent.tipo_documento === '01' ? 'DNI' : 'Otro'}</span> ${agent.numero_documento}</td>
+                            <td>${agent.celular || '-'}</td>
+                            <td>${agent.email || '-'}</td>
+                            <td>${agent.establecimiento_id ? (Array.isArray(agent.establecimiento_id) ? agent.establecimiento_id[1] : agent.establecimiento_id) : '-'}</td>
+                            <td>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="openEditModal(${JSON.stringify(agent).replace(/"/g, '&quot;')})">Editar</button>
+                                    <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="deleteAgent(${agent.id})">Archivar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function openCreateModal() {
+            document.getElementById("agent-modal-title").innerText = "Registrar Nuevo Agente Comunitario";
+            document.getElementById("form-agent-id").value = "";
+            document.getElementById("agent-form").reset();
+            document.getElementById("photo-preview-container").style.display = "none";
+            base64Photo = null;
+            document.getElementById("create-modal").classList.add("active");
+        }
+
+        async function openEditModal(agent) {
+            document.getElementById("agent-modal-title").innerText = "Editar Agente Comunitario";
+            document.getElementById("form-agent-id").value = agent.id;
+            
+            document.getElementById("form-tipo-doc").value = agent.tipo_documento;
+            document.getElementById("form-num-doc").value = agent.numero_documento;
+            document.getElementById("form-ape-pat").value = agent.ape_paterno || "";
+            document.getElementById("form-ape-mat").value = agent.ape_materno || "";
+            document.getElementById("form-nombres").value = agent.nombres || "";
+            document.getElementById("form-telefono").value = agent.telefono || "";
+            document.getElementById("form-celular").value = agent.celular || "";
+            document.getElementById("form-email").value = agent.email || "";
+            document.getElementById("form-fecha-nac").value = agent.fecha_nacimiento || "";
+            document.getElementById("form-direccion").value = agent.direccion || "";
+            
+            const getRelId = (val) => Array.isArray(val) ? val[0] : (val || "");
+            
+            const diresaId = getRelId(agent.diresa_id);
+            document.getElementById("form-diresa").value = diresaId;
+            
+            if (diresaId) {
+                await onDiresaChange();
+                const redId = getRelId(agent.red_id);
+                document.getElementById("form-red").value = redId;
+                
+                if (redId) {
+                    await onRedChange();
+                    document.getElementById("form-establecimiento").value = getRelId(agent.establecimiento_id);
+                }
+            }
+
+            document.getElementById("form-operador").value = getRelId(agent.operador_id);
+            document.getElementById("form-genero").value = getRelId(agent.genero_id);
+            document.getElementById("form-etnia").value = getRelId(agent.etnia_id);
+            document.getElementById("form-seguro").value = getRelId(agent.seguro_id);
+
+            // Many2many: Idiomas/Dialectos (lista de IDs)
+            setMultiSelectValues("form-dialecto", agent.dialecto_ids || []);
+            
+            document.getElementById("form-grado").value = getRelId(agent.grado_instruccion_id);
+            // Many2one simple
+            document.getElementById("form-voluntariado").value = getRelId(agent.tipo_voluntariado_id);
+            // Many2many múltiple
+            setMultiSelectValues("form-voluntariado-ids", agent.tipo_voluntariado_ids || []);
+            
+            document.getElementById("form-nivel").value = getRelId(agent.nivel_agente_id);
+            document.getElementById("form-estandar").value = getRelId(agent.estandar_laboral_id);
+            
+            if (agent.foto) {
+                document.getElementById("photo-preview-img").src = `data:image/png;base64,${agent.foto}`;
+                document.getElementById("photo-preview-container").style.display = "flex";
+                base64Photo = agent.foto;
+            } else {
+                document.getElementById("photo-preview-container").style.display = "none";
+                base64Photo = null;
+            }
+            
+            document.getElementById("create-modal").classList.add("active");
+        }
+
+        function closeCreateModal() {
+            document.getElementById("create-modal").classList.remove("active");
+        }
+
+        async function handleAgentSubmit(event) {
+            event.preventDefault();
+            const id = document.getElementById("form-agent-id").value;
+            
+            if (!base64Photo) {
+                showToast("La foto del agente es obligatoria por restricciones de Odoo.", "danger");
+                return;
+            }
+
+            const getSelectVal = (id) => {
+                const val = document.getElementById(id).value;
+                return val ? parseInt(val) : null;
+            };
+
+            const payload = {
+                tipo_documento: document.getElementById("form-tipo-doc").value,
+                numero_documento: document.getElementById("form-num-doc").value,
+                ape_paterno: document.getElementById("form-ape-pat").value,
+                ape_materno: document.getElementById("form-ape-mat").value || null,
+                nombres: document.getElementById("form-nombres").value,
+                telefono: document.getElementById("form-telefono").value || null,
+                celular: document.getElementById("form-celular").value || null,
+                email: document.getElementById("form-email").value || null,
+                fecha_nacimiento: document.getElementById("form-fecha-nac").value || null,
+                direccion: document.getElementById("form-direccion").value,
+                es_voluntario: true,
+                
+                diresa_id: getSelectVal("form-diresa"),
+                red_id: getSelectVal("form-red"),
+                establecimiento_id: getSelectVal("form-establecimiento"),
+                operador_id: getSelectVal("form-operador"),
+                genero_id: getSelectVal("form-genero"),
+                etnia_id: getSelectVal("form-etnia"),
+                seguro_id: getSelectVal("form-seguro"),
+                // Many2many: enviar lista de IDs
+                dialecto_ids: getMultiSelectVals("form-dialecto"),
+                grado_instruccion_id: getSelectVal("form-grado"),
+                tipo_voluntariado_id: getSelectVal("form-voluntariado"),
+                tipo_voluntariado_ids: getMultiSelectVals("form-voluntariado-ids"),
+                nivel_agente_id: getSelectVal("form-nivel"),
+                estandar_laboral_id: getSelectVal("form-estandar"),
+                
+                foto: base64Photo
+            };
+
+            const isEdit = id !== "";
+            const url = isEdit ? `/api/agentes/${id}` : "/api/agentes";
+            const method = isEdit ? "PUT" : "POST";
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: getHeaders(),
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error al procesar agente");
+                
+                showToast(isEdit ? "Agente actualizado exitosamente" : `Agente creado ID: ${data.id}`, "success");
+                closeCreateModal();
+                fetchAgents();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function deleteAgent(id) {
+            if (!confirm("¿Está seguro de archivar este agente en Odoo?")) return;
+            try {
+                const res = await fetch(`/api/agentes/${id}`, {
+                    method: "DELETE",
+                    headers: getHeaders()
+                });
+                if (!res.ok) throw new Error("Error al archivar");
+                showToast("Agente archivado correctamente", "success");
+                fetchAgents();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        // ==========================================
+        // FICHAS / REGISTROS LOGIC
+        // ==========================================
+        async function fetchFichas() {
+            const tbody = document.getElementById("fichas-tbody");
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Cargando...</td></tr>`;
+
+            try {
+                const res = await fetch("/api/registros?limit=50", { headers: getHeaders() });
+                if (!res.ok) throw new Error("Error al consultar fichas");
+                const fichas = await res.json();
+
+                if (fichas.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No hay fichas registradas.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = fichas.map(f => {
+                    const eess = Array.isArray(f.establecimiento_id) ? f.establecimiento_id[1] : (f.establecimiento_id || '-');
+                    const diresa = Array.isArray(f.diresa_id) ? f.diresa_id[1] : (f.diresa_id || '-');
+                    
+                    let badgeClass = 'badge-primary';
+                    if (f.estado === 'validado') badgeClass = 'badge-warning';
+                    if (f.estado === 'validado2') badgeClass = 'badge-success';
+
+                    return `
+                        <tr>
+                            <td style="font-weight: 500;">#${f.id}</td>
+                            <td>
+                                <div>${eess}</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">${diresa}</div>
+                            </td>
+                            <td><span class="badge">${f.tipo_registro}</span></td>
+                            <td>${f.cantidad_detalle} miembro(s)</td>
+                            <td><span class="badge ${badgeClass}">${f.estado}</span></td>
+                            <td>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="viewFichaDetail(${f.id})">Ver Detalles</button>
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="openEditFichaModal(${f.id})">Editar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function openFichaModal() {
+            editFichaId = null;
+            document.querySelector("#ficha-modal h2").innerText = "Registrar Nueva Ficha de Registro";
+            document.getElementById("ficha-form").reset();
+            fichaFilesList = [];
+            existingFichaFiles = [];
+            renderAttachmentCards('ficha-existing-attachments', [], 'removeFichaExistingFile');
+            document.getElementById("ficha-archivos-lista").innerText = "Ningún archivo seleccionado";
+            fichaDetailLines = [];
+            onFichaTipoRegChange();
+            onFichaTipoArchivoChange();
+            refreshFichaDetailsTable();
+            document.getElementById("ficha-modal").classList.add("active");
+        }
+
+        async function openEditFichaModal(id) {
+            editFichaId = id;
+            document.querySelector("#ficha-modal h2").innerText = `Editar Ficha de Registro #${id}`;
+            document.getElementById("ficha-form").reset();
+            fichaFilesList = [];
+            existingFichaFiles = [];
+            document.getElementById("ficha-archivos-lista").innerText = "";
+            fichaDetailLines = [];
+
+            try {
+                const res = await fetch(`/api/registros/${id}`, { headers: getHeaders() });
+                if (!res.ok) throw new Error("Error al obtener detalles de la ficha");
+                const f = await res.json();
+
+                // Cargar campos básicos
+                document.getElementById("ficha-tipo-reg").value = f.tipo_registro;
+                document.getElementById("ficha-name").value = f.name || "";
+                onFichaTipoRegChange();
+
+                document.getElementById("ficha-tipo-archivo").value = f.tipo_archivo;
+                document.getElementById("ficha-url-doc").value = f.url_documento || "";
+                onFichaTipoArchivoChange();
+
+                // Cargar Diresa y cascada de EESS
+                const diresaId = Array.isArray(f.diresa_id) ? f.diresa_id[0] : f.diresa_id;
+                document.getElementById("ficha-diresa").value = diresaId || "";
+                if (diresaId) {
+                    await onFichaDiresaChange();
+                    const eessId = Array.isArray(f.establecimiento_id) ? f.establecimiento_id[0] : f.establecimiento_id;
+                    document.getElementById("ficha-establecimiento").value = eessId || "";
+                }
+
+                // --- Cargar archivos adjuntos existentes de la ficha ---
+                if (f.carga_documento && f.carga_documento.length > 0) {
+                    existingFichaFiles = f.carga_documento.map(att => ({
+                        id: att.id,
+                        name: att.name || `archivo_${att.id}`,
+                        mimetype: att.mimetype || null
+                    }));
+                    renderAttachmentCards('ficha-existing-attachments', existingFichaFiles, 'removeFichaExistingFile');
+                } else {
+                    existingFichaFiles = [];
+                    renderAttachmentCards('ficha-existing-attachments', [], 'removeFichaExistingFile');
+                }
+
+                // Mapear miembros existentes a fichaDetailLines (con adjuntos enriquecidos)
+                fichaDetailLines = f.detalle_ids.map(m => {
+                    const agId = Array.isArray(m.agente_comunitario_id) ? m.agente_comunitario_id[0] : m.agente_comunitario_id;
+                    const agName = Array.isArray(m.agente_comunitario_id) ? m.agente_comunitario_id[1] : (m.name || "");
+                    return {
+                        id: m.id,
+                        agente_comunitario_id: agId,
+                        fecha_inicio: m.fecha_inicio || null,
+                        fecha_fin: m.fecha_fin || null,
+                        estado: m.estado,
+                        carga_documento: [],
+                        _existingDocs: (m.carga_documento || []).map(att => ({
+                            id: att.id,
+                            name: att.name || `archivo_${att.id}`,
+                            mimetype: att.mimetype || null
+                        })),
+                        _docType: m.tipo_documento || "01",
+                        _docNum: m.numero_documento || "",
+                        _agentName: agName,
+                        _celular: m.celular || ""
+                    };
+                });
+
+                refreshFichaDetailsTable();
+                document.getElementById("ficha-modal").classList.add("active");
+            } catch (err) {
+                showToast(err.message, "danger");
+            }
+        }
+
+        function closeFichaModal() {
+            document.getElementById("ficha-modal").classList.remove("active");
+            editFichaId = null;
+        }
+
+        // --- Nested Detail Modal Logic ---
+        async function openNestedDetailModal() {
+            editingNestedIndex = null;
+            document.getElementById("nested-modal-title").innerText = "CrearDetalle Agente Comunitario de Salud";
+            document.getElementById("nested-agente-select").value = "";
+            document.getElementById("nested-fecha-inicio").value = "";
+            document.getElementById("nested-fecha-fin").value = "";
+            document.getElementById("nested-archivo").value = "";
+            document.getElementById("nested-archivos-lista").innerText = "Ningún archivo seleccionado";
+            document.getElementById("nested-archivos-warn").style.display = "none";
+            document.getElementById("nested-estado").value = "activo";
+            nestedFilesList = [];
+            existingNestedFiles = [];
+            renderAttachmentCards('nested-existing-attachments', [], 'removeNestedExistingFile');
+            
+            onNestedAgentChange(); // Clear labels
+
+            // Fetch latest agents to populate the dropdown select list
+            try {
+                const res = await fetch("/api/agentes?limit=150", { headers: getHeaders() });
+                if (res.ok) {
+                    globalAgentsList = await res.json();
+                    populateSelect("nested-agente-select", globalAgentsList);
+                }
+            } catch (err) {
+                console.error("Error refreshing agents:", err);
+            }
+
+            document.getElementById("ficha-detail-nested-modal").classList.add("active");
+        }
+
+        async function openEditNestedDetail(index) {
+            const line = fichaDetailLines[index];
+            if (!line) return;
+
+            editingNestedIndex = index;
+            document.getElementById("nested-modal-title").innerText = "Editar Detalle Agente Comunitario de Salud";
+
+            // Populate agents if not loaded yet
+            if (globalAgentsList.length === 0) {
+                try {
+                    const res = await fetch("/api/agentes?limit=150", { headers: getHeaders() });
+                    if (res.ok) {
+                        globalAgentsList = await res.json();
+                    }
+                } catch (err) { console.error(err); }
+            }
+            populateSelect("nested-agente-select", globalAgentsList);
+
+            // Pre-fill fields from the stored line
+            document.getElementById("nested-agente-select").value = line.agente_comunitario_id;
+            onNestedAgentChange();
+            document.getElementById("nested-fecha-inicio").value = line.fecha_inicio || "";
+            document.getElementById("nested-fecha-fin").value = line.fecha_fin || "";
+            document.getElementById("nested-estado").value = line.estado || "activo";
+
+            // Reset file input for new additions
+            document.getElementById("nested-archivo").value = "";
+            nestedFilesList = [];
+            document.getElementById("nested-archivos-lista").innerText = "";
+            document.getElementById("nested-archivos-warn").style.display = "none";
+
+            // --- Render existing Odoo attachment cards ---
+            existingNestedFiles = (line._existingDocs || []).map(d => ({...d}));
+            renderAttachmentCards('nested-existing-attachments', existingNestedFiles, 'removeNestedExistingFile');
+
+            document.getElementById("ficha-detail-nested-modal").classList.add("active");
+        }
+
+        function closeNestedDetailModal() {
+            document.getElementById("ficha-detail-nested-modal").classList.remove("active");
+        }
+
+        function onNestedAgentChange() {
+            const agentId = document.getElementById("nested-agente-select").value;
+            const tipoLabel = document.getElementById("nested-tipo-doc-label");
+            const numLabel = document.getElementById("nested-num-doc-label");
+            const nombreLabel = document.getElementById("nested-nombre-label");
+            const celularLabel = document.getElementById("nested-celular-label");
+
+            if (!agentId) {
+                tipoLabel.innerText = "-";
+                numLabel.innerText = "-";
+                nombreLabel.innerText = "-";
+                celularLabel.innerText = "-";
+                return;
+            }
+
+            const agent = globalAgentsList.find(a => a.id == agentId);
+            if (agent) {
+                tipoLabel.innerText = agent.tipo_documento === '01' ? 'DNI' : agent.tipo_documento === '03' ? 'Carné Extranjería' : agent.tipo_documento === '07' ? 'Pasaporte' : 'PTP';
+                numLabel.innerText = agent.numero_documento;
+                nombreLabel.innerText = agent.name || `${agent.ape_paterno} ${agent.nombres}`;
+                celularLabel.innerText = agent.celular || "-";
+            }
+        }
+
+        function saveNestedDetail() {
+            const agentId = document.getElementById("nested-agente-select").value;
+            if (!agentId) {
+                showToast("Debe seleccionar un Agente Comunitario.", "danger");
+                return;
+            }
+
+            const agent = globalAgentsList.find(a => a.id == agentId);
+            if (!agent) return;
+
+            // Merge: new files (nestedFilesList) + preserved existing Odoo files (existingNestedFiles)
+            const newDocs = nestedFilesList.slice(0, 2);
+            const preservedExisting = existingNestedFiles.map(ef => ({ id: ef.id, name: ef.name }));
+
+            const lineData = {
+                agente_comunitario_id: parseInt(agentId),
+                fecha_inicio: document.getElementById("nested-fecha-inicio").value || null,
+                fecha_fin: document.getElementById("nested-fecha-fin").value || null,
+                estado: document.getElementById("nested-estado").value,
+                carga_documento: [...preservedExisting, ...newDocs],
+                _existingDocs: existingNestedFiles.map(d => ({...d})),
+                // Helper fields for view
+                _docType: agent.tipo_documento,
+                _docNum: agent.numero_documento,
+                _agentName: agent.name || `${agent.ape_paterno} ${agent.nombres}`,
+                _celular: agent.celular
+            };
+
+            // Preserve Odoo record ID if editing an existing Odoo-saved line
+            if (editingNestedIndex !== null) {
+                const existingId = fichaDetailLines[editingNestedIndex].id;
+                if (existingId) lineData.id = existingId;
+                fichaDetailLines[editingNestedIndex] = lineData;
+            } else {
+                fichaDetailLines.push(lineData);
+            }
+
+            editingNestedIndex = null;
+            existingNestedFiles = [];
+            refreshFichaDetailsTable();
+            closeNestedDetailModal();
+        }
+
+        function removeFichaDetail(index) {
+            fichaDetailLines.splice(index, 1);
+            refreshFichaDetailsTable();
+        }
+
+        function refreshFichaDetailsTable() {
+            const tbody = document.getElementById("ficha-details-tbody");
+            if (fichaDetailLines.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Haga clic en 'Agregar línea' para asociar agentes a esta ficha.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = fichaDetailLines.map((line, index) => {
+                const docText = line._docType === '01' ? 'DNI' : 'Otro';
+                const filesCount = (line.carga_documento || []).length;
+                return `
+                    <tr>
+                        <td><span class="badge">${docText}</span></td>
+                        <td>${line._docNum}</td>
+                        <td style="font-weight:500;">${line._agentName}</td>
+                        <td>${line._celular || '-'}</td>
+                        <td>${line.fecha_inicio || '-'}</td>
+                        <td><span class="badge badge-success">${line.estado}</span></td>
+                        <td>
+                            <div style="display:flex; gap:0.4rem;">
+                                <button type="button" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="openEditNestedDetail(${index})">Editar</button>
+                                <button type="button" class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="removeFichaDetail(${index})">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function handleFichaSubmit(event) {
+            event.preventDefault();
+            
+            const tipoArchivo = document.getElementById("ficha-tipo-archivo").value;
+            
+            // Validar archivo solo en creación
+            const totalFichaFiles = existingFichaFiles.length + fichaFilesList.length;
+            if (!editFichaId && tipoArchivo === "adjunto" && totalFichaFiles === 0) {
+                showToast("Es obligatorio adjuntar al menos 1 archivo (máx. 2) para crear la ficha en Odoo.", "danger");
+                return;
+            }
+
+            if (fichaDetailLines.length === 0) {
+                showToast("Debe asociar al menos un agente comunitario (Agregar línea).", "danger");
+                return;
+            }
+
+            // --- Merge ficha-level attachments: existing (por id) + new (con datas) ---
+            const mergedFichaDocs = [
+                ...existingFichaFiles.map(ef => ({ id: ef.id, name: ef.name })),
+                ...fichaFilesList.slice(0, 2)
+            ];
+
+            const payload = {
+                tipo_registro: document.getElementById("ficha-tipo-reg").value,
+                name: document.getElementById("ficha-name").value || null,
+                diresa_id: parseInt(document.getElementById("ficha-diresa").value),
+                establecimiento_id: parseInt(document.getElementById("ficha-establecimiento").value),
+                tipo_archivo: tipoArchivo,
+                url_documento: tipoArchivo === "url" ? document.getElementById("ficha-url-doc").value : null,
+                carga_documento: mergedFichaDocs,
+                
+                // Mapear detalles, conservando IDs y mergendo adjuntos
+                detalle_ids: fichaDetailLines.map(line => {
+                    const cleanLine = {
+                        agente_comunitario_id: line.agente_comunitario_id,
+                        fecha_inicio: line.fecha_inicio,
+                        fecha_fin: line.fecha_fin,
+                        estado: line.estado,
+                        carga_documento: line.carga_documento || []
+                    };
+                    if (line.id) {
+                        cleanLine.id = line.id;
+                    }
+                    return cleanLine;
+                })
+            };
+
+            const isEdit = editFichaId !== null;
+            const url = isEdit ? `/api/registros/${editFichaId}` : "/api/registros";
+            const method = isEdit ? "PUT" : "POST";
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: getHeaders(),
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error al guardar ficha");
+
+                showToast(isEdit ? "Ficha de registro actualizada exitosamente" : `Ficha creada ID: ${data.id}`, "success");
+                closeFichaModal();
+                fetchFichas();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function viewFichaDetail(id) {
+            try {
+                const res = await fetch(`/api/registros/${id}`, { headers: getHeaders() });
+                if (!res.ok) throw new Error("No se pudo cargar el detalle");
+                const f = await res.json();
+
+                document.getElementById("detail-ficha-id").innerText = f.id;
+                document.getElementById("detail-ficha-tipo").innerText = f.tipo_registro.toUpperCase();
+                
+                const stateEl = document.getElementById("detail-ficha-estado");
+                stateEl.innerText = f.estado;
+                stateEl.className = 'badge ' + (f.estado === 'validado2' ? 'badge-success' : f.estado === 'validado' ? 'badge-warning' : 'badge-primary');
+
+                document.getElementById("detail-ficha-eess").innerText = Array.isArray(f.establecimiento_id) ? f.establecimiento_id[1] : f.establecimiento_id;
+                document.getElementById("detail-ficha-diresa").innerText = Array.isArray(f.diresa_id) ? f.diresa_id[1] : f.diresa_id;
+
+                const docsEl = document.getElementById("detail-ficha-docs");
+                if (f.carga_documento && f.carga_documento.length > 0) {
+                    docsEl.innerHTML = `<span class="badge badge-success">Sí (${f.carga_documento.length} archivo(s))</span>`;
+                    // Also render downloadable attachment cards
+                    const cardsHtml = f.carga_documento.map(att => {
+                        const iconClass = getFileIconClass(att.name);
+                        const iconEmoji = getFileIconEmoji(iconClass);
+                        const extLabel = getFileExtLabel(att.name);
+                        return `
+                            <div class="attachment-card" style="cursor:pointer;" onclick="downloadAttachment(${att.id})">
+                                <div class="att-icon ${iconClass}">${iconEmoji}</div>
+                                <div class="att-info">
+                                    <span class="att-name" title="${att.name}">${att.name}</span>
+                                    <span class="att-type">${extLabel}</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    docsEl.innerHTML += `<div class="attachment-container" style="margin-top: 0.5rem;">${cardsHtml}</div>`;
+                } else {
+                    docsEl.innerHTML = `<span class="badge badge-warning">No adjuntado</span>`;
+                }
+
+                const tbody = document.getElementById("detail-miembros-tbody");
+                if (f.detalle_ids.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">No hay miembros asociados.</td></tr>`;
+                } else {
+                    tbody.innerHTML = f.detalle_ids.map(m => `
+                        <tr>
+                            <td>${m.name}</td>
+                            <td>${m.numero_documento}</td>
+                            <td>${m.fecha_inicio || '-'}</td>
+                            <td><span class="badge ${m.estado === 'activo' ? 'badge-success' : ''}">${m.estado}</span></td>
+                        </tr>
+                    `).join('');
+                }
+
+                const workflowContainer = document.getElementById("detail-workflow-actions");
+                workflowContainer.innerHTML = '';
+                
+                if (f.estado === 'borrador') {
+                    workflowContainer.innerHTML = `<button class="btn btn-success" onclick="executeWorkflow(${f.id}, 'validar')">Validar Ficha</button>`;
+                } else if (f.estado === 'validado') {
+                    workflowContainer.innerHTML = `
+                        <button class="btn btn-outline" onclick="executeWorkflow(${f.id}, 'borrador')">Volver a Borrador</button>
+                        <button class="btn btn-success" onclick="executeWorkflow(${f.id}, 'validar')">Validar DIRESA</button>
+                    `;
+                } else {
+                    workflowContainer.innerHTML = `
+                        <button class="btn btn-outline" onclick="executeWorkflow(${f.id}, 'borrador')">Volver a Borrador</button>
+                        <button class="btn btn-warning" onclick="executeWorkflow(${f.id}, 'revalidar')">Revalidar Ficha</button>
+                    `;
+                }
+
+                document.getElementById("ficha-detail-modal").classList.add("active");
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function executeWorkflow(id, action) {
+            try {
+                const res = await fetch(`/api/registros/${id}/${action}`, {
+                    method: "POST",
+                    headers: getHeaders()
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error en workflow");
+                
+                showToast(data.message, "success");
+                closeFichaDetailModal();
+                fetchFichas();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        function closeFichaDetailModal() {
+            document.getElementById("ficha-detail-modal").classList.remove("active");
+        }
+
+        // ==========================================
+        // MASTER DATA (RENIPRESS) LOGIC
+        // ==========================================
+        async function fetchMasterDiresas() {
+            const tbody = document.getElementById("master-diresas-tbody");
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Cargando DIRESAS...</td></tr>`;
+            try {
+                const res = await fetch("/api/diresas?limit=100", { headers: getHeaders() });
+                const diresas = await res.json();
+                if (diresas.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = diresas.map(d => `
+                    <tr>
+                        <td><strong>#${d.id}</strong></td>
+                        <td><span class="badge">${d.codigo_diresa}</span></td>
+                        <td>${d.name}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterRedes() {
+            const tbody = document.getElementById("master-redes-tbody");
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando Redes...</td></tr>`;
+            try {
+                const res = await fetch("/api/redes?limit=100", { headers: getHeaders() });
+                const redes = await res.json();
+                if (redes.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = redes.map(r => `
+                    <tr>
+                        <td><strong>#${r.id}</strong></td>
+                        <td><span class="badge">${r.codigo_red}</span></td>
+                        <td>${r.name}</td>
+                        <td>${Array.isArray(r.diresa_id) ? r.diresa_id[1] : (r.diresa_id || '-')}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterMicroredes() {
+            const tbody = document.getElementById("master-microredes-tbody");
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando Microredes...</td></tr>`;
+            try {
+                const res = await fetch("/api/microredes?limit=100", { headers: getHeaders() });
+                const microredes = await res.json();
+                if (microredes.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = microredes.map(mr => `
+                    <tr>
+                        <td><strong>#${mr.id}</strong></td>
+                        <td><span class="badge">${mr.codigo_microred}</span></td>
+                        <td>${mr.name}</td>
+                        <td>${Array.isArray(mr.red_id) ? mr.red_id[1] : (mr.red_id || '-')}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterEess() {
+            const tbody = document.getElementById("master-eess-tbody");
+            const search = document.getElementById("eess-search-input").value;
+            
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Cargando Establecimientos...</td></tr>`;
+            
+            let url = "/api/establecimientos?limit=50";
+            if (search) {
+                url += `&search=${encodeURIComponent(search)}`;
+            }
+
+            try {
+                const res = await fetch(url, { headers: getHeaders() });
+                const eess = await res.json();
+                if (eess.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No se encontraron establecimientos.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = eess.map(e => `
+                    <tr>
+                        <td><strong>#${e.id}</strong></td>
+                        <td><span class="badge">${e.codigo_eess}</span></td>
+                        <td style="font-weight:500;">${e.name}</td>
+                        <td>${e.direccion || '-'}</td>
+                        <td><span class="badge">${e.categoria === '1' ? 'I-1' : e.categoria === '2' ? 'I-2' : e.categoria === '3' ? 'I-3' : e.categoria === '4' ? 'I-4' : (e.categoria || 'Sin Cat')}</span></td>
+                        <td><span class="badge badge-success">${e.condicion === '3' ? 'En Funcionamiento' : (e.condicion || '-')}</span></td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById("toast");
+            const msgEl = document.getElementById("toast-message");
+            msgEl.innerText = message;
+            toast.className = `toast toast-${type} active`;
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
