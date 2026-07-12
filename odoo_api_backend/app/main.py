@@ -711,3 +711,77 @@ def get_auxiliar_model(model_name: str, token: str = Depends(verify_token)):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ubigeos", tags=["Tablas Maestras"])
+def get_ubigeos():
+    """
+    Retorna el listado de Departamentos, Provincias y Distritos desde Odoo 14.
+    Si toponimos_peru no está disponible, retorna listas vacías como resguardo.
+    """
+    try:
+        # 1. Obtener Departamentos (res.country.state)
+        # Código de Perú es PE. country_id.code == 'PE'
+        try:
+            deps_raw = odoo_client.search_read(
+                model="res.country.state",
+                domain=[("country_id.code", "=", "PE")],
+                fields=["id", "name"],
+                limit=100
+            )
+            departamentos = [{"id": d["id"], "nombre": d["name"]} for d in deps_raw]
+        except Exception:
+            departamentos = []
+
+        # 2. Obtener Provincias (res.country.state.province)
+        try:
+            provs_raw = odoo_client.search_read(
+                model="res.country.state.province",
+                domain=[],
+                fields=["id", "name", "state_id"],
+                limit=500
+            )
+            provincias = [
+                {
+                    "id": p["id"], 
+                    "nombre": p["name"], 
+                    "departamento_id": p["state_id"][0] if isinstance(p["state_id"], (list, tuple)) else p["state_id"]
+                } 
+                for p in provs_raw
+            ]
+        except Exception:
+            provincias = []
+
+        # 3. Obtener Distritos (res.country.state.district)
+        try:
+            dists_raw = odoo_client.search_read(
+                model="res.country.state.district",
+                domain=[],
+                fields=["id", "name", "province_id"],
+                limit=2500
+            )
+            distritos = [
+                {
+                    "id": d["id"], 
+                    "nombre": d["name"], 
+                    "provincia_id": d["province_id"][0] if isinstance(d["province_id"], (list, tuple)) else d["province_id"]
+                } 
+                for d in dists_raw
+            ]
+        except Exception:
+            distritos = []
+
+        return {
+            "departamentos": departamentos,
+            "provincias": provincias,
+            "distritos": distritos
+        }
+
+    except Exception as e:
+        # Failover robusto para que la aplicación móvil no falle
+        return {
+            "departamentos": [],
+            "provincias": [],
+            "distritos": []
+        }
+
