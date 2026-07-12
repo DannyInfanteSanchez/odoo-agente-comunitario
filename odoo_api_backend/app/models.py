@@ -5,6 +5,10 @@ from datetime import date
 # ----------------------------------------------------
 # COMMON SCHEMAS
 # ----------------------------------------------------
+class UserLogin(BaseModel):
+    usuario: str
+    password: str
+
 class AttachmentCreate(BaseModel):
     id: Optional[int] = Field(None, description="ID del adjunto existente en Odoo (para conservar archivos ya subidos)")
     name: str = Field(..., description="Nombre del archivo (ej: acta.pdf)")

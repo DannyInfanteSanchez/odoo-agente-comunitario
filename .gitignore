@@ -5,3 +5,5 @@
 __pycache__/
 odoo-share-temp/
 odoo_api_backend/.env
+
+odoo_api_backend/cookies.txt

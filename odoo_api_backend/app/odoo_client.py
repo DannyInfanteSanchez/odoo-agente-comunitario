@@ -40,6 +40,13 @@ class OdooClient:
                 raise Exception(f"No se pudo conectar a Odoo: {str(e)}")
         return self._uid
 
+    def authenticate_user(self, username, password) -> int:
+        try:
+            uid = self.common.authenticate(self.db, username, password, {})
+            return uid if uid else 0
+        except Exception:
+            return 0
+
     def execute(self, model: str, method: str, *args, **kwargs) -> Any:
         uid = self.get_uid()
         try:

@@ -20,7 +20,8 @@ from app.models import (
     DiresaResponse,
     RedResponse,
     MicroredResponse,
-    EessResponse
+    EessResponse,
+    UserLogin
 )
 
 # Inicializar FastAPI con información del MINSA
@@ -48,6 +49,41 @@ def get_dashboard():
     with open(template_path, "r", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
+
+@app.post("/login", tags=["Autenticación"])
+@app.post("/api/login", tags=["Autenticación"])
+def login_user(login_data: UserLogin):
+    """
+    Autentica un usuario contra la base de datos de Odoo usando XML-RPC.
+    """
+    username = login_data.usuario.strip()
+    password = login_data.password.strip()
+
+    # Intentar autenticar contra Odoo
+    uid = odoo_client.authenticate_user(username, password)
+
+    if uid > 0:
+        # Autenticación exitosa en Odoo
+        # Retornamos estructura esperada por Flutter ApiService/LoginResponse
+        return {
+            "error": 0,
+            "mensaje": "Autenticación exitosa",
+            "resultado": {
+                "token": settings.API_BEARER_TOKEN, # Retornamos el Bearer Token como el JWT para que la app lo use en subsecuentes peticiones
+                "usuario_id": uid,
+                "rol_id": "ambos", # Asignar rol de administración para dar permisos completos a los usuarios de Odoo
+                "diresa_id": None,
+                "red_id": None,
+                "establecimiento_id": None
+            }
+        }
+    else:
+        # Falló
+        return {
+            "error": 1,
+            "mensaje": "Usuario o clave incorrectos en Odoo.",
+            "resultado": None
+        }
 
 security = HTTPBearer()
 
