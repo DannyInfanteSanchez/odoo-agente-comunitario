@@ -187,6 +187,22 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Security(security))
         )
     return token
 
+# Endpoint público de bypass para simular la consulta RENIEC de Odoo
+@app.post("/api/reniec-bypass")
+def reniec_bypass(payload: dict = None):
+    """
+    Retorna una respuesta exitosa (HTTP 200) simulada para evitar que la validación de Odoo 
+    se caiga al intentar hacer consultas a un API de RENIEC inexistente o desconfigurado.
+    """
+    return {
+        "coResultado": "0000",
+        "datosPersona": {
+            "apPrimer": "VALIDADO",
+            "apSegundo": "SISTEMA",
+            "prenombres": "AGENTE"
+        }
+    }
+
 # Endpoints de Salud Pública / Estado
 @app.get("/health", tags=["Salud"])
 def health_check():
