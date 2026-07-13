@@ -312,9 +312,7 @@ def get_agente_by_id(agente_id: int, token: str = Depends(verify_token)):
 @app.post("/api/agentes", status_code=status.HTTP_201_CREATED, tags=["Agentes Comunitarios"])
 def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_token)):
     """
-    Crea un nuevo agente comunitario en Odoo.
-    RENIEC BYPASS: Para DNI (01), crea con tipo neutro (07=Pasaporte) para evitar
-    el bug de TypeError en consulta_reniec de Odoo, luego parchea el registro correctamente.
+    Crea un nuevo agente comunitario en Odoo de forma limpia y directa.
     """
     values = agente.model_dump(exclude_none=True)
     
@@ -327,89 +325,12 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         values["dialecto_ids"] = [(6, 0, values["dialecto_ids"])]
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
-    
-    tipo_documento_original = values.get("tipo_documento", "")
-    is_dni = tipo_documento_original == "01"
-    
-    # =========================================================
-    # BYPASS DE RENIEC PARA DNI:
-    # Odoo dispara consulta_reniec() en create() SOLO para tipo_documento == '01' (DNI).
-    # Hay un bug en helper.py de Odoo que causa TypeError en esa ruta.
-    # Estrategia: crear con tipo '07' (Pasaporte) y luego parchear con write().
-    # =========================================================
-    if is_dni:
-        values_bypass = dict(values)
-        values_bypass["tipo_documento"] = "07"  # Pasaporte: no dispara RENIEC
         
-        try:
-            new_id = odoo_client.create("minsa.agente.comunitario", values_bypass)
-            
-            # Parchear el registro: restaurar tipo DNI y asegurar datos correctos
-            ape_paterno = values.get("ape_paterno", "")
-            ape_materno = values.get("ape_materno", "")
-            nombres = values.get("nombres", "")
-            name_completo = f"{ape_paterno} {ape_materno} {nombres}".strip()
-            fecha_nac = values.get("fecha_nacimiento")
-            
-            patch_values = {
-                "tipo_documento": "01",
-                "name": name_completo,
-                "ape_paterno": ape_paterno,
-                "ape_materno": ape_materno,
-                "nombres": nombres,
-            }
-            
-            # Calcular edad si hay fecha de nacimiento
-            if fecha_nac:
-                try:
-                    from datetime import date as dt_date
-                    fec = dt_date.fromisoformat(str(fecha_nac))
-                    edad_calc = (dt_date.today() - fec).days // 365
-                    patch_values["edad"] = edad_calc
-                except Exception:
-                    pass
-            
-            try:
-                # Usamos execute directo para evitar que write() también dispare RENIEC
-                odoo_client.execute(
-                    "minsa.agente.comunitario", "write", [new_id], patch_values
-                )
-            except Exception as patch_err:
-                # Si el write con tipo 01 también falla (RENIEC en write),
-                # al menos guardamos el nombre y dejamos tipo 07 - recuperable via Odoo UI
-                try:
-                    patch_values_safe = {
-                        "name": name_completo,
-                        "ape_paterno": ape_paterno,
-                        "ape_materno": ape_materno,
-                        "nombres": nombres,
-                    }
-                    odoo_client.execute("minsa.agente.comunitario", "write", [new_id], patch_values_safe)
-                except Exception:
-                    pass
-                with open("error.log", "a", encoding="utf-8") as f:
-                    f.write(f"\n⚠️ Patch DNI post-create falló para agente {new_id}: {patch_err}\n")
-            
-            return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
-            
-        except Exception as e:
-            error_str = str(e)
-            # Si es error de duplicado, retornar el error directamente
-            if "ya existe" in error_str or "uniq" in error_str.lower() or "duplicate" in error_str.lower():
-                raise HTTPException(status_code=400, detail=error_str)
-            # Otro error: intentar create con tipo original como fallback final
-            try:
-                new_id = odoo_client.create("minsa.agente.comunitario", values)
-                return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
-            except Exception as e2:
-                raise HTTPException(status_code=400, detail=str(e2))
-    else:
-        # Para tipos distintos a DNI (Carnet, Pasaporte, PTP): create directo sin bypass
-        try:
-            new_id = odoo_client.create("minsa.agente.comunitario", values)
-            return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=str(e))
+    try:
+        new_id = odoo_client.create("minsa.agente.comunitario", values)
+        return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.put("/api/agentes/{agente_id}", tags=["Agentes Comunitarios"])
 def update_agente(agente_id: int, agente: AgenteComunitarioUpdate, token: str = Depends(verify_token)):
