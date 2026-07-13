@@ -776,7 +776,7 @@ def get_auxiliar_model(model_name: str, token: str = Depends(verify_token)):
 def get_ubigeos():
     """
     Retorna el listado de Departamentos, Provincias y Distritos desde Odoo 14.
-    Clasifica de manera inteligente usando la longitud del código de ubigeo (2, 4 o 6 dígitos).
+    Clasifica de manera exacta usando las relaciones state_id y province_id de Odoo.
     """
     try:
         # Consultar todos los ubigeos peruanos en res.country.state
@@ -791,87 +791,37 @@ def get_ubigeos():
         provincias = []
         distritos = []
 
-        # Mapa para relacionar códigos de ubigeo con IDs de base de datos
-        code_to_id = {}
-
-        # 1. Primera pasada: Identificar Departamentos (código de 2 dígitos o no numérico corto)
         for s in raw_states:
-            code = str(s.get("code", "")).strip()
-            # En Odoo el código de departamento puede ser '02' o 'PE-ANC' o 'ANC'
-            is_dep = False
-            if len(code) == 2 and code.isdigit():
-                is_dep = True
-            elif len(code) <= 3 and not code.isdigit():
-                is_dep = True
-            elif "-" in code and len(code.split("-")[-1]) <= 3:
-                is_dep = True
+            # Extraer IDs de relaciones
+            state_val = s.get("state_id")
+            prov_val = s.get("province_id")
+            
+            dep_id = state_val[0] if isinstance(state_val, (list, tuple)) else state_val
+            prov_id = prov_val[0] if isinstance(prov_val, (list, tuple)) else prov_val
 
-            if is_dep:
+            # CLASIFICACIÓN NATVA ODOO:
+            # 1. Departamento: No tiene state_id ni province_id
+            if dep_id is None and prov_id is None:
                 departamentos.append({
                     "id": s["id"],
                     "nombre": s["name"].upper()
                 })
-                # Guardar el código para mapear provincias/distritos más adelante
-                code_to_id[code] = s["id"]
-                # Mapear también variantes limpias del código
-                clean_code = code.split("-")[-1] if "-" in code else code
-                code_to_id[clean_code] = s["id"]
-
-        # 2. Segunda pasada: Identificar Provincias (código de 4 dígitos)
-        for s in raw_states:
-            code = str(s.get("code", "")).strip()
-            if len(code) == 4 and code.isdigit():
-                # El departamento_id suele ser el state_id de Odoo o los primeros 2 dígitos del ubigeo
-                dep_code = code[:2]
-                dep_id = code_to_id.get(dep_code)
-                
-                # Si no lo saca del código, usar la relación state_id de Odoo
-                if not dep_id and s.get("state_id"):
-                    dep_id = s["state_id"][0] if isinstance(s["state_id"], (list, tuple)) else s["state_id"]
-
+            
+            # 2. Provincia: Tiene state_id (departamento) pero no province_id
+            elif dep_id is not None and prov_id is None:
                 provincias.append({
                     "id": s["id"],
                     "nombre": s["name"].upper(),
                     "departamento_id": dep_id
                 })
-                code_to_id[code] = s["id"]
-
-        # 3. Tercera pasada: Identificar Distritos (código de 6 dígitos)
-        for s in raw_states:
-            code = str(s.get("code", "")).strip()
-            if len(code) == 6 and code.isdigit():
-                prov_code = code[:4]
-                prov_id = code_to_id.get(prov_code)
-
-                # Si no lo saca del código, usar la relación province_id de Odoo
-                if not prov_id and s.get("province_id"):
-                    prov_id = s["province_id"][0] if isinstance(s["province_id"], (list, tuple)) else s["province_id"]
-
+            
+            # 3. Distrito: Tiene province_id (provincia) y state_id (departamento)
+            elif dep_id is not None and prov_id is not None:
                 distritos.append({
                     "id": s["id"],
                     "nombre": s["name"].upper(),
                     "provincia_id": prov_id
                 })
-
-        # Si por alguna razón la consulta de departamentos devolvió vacía, usar fallback estático
-        if not departamentos:
-            # Diccionario estático de departamentos de respaldo para garantizar funcionamiento
-            deps_fallback = [
-                {"id": 1, "nombre": "AMAZONAS"}, {"id": 2, "nombre": "ANCASH"},
-                {"id": 3, "nombre": "APURIMAC"}, {"id": 4, "nombre": "AREQUIPA"},
-                {"id": 5, "nombre": "AYACUCHO"}, {"id": 6, "nombre": "CAJAMARCA"},
-                {"id": 7, "nombre": "CALLAO"}, {"id": 8, "nombre": "CUSCO"},
-                {"id": 9, "nombre": "HUANCAVELICA"}, {"id": 10, "nombre": "HUANUCO"},
-                {"id": 11, "nombre": "ICA"}, {"id": 12, "nombre": "JUNIN"},
-                {"id": 13, "nombre": "LA LIBERTAD"}, {"id": 14, "nombre": "LAMBAYEQUE"},
-                {"id": 15, "nombre": "LIMA"}, {"id": 16, "nombre": "LORETO"},
-                {"id": 17, "nombre": "MADRE DE DOS"}, {"id": 18, "nombre": "MOQUEGUA"},
-                {"id": 19, "nombre": "PASCO"}, {"id": 20, "nombre": "PIURA"},
-                {"id": 21, "nombre": "PUNO"}, {"id": 22, "nombre": "SAN MARTIN"},
-                {"id": 23, "nombre": "TACNA"}, {"id": 24, "nombre": "TUMBES"},
-                {"id": 25, "nombre": "UCAYALI"}
-            ]
-            departamentos = deps_fallback
 
         return {
             "departamentos": departamentos,
@@ -886,5 +836,6 @@ def get_ubigeos():
             "provincias": [],
             "distritos": []
         }
+
 
 
