@@ -187,13 +187,20 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Security(security))
         )
     return token
 
-# Endpoint público de bypass para simular la consulta RENIEC de Odoo
+# Endpoint público de bypass para simular la consulta RENIEC de Odoo sin importar el tipo de datos entrante
 @app.post("/api/reniec-bypass")
-def reniec_bypass(payload: dict = None):
+async def reniec_bypass(request: Request):
     """
     Retorna una respuesta exitosa (HTTP 200) simulada con todas las variantes de campos
     para evitar que el parser del módulo de Odoo falle al buscar datos del agente.
+    Acepta cualquier payload o header de forma segura sin arrojar 422.
     """
+    try:
+        # Intentar consumir el cuerpo por si acaso
+        await request.body()
+    except Exception:
+        pass
+        
     return {
         "coResultado": "0000",
         "co_resultado": "0000",
