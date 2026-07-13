@@ -50,11 +50,21 @@ def get_dashboard():
         html_content = f.read()
     return HTMLResponse(content=html_content)
 
+def extract_many2one_id(relation):
+    if not relation:
+        return None
+    if isinstance(relation, (list, tuple)) and len(relation) > 0:
+        return relation[0]
+    if isinstance(relation, int):
+        return relation
+    return None
+
 @app.post("/login", tags=["Autenticación"])
 @app.post("/api/login", tags=["Autenticación"])
 def login_user(login_data: UserLogin):
     """
     Autentica un usuario contra la base de datos de Odoo usando XML-RPC.
+    Determina su rol dinámico y relaciones geográficas (DIRESA, Red, Establecimiento).
     """
     username = login_data.usuario.strip()
     password = login_data.password.strip()
@@ -63,18 +73,62 @@ def login_user(login_data: UserLogin):
     uid = odoo_client.authenticate_user(username, password)
 
     if uid > 0:
-        # Autenticación exitosa en Odoo
-        # Retornamos estructura esperada por Flutter ApiService/LoginResponse
+        # Autenticación exitosa en Odoo.
+        # Obtener datos geográficos y de grupos del usuario.
+        try:
+            user_data = odoo_client.search_read(
+                model="res.users",
+                domain=[("id", "=", uid)],
+                fields=[
+                    "diresa_id", 
+                    "red_id", 
+                    "establecimiento_id",
+                    "es_grupo_admin",
+                    "es_grupo_establecimiento"
+                ],
+                limit=1
+            )
+            
+            if user_data:
+                user = user_data[0]
+                diresa_id = extract_many2one_id(user.get("diresa_id"))
+                red_id = extract_many2one_id(user.get("red_id"))
+                est_id = extract_many2one_id(user.get("establecimiento_id"))
+                
+                # Determinar rol:
+                # Si tiene es_grupo_admin marcado -> 'ambos' (Administrador completo)
+                # Si es grupo establecimiento, o tiene establecimiento_id asignado y no es admin -> 'agente' (Usuario base)
+                is_admin = user.get("es_grupo_admin", False)
+                is_renipress = user.get("es_grupo_establecimiento", False)
+                
+                if is_admin:
+                    rol_id = "ambos"
+                elif is_renipress or est_id is not None:
+                    rol_id = "agente"
+                else:
+                    rol_id = "ambos" # Default seguro
+            else:
+                diresa_id = None
+                red_id = None
+                est_id = None
+                rol_id = "ambos"
+        except Exception as e:
+            # Fallback en caso de error de lectura de campos
+            diresa_id = None
+            red_id = None
+            est_id = None
+            rol_id = "ambos"
+
         return {
             "error": 0,
             "mensaje": "Autenticación exitosa",
             "resultado": {
-                "token": settings.API_BEARER_TOKEN, # Retornamos el Bearer Token como el JWT para que la app lo use en subsecuentes peticiones
+                "token": settings.API_BEARER_TOKEN,
                 "usuario_id": uid,
-                "rol_id": "ambos", # Asignar rol de administración para dar permisos completos a los usuarios de Odoo
-                "diresa_id": None,
-                "red_id": None,
-                "establecimiento_id": None
+                "rol_id": rol_id,
+                "diresa_id": diresa_id,
+                "red_id": red_id,
+                "establecimiento_id": est_id
             }
         }
     else:
