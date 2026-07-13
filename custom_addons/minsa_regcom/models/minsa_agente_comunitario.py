@@ -176,7 +176,7 @@ class AgenteComunitario(models.Model):
                 }
             }
         try:
-            data, errors = consulta_reniec(self, self.tipo_documento, self.numero_documento)
+            errors, data = consulta_reniec(self, self.tipo_documento, self.numero_documento)
         except Exception:
             return {
                 'value': {
@@ -204,7 +204,7 @@ class AgenteComunitario(models.Model):
                 },
                 'warning': {
                     'title': u'Error en la búsqueda',
-                    'message': u'{}'.format(data.get('error')),
+                    'message': u'{}'.format(errors[0] if errors else 'Error en RENIEC'),
                 }
             }
 
@@ -223,21 +223,26 @@ class AgenteComunitario(models.Model):
 
     def captura_nombre(self):
         if self.tipo_documento in [_DNI]:
-            data, errors = consulta_reniec(self, self.tipo_documento, self.numero_documento)
-            data = data[1]
-            self.ape_paterno = data.get('apellidoPaterno', False)
-            self.ape_materno = data.get('apellidoMaterno', False)
-            self.nombres = data.get('nombres', False)
-            self.name = u"{} {} {}".format(self.ape_paterno, self.ape_materno, self.nombres)
+            errors, data = consulta_reniec(self, self.tipo_documento, self.numero_documento)
+            if not data:
+                data = {}
+            self.ape_paterno = data.get('apellidoPaterno', False) or self.ape_paterno
+            self.ape_materno = data.get('apellidoMaterno', False) or self.ape_materno
+            self.nombres = data.get('nombres', False) or self.nombres
+            self.name = u"{} {} {}".format(self.ape_paterno or '', self.ape_materno or '', self.nombres or '').strip()
             self.genero_id = self.env['minsa.genero'].search([('codigo', '=', data.get('genero', False))], limit=1)
             fecha = data.get('fechaNacimiento', False)
-            fecnac = fecha[:4] + '-' + fecha[4:6] + '-' + fecha[6:8]
-            self.fecha_nacimiento = fecnac
+            if fecha and len(str(fecha)) >= 8:
+                try:
+                    fecnac = str(fecha)[:4] + '-' + str(fecha)[4:6] + '-' + str(fecha)[6:8]
+                    self.fecha_nacimiento = fecnac
+                except Exception:
+                    pass
         else:
             materno = ""
             if self.ape_materno:
                 materno = self.ape_materno
-            self.name = u"{} {} {}".format(self.ape_paterno, materno, self.nombres)
+            self.name = u"{} {} {}".format(self.ape_paterno or '', materno, self.nombres or '').strip()
 
     def normalize(self, s):
         replacements = (
@@ -589,39 +594,52 @@ class AgenteComunitario(models.Model):
         res = super().create(values)
         record_id = res.id
         if res.tipo_documento in [_DNI]:
-            data, errors = consulta_reniec(self, res.tipo_documento, res.numero_documento)
-            data = data[1]
-            ape_paterno = data.get('apellidoPaterno', False)
-            ape_materno = data.get('apellidoMaterno', False)
-            nombres = data.get('nombres', False)
+            errors, data = consulta_reniec(self, res.tipo_documento, res.numero_documento)
+            # Si RENIEC no retornó datos válidos, usar datos del registro original
+            if not data:
+                data = {}
+            ape_paterno = data.get('apellidoPaterno', False) or res.ape_paterno or ''
+            ape_materno = data.get('apellidoMaterno', False) or res.ape_materno or ''
+            nombres = data.get('nombres', False) or res.nombres or 'AGENTE'
             genero = self.env['minsa.genero'].search([('codigo', '=', data.get('genero', False))], limit=1)
             fecha = data.get('fechaNacimiento', False)
-            fecnac = fecha[:4] + '-' + fecha[4:6] + '-' + fecha[6:8]
-            fecha_nacimiento = fecnac
-            if fecha_nacimiento:
-                birth_date = fields.Date.from_string(fecha_nacimiento)
-                delta = date.today() - birth_date
-                edad_year = delta.days // 365
-            else:
-                self.fecha_nacimiento._compute_edad(self)
-                edad_year = self.fecha_nacimiento
-            name = u"{} {} {}".format(ape_paterno, ape_materno, nombres)
-            self.env.cr.execute("""
-                UPDATE minsa_agente_comunitario
-                    SET ape_paterno = %s,
-                        ape_materno = %s,
-                        nombres = %s,
-                        name = %s,
-                        genero_id = %s,
-                        fecha_nacimiento = %s,
-                        edad = %s
-                WHERE id = %s
-                """, (ape_paterno, ape_materno, nombres, name, genero.id, fecha_nacimiento, edad_year, record_id,))
+            fecha_nacimiento = None
+            edad_year = None
+            if fecha and len(str(fecha)) >= 8:
+                try:
+                    fecnac = str(fecha)[:4] + '-' + str(fecha)[4:6] + '-' + str(fecha)[6:8]
+                    fecha_nacimiento = fecnac
+                    birth_date = fields.Date.from_string(fecha_nacimiento)
+                    from datetime import date as dt_date
+                    delta = dt_date.today() - birth_date
+                    edad_year = delta.days // 365
+                except Exception:
+                    fecha_nacimiento = None
+                    edad_year = None
+            name = u"{} {} {}".format(ape_paterno, ape_materno, nombres).strip()
+            try:
+                self.env.cr.execute("""
+                    UPDATE minsa_agente_comunitario
+                        SET ape_paterno = %s,
+                            ape_materno = %s,
+                            nombres = %s,
+                            name = %s,
+                            genero_id = %s,
+                            fecha_nacimiento = %s,
+                            edad = %s
+                    WHERE id = %s
+                    """, (ape_paterno, ape_materno, nombres, name, genero.id if genero else None, fecha_nacimiento, edad_year, record_id,))
+            except Exception as e:
+                # Si el UPDATE falla por algún campo, al menos actualizar el name
+                try:
+                    self.env.cr.execute("UPDATE minsa_agente_comunitario SET name = %s WHERE id = %s", (name, record_id))
+                except Exception:
+                    pass
         else:
             materno = ""
-            if self.ape_materno:
-                materno = self.ape_materno
-            name = u"{} {} {}".format(res.ape_paterno, materno, res.nombres)
+            if res.ape_materno:
+                materno = res.ape_materno
+            name = u"{} {} {}".format(res.ape_paterno or '', materno, res.nombres or '').strip()
             self.env.cr.execute("""
                 UPDATE minsa_agente_comunitario
                     SET name = %s
@@ -634,41 +652,50 @@ def write(self, values):
     for rec in self:
         # lógica para actualizar datos desde RENIEC si aplica
         if rec.tipo_documento in [_DNI, _CARNE_EXTRANJERIA]:
-            data, errors = consulta_reniec(rec, rec.tipo_documento, rec.numero_documento)
-            data = data[1]
-            ape_paterno = data.get('apellidoPaterno', False)
-            ape_materno = data.get('apellidoMaterno', False)
-            nombres = data.get('nombres', False)
+            errors, data = consulta_reniec(rec, rec.tipo_documento, rec.numero_documento)
+            if not data:
+                data = {}
+            ape_paterno = data.get('apellidoPaterno', False) or rec.ape_paterno or ''
+            ape_materno = data.get('apellidoMaterno', False) or rec.ape_materno or ''
+            nombres = data.get('nombres', False) or rec.nombres or 'AGENTE'
             genero = rec.env['minsa.genero'].search([('codigo', '=', data.get('genero', False))], limit=1)
             fecha = data.get('fechaNacimiento', False)
-            fecnac = fecha[:4] + '-' + fecha[4:6] + '-' + fecha[6:8]
-            fecha_nacimiento = fecnac
+            fecha_nacimiento = None
             edad_year = None
-            if fecha_nacimiento:
-                birth_date = fields.Date.from_string(fecha_nacimiento)
-                delta = date.today() - birth_date
-                edad_year = delta.days // 365
-            else:
-                self.fecha_nacimiento._compute_edad(self)
-                edad_year = self.fecha_nacimiento
+            if fecha and len(str(fecha)) >= 8:
+                try:
+                    fecnac = str(fecha)[:4] + '-' + str(fecha)[4:6] + '-' + str(fecha)[6:8]
+                    fecha_nacimiento = fecnac
+                    birth_date = fields.Date.from_string(fecha_nacimiento)
+                    from datetime import date as dt_date
+                    delta = dt_date.today() - birth_date
+                    edad_year = delta.days // 365
+                except Exception:
+                    fecha_nacimiento = None
+                    edad_year = None
 
-            name = u"{} {} {}".format(ape_paterno, ape_materno, nombres)
+            name = u"{} {} {}".format(ape_paterno, ape_materno, nombres).strip()
 
-            # aquí sí puedes hacer SQL para estos campos que sí existen:
-            rec.env.cr.execute("""
-                UPDATE minsa_agente_comunitario
-                   SET ape_paterno = %s,
-                       ape_materno = %s,
-                       nombres = %s,
-                       name = %s,
-                       genero_id = %s,
-                       fecha_nacimiento = %s,
-                       edad = %s
-                 WHERE id = %s
-            """, (ape_paterno, ape_materno, nombres, name, genero.id, fecha_nacimiento, edad_year, rec.id))
+            try:
+                rec.env.cr.execute("""
+                    UPDATE minsa_agente_comunitario
+                       SET ape_paterno = %s,
+                           ape_materno = %s,
+                           nombres = %s,
+                           name = %s,
+                           genero_id = %s,
+                           fecha_nacimiento = %s,
+                           edad = %s
+                     WHERE id = %s
+                """, (ape_paterno, ape_materno, nombres, name, genero.id if genero else None, fecha_nacimiento, edad_year, rec.id))
+            except Exception:
+                try:
+                    rec.env.cr.execute("UPDATE minsa_agente_comunitario SET name = %s WHERE id = %s", (name, rec.id))
+                except Exception:
+                    pass
         else:
             materno = rec.ape_materno or ""
-            name = u"{} {} {}".format(rec.ape_paterno, materno, rec.nombres)
+            name = u"{} {} {}".format(rec.ape_paterno or '', materno, rec.nombres or '').strip()
             rec.env.cr.execute("""
                 UPDATE minsa_agente_comunitario
                    SET name = %s
