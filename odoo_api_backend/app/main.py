@@ -1,10 +1,11 @@
-from fastapi import FastAPI, HTTPException, Depends, Security, status, Query
+from fastapi import FastAPI, HTTPException, Depends, Security, status, Query, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional, Any
 from datetime import date
 import os
+import traceback
 
 from app.config import settings
 from app.odoo_client import odoo_client
@@ -30,6 +31,34 @@ app = FastAPI(
     description="API intermedia tipo CRUD en Python para interactuar con los servicios de Odoo 14 desde aplicaciones móviles (Flutter) y web.",
     version="1.0.0"
 )
+
+# Registrar errores detalladamente en un archivo de log local
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    error_msg = f"❌ Exception en {request.method} {request.url.path}: {str(exc)}\n"
+    error_msg += "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    
+    # Escribir en error.log
+    with open("error.log", "a", encoding="utf-8") as f:
+        f.write("\n" + "="*50 + "\n" + error_msg + "\n" + "="*50 + "\n")
+        
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Error interno en la API intermedia: {str(exc)}"}
+    )
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    error_msg = f"⚠️ HTTPException en {request.method} {request.url.path} [{exc.status_code}]: {exc.detail}\n"
+    
+    # Escribir en error.log
+    with open("error.log", "a", encoding="utf-8") as f:
+        f.write("\n" + "="*50 + "\n" + error_msg + "\n" + "="*50 + "\n")
+        
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
 
 # Habilitar CORS para permitir consumo desde Flutter Web y navegadores
 app.add_middleware(

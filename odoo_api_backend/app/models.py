@@ -43,6 +43,12 @@ class AgenteComunitarioBase(BaseModel):
     genero_id: Optional[int] = Field(None, description="ID de Género (minsa.genero)")
     etnia_id: Optional[int] = Field(None, description="ID de Etnia (minsa.etnia)")
     seguro_id: Optional[int] = Field(None, description="ID de Seguro (minsa.seguro)")
+    
+    # Ubigeo
+    state_id: Optional[int] = Field(None, description="ID de Departamento (res.country.state)")
+    province_id: Optional[int] = Field(None, description="ID de Provincia (res.country.state)")
+    district_id: Optional[int] = Field(None, description="ID de Distrito (res.country.state)")
+
     # Many2many: puede tener múltiples idiomas/dialectos
     dialecto_ids: Optional[List[int]] = Field(None, description="IDs de Idiomas/Dialectos (minsa.dialecto)")
     grado_instruccion_id: Optional[int] = Field(None, description="ID de Grado Instrucción (minsa.grado.instruccion)")
@@ -77,6 +83,11 @@ class AgenteComunitarioUpdate(BaseModel):
     genero_id: Optional[int] = None
     etnia_id: Optional[int] = None
     seguro_id: Optional[int] = None
+    
+    state_id: Optional[int] = None
+    province_id: Optional[int] = None
+    district_id: Optional[int] = None
+
     # Many2many
     dialecto_ids: Optional[List[int]] = None
     grado_instruccion_id: Optional[int] = None
