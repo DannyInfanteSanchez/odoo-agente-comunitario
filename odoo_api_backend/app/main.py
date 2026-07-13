@@ -909,13 +909,19 @@ def get_catalogos(
     Endpoint consolidado que devuelve todos los catálogos necesarios para la app móvil
     en una sola llamada HTTP. Filtra redes, microredes y establecimientos por diresa_id.
     """
-    def safe_read(model, domain, fields, limit=500, order="name asc"):
+    def safe_read(model, domain, fields, limit=5000, order="name asc"):
         try:
-            return odoo_client.search_read(model=model, domain=domain, fields=fields, limit=limit, order=order)
+            data = odoo_client.search_read(model=model, domain=domain, fields=fields, limit=limit, order=order)
+            # Flatten Many2one fields
+            for item in data:
+                for key, value in item.items():
+                    if isinstance(value, (list, tuple)) and len(value) == 2:
+                        item[key] = value[0]
+            return data
         except Exception:
             return []
 
-    # Catálogos auxiliares (no dependen de DIRESA)
+    # Catálogos auxiliares
     generos         = safe_read("minsa.genero",             [], ["id", "name"])
     etnias          = safe_read("minsa.etnia",              [], ["id", "name"])
     seguros         = safe_read("minsa.seguro",            [], ["id", "name"])
@@ -925,8 +931,10 @@ def get_catalogos(
     niveles         = safe_read("minsa.nivel.agente",      [], ["id", "name"])
     estandares      = safe_read("minsa.estandar.laboral",  [], ["id", "name"])
     operadores      = safe_read("minsa.operador.mobil",    [], ["id", "name"])
+    tipos_doc       = safe_read("minsa.tipo.documento",    [], ["id", "name"])
+    regionales      = safe_read("minsa.regional",          [], ["id", "name"])
 
-    # Tablas RENIPRESS (dependen de DIRESA si se proporciona)
+    # Tablas RENIPRESS
     domain_diresa = [("active", "=", True)]
     if diresa_id:
         domain_diresa.append(("diresa_id", "=", diresa_id))
@@ -934,9 +942,10 @@ def get_catalogos(
     diresas = safe_read("renipress.diresa",   [("active", "=", True)], ["id", "name", "codigo_diresa"])
     redes   = safe_read("renipress.red",      domain_diresa,           ["id", "name", "codigo_red", "diresa_id"])
     micros  = safe_read("renipress.microred", domain_diresa,           ["id", "name", "codigo_microred", "red_id"])
-    renipres= safe_read("renipress.eess",     domain_diresa,           ["id", "name", "codigo_eess", "diresa_id", "red_id", "microred_id", "categoria", "condicion"], limit=2000)
+    renipres= safe_read("renipress.eess",     domain_diresa,           ["id", "name", "codigo_eess", "diresa_id", "red_id", "microred_id", "categoria", "condicion"])
 
     return {
+        "tipos_documento":      tipos_doc,
         "generos":              generos,
         "etnias":               etnias,
         "tipos_seguro":         seguros,
@@ -946,8 +955,11 @@ def get_catalogos(
         "niveles_agente":       niveles,
         "estandares_competencia": estandares,
         "operadores_celular":   operadores,
+        "regionales":           regionales,
         "diresas":              diresas,
         "redes":                redes,
         "microredes":           micros,
         "renipres":             renipres,
+        "minsa_agente":         [],
+        "registro_detalle_agente": [],
     }
