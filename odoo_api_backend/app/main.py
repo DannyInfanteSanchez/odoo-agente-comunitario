@@ -894,11 +894,60 @@ def get_ubigeos():
 
     except Exception as e:
         # Failover robusto para que la aplicación móvil no falle
-        return {
-            "departamentos": [],
-            "provincias": [],
-            "distritos": []
-        }
+        return {"departamentos": [], "provincias": [], "distritos": []}
 
 
+# =====================================================================
+# ENDPOINT CONSOLIDADO: CATALOGOS (para la app móvil Flutter)
+# =====================================================================
+@app.get("/api/catalogos", tags=["Tablas Maestras"])
+def get_catalogos(
+    diresa_id: Optional[int] = None,
+    token: str = Depends(verify_token)
+):
+    """
+    Endpoint consolidado que devuelve todos los catálogos necesarios para la app móvil
+    en una sola llamada HTTP. Filtra redes, microredes y establecimientos por diresa_id.
+    """
+    def safe_read(model, domain, fields, limit=500, order="name asc"):
+        try:
+            return odoo_client.search_read(model=model, domain=domain, fields=fields, limit=limit, order=order)
+        except Exception:
+            return []
 
+    # Catálogos auxiliares (no dependen de DIRESA)
+    generos         = safe_read("minsa.genero",             [], ["id", "name"])
+    etnias          = safe_read("minsa.etnia",              [], ["id", "name"])
+    seguros         = safe_read("minsa.seguro",            [], ["id", "name"])
+    dialectos       = safe_read("minsa.dialecto",          [], ["id", "name"])
+    grados          = safe_read("minsa.grado.instruccion", [], ["id", "name"])
+    voluntariados   = safe_read("minsa.tipo.voluntariado", [], ["id", "name"])
+    niveles         = safe_read("minsa.nivel.agente",      [], ["id", "name"])
+    estandares      = safe_read("minsa.estandar.laboral",  [], ["id", "name"])
+    operadores      = safe_read("minsa.operador.mobil",    [], ["id", "name"])
+
+    # Tablas RENIPRESS (dependen de DIRESA si se proporciona)
+    domain_diresa = [("active", "=", True)]
+    if diresa_id:
+        domain_diresa.append(("diresa_id", "=", diresa_id))
+
+    diresas = safe_read("renipress.diresa",   [("active", "=", True)], ["id", "name", "codigo_diresa"])
+    redes   = safe_read("renipress.red",      domain_diresa,           ["id", "name", "codigo_red", "diresa_id"])
+    micros  = safe_read("renipress.microred", domain_diresa,           ["id", "name", "codigo_microred", "red_id"])
+    renipres= safe_read("renipress.eess",     domain_diresa,           ["id", "name", "codigo_eess", "diresa_id", "red_id", "microred_id", "categoria", "condicion"], limit=2000)
+
+    return {
+        "generos":              generos,
+        "etnias":               etnias,
+        "tipos_seguro":         seguros,
+        "idiomas_dialectos":    dialectos,
+        "grados_instruccion":   grados,
+        "tipos_voluntariado":   voluntariados,
+        "niveles_agente":       niveles,
+        "estandares_competencia": estandares,
+        "operadores_celular":   operadores,
+        "diresas":              diresas,
+        "redes":                redes,
+        "microredes":           micros,
+        "renipres":             renipres,
+    }
