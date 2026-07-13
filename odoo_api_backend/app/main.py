@@ -84,7 +84,8 @@ def login_user(login_data: UserLogin):
                     "red_id", 
                     "establecimiento_id",
                     "es_grupo_admin",
-                    "es_grupo_establecimiento"
+                    "es_grupo_establecimiento",
+                    "login"
                 ],
                 limit=1
             )
@@ -94,14 +95,16 @@ def login_user(login_data: UserLogin):
                 diresa_id = extract_many2one_id(user.get("diresa_id"))
                 red_id = extract_many2one_id(user.get("red_id"))
                 est_id = extract_many2one_id(user.get("establecimiento_id"))
+                user_login = str(user.get("login", "")).strip().lower()
                 
                 # Determinar rol:
-                # Si tiene es_grupo_admin marcado -> 'ambos' (Administrador completo)
-                # Si es grupo establecimiento, o tiene establecimiento_id asignado y no es admin -> 'agente' (Usuario base)
                 is_admin = user.get("es_grupo_admin", False)
                 is_renipress = user.get("es_grupo_establecimiento", False)
                 
-                if is_admin:
+                # Bypass explícito de seguridad para el usuario de pruebas o base
+                if user_login == "koboscg@gmail.com":
+                    rol_id = "agente"
+                elif is_admin:
                     rol_id = "ambos"
                 elif is_renipress or est_id is not None:
                     rol_id = "agente"
@@ -112,12 +115,14 @@ def login_user(login_data: UserLogin):
                 red_id = None
                 est_id = None
                 rol_id = "ambos"
+                if username.lower() == "koboscg@gmail.com":
+                    rol_id = "agente"
         except Exception as e:
             # Fallback en caso de error de lectura de campos
             diresa_id = None
             red_id = None
             est_id = None
-            rol_id = "ambos"
+            rol_id = "agente" if username.lower() == "koboscg@gmail.com" else "ambos"
 
         return {
             "error": 0,
