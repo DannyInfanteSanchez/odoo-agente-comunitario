@@ -191,14 +191,26 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Security(security))
 @app.post("/api/reniec-bypass")
 def reniec_bypass(payload: dict = None):
     """
-    Retorna una respuesta exitosa (HTTP 200) simulada para evitar que la validación de Odoo 
-    se caiga al intentar hacer consultas a un API de RENIEC inexistente o desconfigurado.
+    Retorna una respuesta exitosa (HTTP 200) simulada con todas las variantes de campos
+    para evitar que el parser del módulo de Odoo falle al buscar datos del agente.
     """
     return {
         "coResultado": "0000",
+        "co_resultado": "0000",
+        "code": "0000",
+        "success": True,
+        "error": None,
         "datosPersona": {
             "apPrimer": "VALIDADO",
             "apSegundo": "SISTEMA",
+            "prenombres": "AGENTE",
+            "ap_primer": "VALIDADO",
+            "ap_segundo": "SISTEMA",
+            "direccion": "DIRECCION ACS"
+        },
+        "datos_persona": {
+            "ap_primer": "VALIDADO",
+            "ap_segundo": "SISTEMA",
             "prenombres": "AGENTE"
         }
     }
