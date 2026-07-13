@@ -2,11 +2,12 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install dependencies
+# Usar cache de pip para evitar descargar de internet si no han cambiado dependencias
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r requirements.txt
 
-# Copy application code
+# Copiar el código del app (esta capa cambia frecuentemente, pero es instantánea)
 COPY app/ ./app/
 
 # Expose port
