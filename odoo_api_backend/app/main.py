@@ -782,9 +782,14 @@ def get_ubigeos():
         # 1. Obtener Departamentos (res.country.state)
         # Código de Perú es PE. country_id.code == 'PE'
         try:
+            # En Odoo 14 toponimos_peru, los Departamentos son res.country.state con state_id y province_id en False/null
             deps_raw = odoo_client.search_read(
                 model="res.country.state",
-                domain=[("country_id.code", "=", "PE")],
+                domain=[
+                    ("country_id.code", "=", "PE"),
+                    ("state_id", "=", False),
+                    ("province_id", "=", False)
+                ],
                 fields=["id", "name"],
                 limit=100
             )
@@ -792,7 +797,9 @@ def get_ubigeos():
         except Exception:
             departamentos = []
 
-        # 2. Obtener Provincias (res.country.state.province)
+        # 2. Obtener Provincias
+        # En Odoo, si existe el modelo específico 'res.country.state.province', lo usamos.
+        # Si no, caemos a consultar res.country.state con state_id != False y province_id == False.
         try:
             provs_raw = odoo_client.search_read(
                 model="res.country.state.province",
@@ -809,9 +816,32 @@ def get_ubigeos():
                 for p in provs_raw
             ]
         except Exception:
-            provincias = []
+            try:
+                # Fallback: consultar res.country.state para provincias
+                provs_raw = odoo_client.search_read(
+                    model="res.country.state",
+                    domain=[
+                        ("country_id.code", "=", "PE"),
+                        ("state_id", "!=", False),
+                        ("province_id", "=", False)
+                    ],
+                    fields=["id", "name", "state_id"],
+                    limit=600
+                )
+                provincias = [
+                    {
+                        "id": p["id"],
+                        "nombre": p["name"],
+                        "departamento_id": p["state_id"][0] if isinstance(p["state_id"], (list, tuple)) else p["state_id"]
+                    }
+                    for p in provs_raw
+                ]
+            except Exception:
+                provincias = []
 
-        # 3. Obtener Distritos (res.country.state.district)
+        # 3. Obtener Distritos
+        # En Odoo, si existe el modelo específico 'res.country.state.district', lo usamos.
+        # Si no, caemos a consultar res.country.state con state_id != False y province_id != False.
         try:
             dists_raw = odoo_client.search_read(
                 model="res.country.state.district",
@@ -828,7 +858,28 @@ def get_ubigeos():
                 for d in dists_raw
             ]
         except Exception:
-            distritos = []
+            try:
+                # Fallback: consultar res.country.state para distritos
+                dists_raw = odoo_client.search_read(
+                    model="res.country.state",
+                    domain=[
+                        ("country_id.code", "=", "PE"),
+                        ("state_id", "!=", False),
+                        ("province_id", "!=", False)
+                    ],
+                    fields=["id", "name", "province_id"],
+                    limit=3000
+                )
+                distritos = [
+                    {
+                        "id": d["id"],
+                        "nombre": d["name"],
+                        "provincia_id": d["province_id"][0] if isinstance(d["province_id"], (list, tuple)) else d["province_id"]
+                    }
+                    for d in dists_raw
+                ]
+            except Exception:
+                distritos = []
 
         return {
             "departamentos": departamentos,
