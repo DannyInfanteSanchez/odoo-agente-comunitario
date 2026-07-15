@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINSA - Odoo API Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.3);
+            --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.2);
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Header & Brand */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .brand-title h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-title p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Connection Status */
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .status-dot.online {
+            background-color: var(--success);
+            color: var(--success);
+        }
+
+        .status-dot.offline {
+            background-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* Main Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Configuration Panel */
+        .config-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            backdrop-filter: blur(12px);
+            height: fit-content;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.65rem 1rem;
+            font-family: var(--font-main);
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #059669);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 4px 12px var(--success-glow);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning), #d97706);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+        }
+
+        /* Content Area */
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .table-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .search-wrapper {
+            display: flex;
+            gap: 0.75rem;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+
+        /* Data Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #111827;
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 650px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #1f2937;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 200;
+            transform: translateY(150%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .toast.active {
+            transform: translateY(0);
+        }
+
+        .toast-success {
+            border-left-color: var(--success);
+        }
+
+        .toast-danger {
+            border-left-color: var(--danger);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .master-tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .master-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-main);
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .master-tab-btn.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid var(--card-border);
+        }
+
+        .agent-photo-thumb {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--card-border);
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header>
+        <div class="brand-section">
+            <div class="brand-logo">M</div>
+            <div class="brand-title">
+                <h1>MINSA - Odoo API Dashboard</h1>
+                <p>Consola Visual de Pruebas CRUD (Agentes, Fichas y Maestros)</p>
+            </div>
+        </div>
+        <div class="status-badge">
+            <div id="connection-dot" class="status-dot"></div>
+            <span id="connection-text">Verificando conexión...</span>
+        </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <div class="main-layout">
+        
+        <!-- Left configuration sidebar -->
+        <aside class="config-card">
+            <h2 class="card-title">Configuración</h2>
+            
+            <div class="input-group">
+                <label for="bearer-token">Bearer Authorization Token</label>
+                <input type="password" id="bearer-token" placeholder="Introduce el API_BEARER_TOKEN">
+            </div>
+
+            <button class="btn" onclick="saveToken()">Guardar Credenciales</button>
+            
+            <h2 class="card-title" style="margin-top: 1.5rem;">Navegación</h2>
+            <div class="tabs-nav">
+                <button id="tab-agentes-btn" class="tab-btn active" onclick="switchTab('agentes')">Agentes</button>
+                <button id="tab-fichas-btn" class="tab-btn" onclick="switchTab('fichas')">Fichas / Registros</button>
+                <button id="tab-maestros-btn" class="tab-btn" onclick="switchTab('maestros')">Tablas Maestras (RENIPRESS)</button>
+            </div>
+        </aside>
+
+        <!-- Tab 1: Agentes Comunitarios -->
+        <main id="tab-agentes" class="content-card">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Listado de Agentes Comunitarios</h2>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Buscar por Nombre o DNI..." style="flex-grow: 1; background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.5rem 1rem; color: white;">
+                    <button class="btn" onclick="fetchAgents()">Buscar</button>
+                    <button class="btn btn-success" onclick="openCreateModal()">+ Crear Agente</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre Completo</th>
+                            <th>Nro. Documento</th>
+                            <th>Celular</th>
+                            <th>Email</th>
+                            <th>Establecimiento (Odoo ID)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Introduce tu Token y haz clic en Buscar para cargar los agentes.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Tab 2: Fichas de Registros -->
+        <main id="tab-fichas" class="content-card hidden">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Listado de Fichas de Registros</h2>
+                <div class="search-wrapper" style="justify-content: flex-end;">
+                    <button class="btn btn-success" onclick="openFichaModal()">+ Registrar Ficha</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Ficha</th>
+                            <th>DIRESA / RENIPRESS</th>
+                            <th>Tipo</th>
+                            <th>Miembros</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fichas-tbody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Carga las fichas desde el servidor de Odoo.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Tab 3: Tablas Maestras -->
+        <main id="tab-maestros" class="content-card hidden">
+            <div class="table-actions">
+                <h2 style="font-size: 1.25rem; font-weight: 600;">Visualización de Tablas Maestras (RENIPRESS)</h2>
+            </div>
+            
+            <div class="master-tabs">
+                <button id="mt-diresas-btn" class="master-tab-btn active" onclick="switchMasterTab('diresas')">DIRESAS</button>
+                <button id="mt-redes-btn" class="master-tab-btn" onclick="switchMasterTab('redes')">REDES</button>
+                <button id="mt-microredes-btn" class="master-tab-btn" onclick="switchMasterTab('microredes')">MICROREDES</button>
+                <button id="mt-eess-btn" class="master-tab-btn" onclick="switchMasterTab('eess')">ESTABLECIMIENTOS (EESS)</button>
+            </div>
+
+            <!-- Master Data Tables Containers -->
+            <div id="master-diresas-container" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre DIRESA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-diresas-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-redes-container" class="table-container hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre Red</th>
+                            <th>DIRESA Asociada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-redes-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-microredes-container" class="table-container hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código</th>
+                            <th>Nombre Microred</th>
+                            <th>Red Asociada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-microredes-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="master-eess-container" class="table-container hidden">
+                <div style="padding: 1rem; display: flex; gap: 1rem; border-bottom: 1px solid var(--card-border);">
+                    <input type="text" id="eess-search-input" placeholder="Buscar establecimiento por nombre o código..." style="flex-grow: 1; background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.5rem 1rem; color: white;">
+                    <button class="btn" onclick="fetchMasterEess()">Buscar Establecimientos</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Odoo</th>
+                            <th>Código RENIPRESS</th>
+                            <th>Nombre Establecimiento</th>
+                            <th>Dirección</th>
+                            <th>Categoría</th>
+                            <th>Condición</th>
+                        </tr>
+                    </thead>
+                    <tbody id="master-eess-tbody">
+                        <tr><td colspan="6" style="text-align:center; padding: 1.5rem; color: var(--text-muted);">Haz clic en Buscar Establecimientos para cargar los datos.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Agent Modal (Create & Edit) -->
+    <div class="modal" id="create-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="agent-modal-title">Registrar Nuevo Agente Comunitario</h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeCreateModal()">X</button>
+            </div>
+            
+            <form id="agent-form" onsubmit="handleAgentSubmit(event)">
+                <input type="hidden" id="form-agent-id">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="form-tipo-doc">Tipo Documento *</label>
+                        <select id="form-tipo-doc" required>
+                            <option value="01">DNI</option>
+                            <option value="03">Carné Extranjería</option>
+                            <option value="07">Pasaporte</option>
+                            <option value="23">Carné PTP</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="form-num-doc">Nro. Documento *</label>
+                        <input type="text" id="form-num-doc" required placeholder="Ej: 71234567">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-ape-pat">Apellido Paterno *</label>
+                        <input type="text" id="form-ape-pat" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="form-ape-mat">Apellido Materno</label>
+                        <input type="text" id="form-ape-mat">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-nombres">Nombres *</label>
+                        <input type="text" id="form-nombres" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="form-celular">Celular</label>
+                        <input type="text" id="form-celular">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-email">Email</label>
+                        <input type="email" id="form-email">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-fecha-nac">Fecha Nacimiento</label>
+                        <input type="date" id="form-fecha-nac">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-establecimiento">RENIPRESS (Odoo ID) *</label>
+                        <input type="number" id="form-establecimiento" required placeholder="Ej: 1" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="form-diresa">DIRESA (Odoo ID) *</label>
+                        <input type="number" id="form-diresa" required placeholder="Ej: 1" value="1">
+                    </div>
+                    <div class="input-group" style="grid-column: span 2;">
+                        <label for="form-direccion">Dirección *</label>
+                        <input type="text" id="form-direccion" required placeholder="Ej: Av. Salaverry 801, Jesús María, Lima">
+                    </div>
+                    
+                    <!-- Binary Photo Field -->
+                    <div class="input-group" style="grid-column: span 2;">
+                        <label for="form-foto">Foto del Agente *</label>
+                        <input type="file" id="form-foto" accept="image/*" onchange="previewImage(event)">
+                        <div id="photo-preview-container" style="display: none; margin-top: 0.5rem; align-items: center; gap: 1rem;">
+                            <img id="photo-preview-img" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 1px solid var(--card-border);">
+                            <span style="font-size: 0.8rem; color: var(--text-muted)">Vista previa de la imagen cargada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="closeCreateModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-success" id="agent-submit-btn">Guardar en Odoo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ficha Modal -->
+    <div class="modal" id="ficha-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Registrar Nueva Ficha de Registro</h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeFichaModal()">X</button>
+            </div>
+            
+            <form id="ficha-form" onsubmit="handleFichaSubmit(event)">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="ficha-tipo-reg">Tipo Registro *</label>
+                        <select id="ficha-tipo-reg" required>
+                            <option value="agente">Agente Comunitario de Salud</option>
+                            <option value="comite">Comité Comunitario</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="ficha-name">Nombre de Comité (Solo si es comité)</label>
+                        <input type="text" id="ficha-name" placeholder="Ej: Comité Sector 4">
+                    </div>
+                    <div class="input-group">
+                        <label for="ficha-diresa">DIRESA (Odoo ID) *</label>
+                        <input type="number" id="ficha-diresa" required value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="ficha-establecimiento">RENIPRESS (Odoo ID) *</label>
+                        <input type="number" id="ficha-establecimiento" required value="1">
+                    </div>
+                    
+                    <h3 style="grid-column: span 2; margin-top: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.5rem;">
+                        Asociar Agente Comunitario a la Ficha
+                    </h3>
+                    
+                    <div class="input-group">
+                        <label for="ficha-agente-id">ID de Agente Comunitario *</label>
+                        <input type="number" id="ficha-agente-id" required placeholder="Ej: 1">
+                    </div>
+                    <div class="input-group">
+                        <label for="ficha-fecha-ini">Fecha de Inicio Actividad *</label>
+                        <input type="date" id="ficha-fecha-ini" required>
+                    </div>
+
+                    <!-- New Attachment Upload Field (Many2many ir.attachment) -->
+                    <div class="input-group" style="grid-column: span 2; margin-top: 1rem;">
+                        <label for="ficha-archivo">Documento Adjunto (Acta/Documento obligatorio en Odoo) *</label>
+                        <input type="file" id="ficha-archivo" required onchange="loadFichaFile(event)">
+                        <span style="font-size:0.75rem; color:var(--text-muted);">Puedes subir PDFs, archivos de Word, Excel o imágenes.</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="closeFichaModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Crear Ficha en Odoo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ficha Detail Modal -->
+    <div class="modal" id="ficha-detail-modal">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <h2>Detalle de Ficha de Registro #<span id="detail-ficha-id"></span></h2>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;" onclick="closeFichaDetailModal()">X</button>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="form-grid" style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px;">
+                    <div><strong>Tipo Registro:</strong> <span id="detail-ficha-tipo"></span></div>
+                    <div><strong>Estado:</strong> <span id="detail-ficha-estado" class="badge"></span></div>
+                    <div><strong>Establecimiento:</strong> <span id="detail-ficha-eess"></span></div>
+                    <div><strong>DIRESA:</strong> <span id="detail-ficha-diresa"></span></div>
+                    <div style="grid-column: span 2;"><strong>Documentos Adjuntos:</strong> <span id="detail-ficha-docs"></span></div>
+                </div>
+
+                <h3>Miembros / Detalle de Agentes</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Documento</th>
+                                <th>Fecha Inicio</th>
+                                <th>Estado Agente</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detail-miembros-tbody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;" id="detail-workflow-actions">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <span id="toast-message">Notificación</span>
+    </div>
+
+    <script>
+        // Global variables to hold base64 image and document data
+        let base64Photo = null;
+        let base64FichaDoc = null;
+        let fichaDocName = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedToken = localStorage.getItem("MINSA_BEARER_TOKEN");
+            if (savedToken) {
+                document.getElementById("bearer-token").value = savedToken;
+            }
+            checkHealth();
+            fetchAgents();
+            fetchFichas();
+            setInterval(checkHealth, 30000);
+        });
+
+        // Convert agent photo file to raw base64 string
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function() {
+                const imgEl = document.getElementById("photo-preview-img");
+                imgEl.src = reader.result;
+                document.getElementById("photo-preview-container").style.display = "flex";
+                base64Photo = reader.result.split(',')[1];
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Convert Ficha document file to raw base64 string
+        function loadFichaFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            fichaDocName = file.name;
+            const reader = new FileReader();
+            reader.onload = function() {
+                base64FichaDoc = reader.result.split(',')[1];
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(`tab-${tab}-btn`).classList.add("active");
+
+            document.getElementById("tab-agentes").classList.add("hidden");
+            document.getElementById("tab-fichas").classList.add("hidden");
+            document.getElementById("tab-maestros").classList.add("hidden");
+            document.getElementById(`tab-${tab}`).classList.remove("hidden");
+
+            if (tab === 'maestros') {
+                fetchMasterDiresas();
+                fetchMasterRedes();
+                fetchMasterMicroredes();
+            }
+        }
+
+        function switchMasterTab(mTab) {
+            document.querySelectorAll(".master-tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(`mt-${mTab}-btn`).classList.add("active");
+
+            document.getElementById("master-diresas-container").classList.add("hidden");
+            document.getElementById("master-redes-container").classList.add("hidden");
+            document.getElementById("master-microredes-container").classList.add("hidden");
+            document.getElementById("master-eess-container").classList.add("hidden");
+            
+            document.getElementById(`master-${mTab}-container`).classList.remove("hidden");
+        }
+
+        function saveToken() {
+            const token = document.getElementById("bearer-token").value;
+            localStorage.setItem("MINSA_BEARER_TOKEN", token);
+            showToast("Token guardado correctamente", "success");
+            checkHealth();
+            fetchAgents();
+            fetchFichas();
+        }
+
+        function getHeaders() {
+            const token = localStorage.getItem("MINSA_BEARER_TOKEN") || "";
+            return {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            };
+        }
+
+        async function checkHealth() {
+            const dot = document.getElementById("connection-dot");
+            const text = document.getElementById("connection-text");
+            
+            try {
+                const response = await fetch("/health");
+                const data = await response.json();
+                if (data.status === "online" && data.odoo_connected) {
+                    dot.className = "status-dot online";
+                    text.innerText = `Odoo Conectado (UID: ${data.odoo_uid})`;
+                } else {
+                    dot.className = "status-dot offline";
+                    text.innerText = "API Degradada - Odoo desconectado";
+                }
+            } catch (error) {
+                dot.className = "status-dot offline";
+                text.innerText = "Servidor API offline";
+            }
+        }
+
+        // ==========================================
+        // AGENTES COMUNITARIOS LOGIC
+        // ==========================================
+        async function fetchAgents() {
+            const tbody = document.getElementById("agents-tbody");
+            const search = document.getElementById("search-input").value;
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Cargando...</td></tr>`;
+            
+            let url = "/api/agentes?limit=50";
+            if (search) {
+                if (/^\d+$/.test(search)) {
+                    url += `&numero_documento=${encodeURIComponent(search)}`;
+                } else {
+                    url += `&name=${encodeURIComponent(search)}`;
+                }
+            }
+
+            try {
+                const res = await fetch(url, { headers: getHeaders() });
+                if (res.status === 401) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error 401: Token inválido.</td></tr>`;
+                    return;
+                }
+                const agents = await res.json();
+                
+                if (agents.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No se encontraron agentes.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = agents.map(agent => {
+                    const photoSrc = agent.foto ? `data:image/png;base64,${agent.foto}` : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+                    return `
+                        <tr>
+                            <td><img src="${photoSrc}" class="agent-photo-thumb" alt="Foto"></td>
+                            <td style="font-weight: 500;">${agent.name || `${agent.ape_paterno} ${agent.nombres}`}</td>
+                            <td><span class="badge">${agent.tipo_documento === '01' ? 'DNI' : 'Otro'}</span> ${agent.numero_documento}</td>
+                            <td>${agent.celular || '-'}</td>
+                            <td>${agent.email || '-'}</td>
+                            <td>${agent.establecimiento_id ? (Array.isArray(agent.establecimiento_id) ? agent.establecimiento_id[1] : agent.establecimiento_id) : '-'}</td>
+                            <td>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="openEditModal(${JSON.stringify(agent).replace(/"/g, '&quot;')})">Editar</button>
+                                    <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="deleteAgent(${agent.id})">Archivar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function openCreateModal() {
+            document.getElementById("agent-modal-title").innerText = "Registrar Nuevo Agente Comunitario";
+            document.getElementById("form-agent-id").value = "";
+            document.getElementById("agent-form").reset();
+            document.getElementById("photo-preview-container").style.display = "none";
+            base64Photo = null;
+            document.getElementById("create-modal").classList.add("active");
+        }
+
+        function openEditModal(agent) {
+            document.getElementById("agent-modal-title").innerText = "Editar Agente Comunitario";
+            document.getElementById("form-agent-id").value = agent.id;
+            
+            document.getElementById("form-tipo-doc").value = agent.tipo_documento;
+            document.getElementById("form-num-doc").value = agent.numero_documento;
+            document.getElementById("form-ape-pat").value = agent.ape_paterno || "";
+            document.getElementById("form-ape-mat").value = agent.ape_materno || "";
+            document.getElementById("form-nombres").value = agent.nombres || "";
+            document.getElementById("form-celular").value = agent.celular || "";
+            document.getElementById("form-email").value = agent.email || "";
+            document.getElementById("form-fecha-nac").value = agent.fecha_nacimiento || "";
+            document.getElementById("form-direccion").value = agent.direccion || "";
+            
+            const getRelId = (val) => Array.isArray(val) ? val[0] : (val || 1);
+            document.getElementById("form-establecimiento").value = getRelId(agent.establecimiento_id);
+            document.getElementById("form-diresa").value = getRelId(agent.diresa_id);
+            
+            if (agent.foto) {
+                document.getElementById("photo-preview-img").src = `data:image/png;base64,${agent.foto}`;
+                document.getElementById("photo-preview-container").style.display = "flex";
+                base64Photo = agent.foto;
+            } else {
+                document.getElementById("photo-preview-container").style.display = "none";
+                base64Photo = null;
+            }
+            
+            document.getElementById("create-modal").classList.add("active");
+        }
+
+        function closeCreateModal() {
+            document.getElementById("create-modal").classList.remove("active");
+        }
+
+        async function handleAgentSubmit(event) {
+            event.preventDefault();
+            const id = document.getElementById("form-agent-id").value;
+            
+            if (!base64Photo) {
+                showToast("La foto del agente es obligatoria por restricciones de Odoo.", "danger");
+                return;
+            }
+
+            const payload = {
+                tipo_documento: document.getElementById("form-tipo-doc").value,
+                numero_documento: document.getElementById("form-num-doc").value,
+                ape_paterno: document.getElementById("form-ape-pat").value,
+                ape_materno: document.getElementById("form-ape-mat").value || null,
+                nombres: document.getElementById("form-nombres").value,
+                celular: document.getElementById("form-celular").value || null,
+                email: document.getElementById("form-email").value || null,
+                fecha_nacimiento: document.getElementById("form-fecha-nac").value || null,
+                direccion: document.getElementById("form-direccion").value,
+                establecimiento_id: parseInt(document.getElementById("form-establecimiento").value),
+                diresa_id: parseInt(document.getElementById("form-diresa").value),
+                es_voluntario: true,
+                foto: base64Photo
+            };
+
+            const isEdit = id !== "";
+            const url = isEdit ? `/api/agentes/${id}` : "/api/agentes";
+            const method = isEdit ? "PUT" : "POST";
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: getHeaders(),
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error al procesar agente");
+                
+                showToast(isEdit ? "Agente actualizado exitosamente" : `Agente creado ID: ${data.id}`, "success");
+                closeCreateModal();
+                fetchAgents();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function deleteAgent(id) {
+            if (!confirm("¿Está seguro de archivar este agente en Odoo?")) return;
+            try {
+                const res = await fetch(`/api/agentes/${id}`, {
+                    method: "DELETE",
+                    headers: getHeaders()
+                });
+                if (!res.ok) throw new Error("Error al archivar");
+                showToast("Agente archivado correctamente", "success");
+                fetchAgents();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        // ==========================================
+        // FICHAS / REGISTROS LOGIC
+        // ==========================================
+        async function fetchFichas() {
+            const tbody = document.getElementById("fichas-tbody");
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Cargando...</td></tr>`;
+
+            try {
+                const res = await fetch("/api/registros?limit=50", { headers: getHeaders() });
+                if (!res.ok) throw new Error("Error al consultar fichas");
+                const fichas = await res.json();
+
+                if (fichas.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No hay fichas registradas.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = fichas.map(f => {
+                    const eess = Array.isArray(f.establecimiento_id) ? f.establecimiento_id[1] : (f.establecimiento_id || '-');
+                    const diresa = Array.isArray(f.diresa_id) ? f.diresa_id[1] : (f.diresa_id || '-');
+                    
+                    let badgeClass = 'badge-primary';
+                    if (f.estado === 'validado') badgeClass = 'badge-warning';
+                    if (f.estado === 'validado2') badgeClass = 'badge-success';
+
+                    return `
+                        <tr>
+                            <td style="font-weight: 500;">#${f.id}</td>
+                            <td>
+                                <div>${eess}</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">${diresa}</div>
+                            </td>
+                            <td><span class="badge">${f.tipo_registro}</span></td>
+                            <td>${f.cantidad_detalle} miembro(s)</td>
+                            <td><span class="badge ${badgeClass}">${f.estado}</span></td>
+                            <td>
+                                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="viewFichaDetail(${f.id})">Ver Detalles</button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function openFichaModal() {
+            document.getElementById("ficha-form").reset();
+            base64FichaDoc = null;
+            fichaDocName = null;
+            document.getElementById("ficha-modal").classList.add("active");
+        }
+
+        function closeFichaModal() {
+            document.getElementById("ficha-modal").classList.remove("active");
+        }
+
+        async function handleFichaSubmit(event) {
+            event.preventDefault();
+            
+            if (!base64FichaDoc) {
+                showToast("Es obligatorio adjuntar un archivo/documento para crear la ficha en Odoo.", "danger");
+                return;
+            }
+
+            const payload = {
+                tipo_registro: document.getElementById("ficha-tipo-reg").value,
+                name: document.getElementById("ficha-name").value || null,
+                diresa_id: parseInt(document.getElementById("ficha-diresa").value),
+                establecimiento_id: parseInt(document.getElementById("ficha-establecimiento").value),
+                tipo_archivo: "adjunto",
+                carga_documento: [
+                    {
+                        name: fichaDocName,
+                        datas: base64FichaDoc
+                    }
+                ],
+                detalle_ids: [
+                    {
+                        agente_comunitario_id: parseInt(document.getElementById("ficha-agente-id").value),
+                        fecha_inicio: document.getElementById("ficha-fecha-ini").value,
+                        estado: "activo"
+                    }
+                ]
+            };
+
+            try {
+                const res = await fetch("/api/registros", {
+                    method: "POST",
+                    headers: getHeaders(),
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error al crear ficha");
+
+                showToast(`Ficha creada ID: ${data.id}`, "success");
+                closeFichaModal();
+                fetchFichas();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function viewFichaDetail(id) {
+            try {
+                const res = await fetch(`/api/registros/${id}`, { headers: getHeaders() });
+                if (!res.ok) throw new Error("No se pudo cargar el detalle");
+                const f = await res.json();
+
+                document.getElementById("detail-ficha-id").innerText = f.id;
+                document.getElementById("detail-ficha-tipo").innerText = f.tipo_registro.toUpperCase();
+                
+                const stateEl = document.getElementById("detail-ficha-estado");
+                stateEl.innerText = f.estado;
+                stateEl.className = 'badge ' + (f.estado === 'validado2' ? 'badge-success' : f.estado === 'validado' ? 'badge-warning' : 'badge-primary');
+
+                document.getElementById("detail-ficha-eess").innerText = Array.isArray(f.establecimiento_id) ? f.establecimiento_id[1] : f.establecimiento_id;
+                document.getElementById("detail-ficha-diresa").innerText = Array.isArray(f.diresa_id) ? f.diresa_id[1] : f.diresa_id;
+
+                // Show attachment status
+                const docsEl = document.getElementById("detail-ficha-docs");
+                if (f.carga_documento && f.carga_documento.length > 0) {
+                    docsEl.innerHTML = `<span class="badge badge-success">Sí (${f.carga_documento.length} archivo(s))</span>`;
+                } else {
+                    docsEl.innerHTML = `<span class="badge badge-warning">No adjuntado</span>`;
+                }
+
+                const tbody = document.getElementById("detail-miembros-tbody");
+                if (f.detalle_ids.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">No hay miembros asociados.</td></tr>`;
+                } else {
+                    tbody.innerHTML = f.detalle_ids.map(m => `
+                        <tr>
+                            <td>${m.name}</td>
+                            <td>${m.numero_documento}</td>
+                            <td>${m.fecha_inicio || '-'}</td>
+                            <td><span class="badge ${m.estado === 'activo' ? 'badge-success' : ''}">${m.estado}</span></td>
+                        </tr>
+                    `).join('');
+                }
+
+                const workflowContainer = document.getElementById("detail-workflow-actions");
+                workflowContainer.innerHTML = '';
+                
+                if (f.estado === 'borrador') {
+                    workflowContainer.innerHTML = `<button class="btn btn-success" onclick="executeWorkflow(${f.id}, 'validar')">Validar Ficha</button>`;
+                } else if (f.estado === 'validado') {
+                    workflowContainer.innerHTML = `
+                        <button class="btn btn-outline" onclick="executeWorkflow(${f.id}, 'borrador')">Volver a Borrador</button>
+                        <button class="btn btn-success" onclick="executeWorkflow(${f.id}, 'validar')">Validar DIRESA</button>
+                    `;
+                } else {
+                    workflowContainer.innerHTML = `
+                        <button class="btn btn-outline" onclick="executeWorkflow(${f.id}, 'borrador')">Volver a Borrador</button>
+                        <button class="btn btn-warning" onclick="executeWorkflow(${f.id}, 'revalidar')">Revalidar Ficha</button>
+                    `;
+                }
+
+                document.getElementById("ficha-detail-modal").classList.add("active");
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        async function executeWorkflow(id, action) {
+            try {
+                const res = await fetch(`/api/registros/${id}/${action}`, {
+                    method: "POST",
+                    headers: getHeaders()
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Error en workflow");
+                
+                showToast(data.message, "success");
+                closeFichaDetailModal();
+                fetchFichas();
+            } catch (error) {
+                showToast(error.message, "danger");
+            }
+        }
+
+        function closeFichaDetailModal() {
+            document.getElementById("ficha-detail-modal").classList.remove("active");
+        }
+
+        // ==========================================
+        // MASTER DATA (RENIPRESS) LOGIC
+        // ==========================================
+        async function fetchMasterDiresas() {
+            const tbody = document.getElementById("master-diresas-tbody");
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Cargando DIRESAS...</td></tr>`;
+            try {
+                const res = await fetch("/api/diresas?limit=100", { headers: getHeaders() });
+                const diresas = await res.json();
+                if (diresas.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = diresas.map(d => `
+                    <tr>
+                        <td><strong>#${d.id}</strong></td>
+                        <td><span class="badge">${d.codigo_diresa}</span></td>
+                        <td>${d.name}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterRedes() {
+            const tbody = document.getElementById("master-redes-tbody");
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando Redes...</td></tr>`;
+            try {
+                const res = await fetch("/api/redes?limit=100", { headers: getHeaders() });
+                const redes = await res.json();
+                if (redes.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = redes.map(r => `
+                    <tr>
+                        <td><strong>#${r.id}</strong></td>
+                        <td><span class="badge">${r.codigo_red}</span></td>
+                        <td>${r.name}</td>
+                        <td>${Array.isArray(r.diresa_id) ? r.diresa_id[1] : (r.diresa_id || '-')}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterMicroredes() {
+            const tbody = document.getElementById("master-microredes-tbody");
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando Microredes...</td></tr>`;
+            try {
+                const res = await fetch("/api/microredes?limit=100", { headers: getHeaders() });
+                const microredes = await res.json();
+                if (microredes.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No hay registros.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = microredes.map(mr => `
+                    <tr>
+                        <td><strong>#${mr.id}</strong></td>
+                        <td><span class="badge">${mr.codigo_microred}</span></td>
+                        <td>${mr.name}</td>
+                        <td>${Array.isArray(mr.red_id) ? mr.red_id[1] : (mr.red_id || '-')}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function fetchMasterEess() {
+            const tbody = document.getElementById("master-eess-tbody");
+            const search = document.getElementById("eess-search-input").value;
+            
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Cargando Establecimientos...</td></tr>`;
+            
+            let url = "/api/establecimientos?limit=50";
+            if (search) {
+                url += `&search=${encodeURIComponent(search)}`;
+            }
+
+            try {
+                const res = await fetch(url, { headers: getHeaders() });
+                const eess = await res.json();
+                if (eess.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No se encontraron establecimientos.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = eess.map(e => `
+                    <tr>
+                        <td><strong>#${e.id}</strong></td>
+                        <td><span class="badge">${e.codigo_eess}</span></td>
+                        <td style="font-weight:500;">${e.name}</td>
+                        <td>${e.direccion || '-'}</td>
+                        <td><span class="badge">${e.categoria === '1' ? 'I-1' : e.categoria === '2' ? 'I-2' : e.categoria === '3' ? 'I-3' : e.categoria === '4' ? 'I-4' : (e.categoria || 'Sin Cat')}</span></td>
+                        <td><span class="badge badge-success">${e.condicion === '3' ? 'En Funcionamiento' : (e.condicion || '-')}</span></td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById("toast");
+            const msgEl = document.getElementById("toast-message");
+            msgEl.innerText = message;
+            toast.className = `toast toast-${type} active`;
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
