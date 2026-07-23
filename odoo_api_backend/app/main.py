@@ -551,11 +551,15 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     if "," in b64_file:
         b64_file = b64_file.split(",", 1)[1]
 
-    agente_ids = values.pop("agente_ids", []) or []
+    # 2. Detalles de los agentes (filtrar IDs validos mayores a 0)
+    raw_agente_ids = values.pop("agente_ids", []) or []
+    agente_ids = [aid for aid in raw_agente_ids if aid and isinstance(aid, int) and aid > 0]
+    
     detalles_odoo = []
     if "detalle_ids" in values and values["detalle_ids"]:
         for det in values["detalle_ids"]:
-            detalles_odoo.append((0, 0, det))
+            if det.get("agente_comunitario_id") and det.get("agente_comunitario_id") > 0:
+                detalles_odoo.append((0, 0, det))
     elif agente_ids:
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
