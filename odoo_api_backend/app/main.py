@@ -333,7 +333,7 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         except (ValueError, TypeError):
             pass
 
-    # Filtrar solo campos válidos existentes en Odoo y remover None (XML-RPC no soporta None)
+    # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
     VALID_AGENTE_FIELDS = {
         'tipo_documento', 'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
         'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
@@ -341,7 +341,10 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
         'nivel_agente_id', 'estandar_laboral_id', 'operador_id', 'tipo_voluntariado_ids', 'foto'
     }
-    values = {k: v for k, v in values.items() if k in VALID_AGENTE_FIELDS and v is not None}
+    values = {
+        k: v for k, v in values.items()
+        if k in VALID_AGENTE_FIELDS and v is not None and (not isinstance(v, str) or v.strip() != "")
+    }
 
     print(f"🔍 DEBUG PAYLOAD RECIBIDO EN API: {values}")
     try:
