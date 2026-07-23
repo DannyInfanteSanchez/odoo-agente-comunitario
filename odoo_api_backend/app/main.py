@@ -326,14 +326,20 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
+    # Formatear tipo_documento como int si viene como string
+    if "tipo_documento" in values and values["tipo_documento"]:
+        try:
+            values["tipo_documento"] = int(values["tipo_documento"])
+        except (ValueError, TypeError):
+            pass
+
     try:
-        # Verificar si el agente ya existe por tipo y número de documento para evitar unicidad duplicada
-        tipo_doc = values.get("tipo_documento")
+        # Verificar si el agente ya existe en Odoo por número de documento
         num_doc = values.get("numero_documento")
-        if tipo_doc and num_doc:
+        if num_doc:
             existing = odoo_client.search_read(
                 "minsa.agente.comunitario",
-                [("tipo_documento", "=", tipo_doc), ("numero_documento", "=", num_doc)],
+                [("numero_documento", "=", str(num_doc).strip())],
                 ["id"],
                 limit=1
             )
