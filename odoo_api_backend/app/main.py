@@ -563,11 +563,13 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
             }))
 
     # Fallback si no viene adjunto para cumplir la regla de Odoo "Debe adjuntar al menos un archivo"
+    dummy_b64 = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
     if not documentos_odoo:
         documentos_odoo = [(0, 0, {
             "name": "ficha_registro.pdf",
-            "datas": "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
+            "datas": dummy_b64
         })]
+        primer_b64 = dummy_b64
 
     values = registro.model_dump(exclude_none=True)
     
@@ -600,6 +602,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
 
     values["carga_documento"] = documentos_odoo
     values["tipo_archivo"] = "adjunto"
+    values["url_documento"] = primer_b64 or dummy_b64
     
     try:
         new_id = odoo_client.create("minsa.registro", values)
