@@ -8,7 +8,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
 
 # Invalidate Docker build cache
-ARG BUILD_DATE=2026-07-23-22-50
+ARG BUILD_DATE=2026-07-23-23-55
 ENV BUILD_DATE=${BUILD_DATE}
 
 # Copiar el código del app
