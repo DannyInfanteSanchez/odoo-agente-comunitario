@@ -24,6 +24,7 @@ class AttachmentResponse(BaseModel):
 # AGENTE COMUNITARIO SCHEMAS
 # ----------------------------------------------------
 class AgenteComunitarioBase(BaseModel):
+    tipo_documento: Optional[str] = Field(None, description="Tipo de documento ('01'=DNI, '03'=Carne Ext, '07'=Pasaporte, '23'=PTP)")
     numero_documento: str = Field(..., description="Número de documento de identidad")
     ape_paterno: str = Field(..., description="Apellido Paterno")
     ape_materno: Optional[str] = Field(None, description="Apellido Materno")
