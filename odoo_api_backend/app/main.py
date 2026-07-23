@@ -368,7 +368,29 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         err_msg = str(e)
         if "uniq_tipo_documento_numero_documento" in err_msg or "already exists" in err_msg.lower():
             num_doc = str(values.get("numero_documento") or "").strip()
-            print(f"ℹ️ El agente con documento {num_doc} ya está registrado en Odoo. Sincronización completada.")
+            print(f"ℹ️ Agente con documento {num_doc} ya existe en Odoo. Buscando ID real...")
+            try:
+                # Recuperar ID real del agente en Odoo por numero_documento
+                existing = odoo_client.search_read(
+                    "minsa.agente.comunitario",
+                    [("numero_documento", "=", num_doc)],
+                    ["id"],
+                    limit=1
+                )
+                if existing:
+                    real_id = existing[0]["id"]
+                    print(f"✅ ID real del agente en Odoo encontrado: {real_id}")
+                    # Actualizar datos del agente si vienen cambios
+                    update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
+                    if update_vals:
+                        try:
+                            odoo_client.write("minsa.agente.comunitario", [real_id], update_vals)
+                        except Exception:
+                            pass
+                    return {"id": real_id, "message": f"Agente comunitariorecupedado exitosamente con ID {real_id}."}
+            except Exception as e_fetch:
+                print(f"⚠️ Error buscando ID real del agente: {e_fetch}")
+
             return {"id": 0, "message": f"El agente con documento {num_doc} ya está registrado en Odoo."}
 
         import traceback
