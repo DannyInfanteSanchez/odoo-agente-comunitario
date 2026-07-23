@@ -326,11 +326,12 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # Formatear tipo_documento como int si viene como string
-    if "tipo_documento" in values and values["tipo_documento"]:
+    # Formatear tipo_documento como string de 2 dígitos ('01', '03', etc.) para el Selection de Odoo
+    if "tipo_documento" in values and values["tipo_documento"] is not None:
         try:
-            values["tipo_documento"] = int(values["tipo_documento"])
-        except (ValueError, TypeError):
+            doc_str = str(values["tipo_documento"]).strip()
+            values["tipo_documento"] = doc_str.zfill(2)
+        except Exception:
             pass
 
     # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
