@@ -540,22 +540,13 @@ def get_registro_by_id(registro_id: int, token: str = Depends(verify_token)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/registros", status_code=status.HTTP_201_CREATED, tags=["Registro de Fichas"])
-async def create_registro(request: Request, token: str = Depends(verify_token)):
+def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)):
     """
     Crea una nueva ficha de registro en Odoo con sus miembros asociados y documentos adjuntos.
     """
-    try:
-        body = await request.json()
-    except Exception:
-        body = {}
+    values = registro.model_dump(exclude_none=True)
     
-    # 1. Extraer diresa_id, red_id, establecimiento_id
-    diresa_id = body.get("diresa_id")
-    red_id = body.get("red_id")
-    establecimiento_id = body.get("establecimiento_id")
-    
-    # 2. Extraer b64 del documento
-    docs_raw = body.get("documentos") or body.get("carga_documento") or []
+    docs_raw = values.pop("documentos", []) or values.pop("carga_documento", []) or []
     b64_file = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
     nombre_file = "documento_compromiso.pdf"
     
@@ -570,29 +561,26 @@ async def create_registro(request: Request, token: str = Depends(verify_token)):
     if "," in b64_file:
         b64_file = b64_file.split(",", 1)[1]
 
-    # 3. Extraer agentes/detalles
-    agente_ids = body.get("agente_ids") or []
-    detalle_ids = body.get("detalle_ids") or []
+    agente_ids = values.pop("agente_ids", []) or []
     detalles_odoo = []
-    
-    if detalle_ids:
-        for det in detalle_ids:
+    if "detalle_ids" in values and values["detalle_ids"]:
+        for det in values["detalle_ids"]:
             detalles_odoo.append((0, 0, det))
     elif agente_ids:
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
 
-    # 4. Payload exacto para minsa.registro
     payload = {
-        "diresa_id": diresa_id,
-        "red_id": red_id,
-        "establecimiento_id": establecimiento_id,
+        "diresa_id": values.get("diresa_id"),
+        "red_id": values.get("red_id"),
+        "establecimiento_id": values.get("establecimiento_id"),
         "tipo_registro": "agente",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
         "carga_documento": [(0, 0, {
             "name": nombre_file,
-            "datas": b64_file
+            "datas": b64_file,
+            "mimetype": "application/pdf"
         })],
     }
     if detalles_odoo:
@@ -604,7 +592,7 @@ async def create_registro(request: Request, token: str = Depends(verify_token)):
     except Exception as e:
         import traceback
         tb = traceback.format_exc()
-        raise HTTPException(status_code=400, detail=f"Error creando minsa.registro: {str(e)} | {tb}")
+        raise HTTPException(status_code=400, detail=f"Error creando minsa.registro: {str(e)} | {tb}")reando minsa.registro: {str(e)} | {tb}")
 
 
 @app.put("/api/registros/{registro_id}", tags=["Registro de Fichas"])
