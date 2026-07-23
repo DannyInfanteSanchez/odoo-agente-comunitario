@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends, Security, status, Query, Request
+# Version Backend API: 2026.07.23.1840
+print("🚀 INICIANDO FASTAPI BACKEND V2026.07.23.1840...")
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
