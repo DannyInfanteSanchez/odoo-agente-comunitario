@@ -94,11 +94,19 @@ class OdooClient:
         raw_records = self.execute(model, "read", ids, **options)
         return self._clean_records(raw_records)
 
+    def _clean_payload(self, values: Dict[str, Any]) -> Dict[str, Any]:
+        """Elimina claves con valor None ya que XML-RPC no soporta None."""
+        if not isinstance(values, dict):
+            return values
+        return {k: v for k, v in values.items() if v is not None}
+
     def create(self, model: str, values: Dict[str, Any]) -> int:
-        return self.execute(model, "create", values)
+        clean_vals = self._clean_payload(values)
+        return self.execute(model, "create", clean_vals)
 
     def write(self, model: str, ids: List[int], values: Dict[str, Any]) -> bool:
-        return self.execute(model, "write", ids, values)
+        clean_vals = self._clean_payload(values)
+        return self.execute(model, "write", ids, clean_vals)
 
     def unlink(self, model: str, ids: List[int]) -> bool:
         return self.execute(model, "unlink", ids)

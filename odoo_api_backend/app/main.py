@@ -333,7 +333,7 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         except (ValueError, TypeError):
             pass
 
-    # Filtrar solo campos válidos existentes en Odoo (para evitar errores por province_id, district_id, etc.)
+    # Filtrar solo campos válidos existentes en Odoo y remover None (XML-RPC no soporta None)
     VALID_AGENTE_FIELDS = {
         'tipo_documento', 'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
         'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
@@ -341,7 +341,7 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
         'nivel_agente_id', 'estandar_laboral_id', 'operador_id', 'tipo_voluntariado_ids', 'foto'
     }
-    values = {k: v for k, v in values.items() if k in VALID_AGENTE_FIELDS}
+    values = {k: v for k, v in values.items() if k in VALID_AGENTE_FIELDS and v is not None}
 
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
