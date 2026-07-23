@@ -544,9 +544,31 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     """
     Crea una nueva ficha de registro con su respectivo listado de agentes/miembros asociados y documentos adjuntos.
     """
+    # 1. Extraer documentos directamente del modelo Pydantic antes de limpiar
+    docs_raw = registro.documentos or registro.carga_documento or []
+    documentos_odoo = []
+    primer_b64 = None
+    
+    for doc in docs_raw:
+        if isinstance(doc, dict):
+            nombre = doc.get("nombre_archivo") or doc.get("name") or "documento.pdf"
+            b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
+        else:
+            nombre = getattr(doc, "nombre_archivo", None) or getattr(doc, "name", None) or "documento.pdf"
+            b64_content = getattr(doc, "archivo_base64", None) or getattr(doc, "datas", None) or ""
+            
+        if b64_content:
+            if not primer_b64:
+                primer_b64 = b64_content
+            documentos_odoo.append((0, 0, {
+                "name": nombre,
+                "datas": b64_content,
+                "type": "binary"
+            }))
+
     values = registro.model_dump(exclude_none=True)
     
-    # 1. Procesar agente_ids provenientes de la App si existen
+    # 2. Procesar agente_ids provenientes de la App si existen
     agente_ids = values.pop("agente_ids", [])
     detalles_odoo = []
     
@@ -566,23 +588,11 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     if detalles_odoo:
         values["detalle_ids"] = detalles_odoo
 
-    # 2. Procesar documentos adjuntos (Many2many carga_documento con comando (0, 0, {...}))
-    docs_raw = values.pop("documentos", []) or values.pop("carga_documento", []) or []
-    documentos_odoo = []
-    
-    for doc in docs_raw:
-        nombre = doc.get("nombre_archivo") or doc.get("name") or "documento.pdf"
-        b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
-        if b64_content:
-            documentos_odoo.append((0, 0, {
-                "name": nombre,
-                "datas": b64_content,
-                "type": "binary"
-            }))
-
     if documentos_odoo:
         values["carga_documento"] = documentos_odoo
-    values["tipo_archivo"] = "adjunto"
+        values["tipo_archivo"] = "adjunto"
+    if primer_b64:
+        values["url_documento"] = primer_b64
     
     # Clean non-valid fields
     VALID_REGISTRO_FIELDS = {
