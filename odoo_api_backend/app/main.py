@@ -326,33 +326,8 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # MAPEO EXACTO Y GARANTIZADO DE CUALQUIER INPUT A CÓDIGO ODOO ('01', '03', '07', '23')
-    # 1/01 -> '01' (DNI)
-    # 2/03 -> '03' (Carné Extranjería)
-    # 3/07 -> '07' (Pasaporte)
-    # 4/23 -> '23' (Carné PTP)
-    MAP_TIPO_DOC = {
-        "1": "01", 1: "01", "01": "01",
-        "2": "03", 2: "03", "03": "03",
-        "3": "07", 3: "07", "07": "07",
-        "4": "23", 4: "23", "23": "23"
-    }
-    if "tipo_documento" in values and values["tipo_documento"] is not None:
-        raw_doc = str(values["tipo_documento"]).strip()
-        values["tipo_documento"] = MAP_TIPO_DOC.get(raw_doc, "01")
-
-    # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
-    VALID_AGENTE_FIELDS = {
-        'tipo_documento', 'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
-        'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
-        'diresa_id', 'red_id', 'establecimiento_id', 'genero_id', 'etnia_id', 'seguro_id',
-        'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
-        'nivel_agente_id', 'estandar_laboral_id', 'operador_id', 'tipo_voluntariado_ids', 'foto'
-    }
-    values = {
-        k: v for k, v in values.items()
-        if k in VALID_AGENTE_FIELDS and v is not None and (not isinstance(v, str) or v.strip() != "")
-    }
+    # Omitir tipo_documento de forma incondicional porque el addon minsa_regcom de Odoo tiene un error interno al procesar este campo
+    values.pop("tipo_documento", None)
 
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
@@ -369,25 +344,10 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
                 # En Odoo ORM, no se deben modificar tipo_documento ni numero_documento con write()
                 update_values = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
                 if update_values:
-                    try:
-                        odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
-                    except Exception as ex_w:
-                        if "tipo_documento" in str(ex_w):
-                            update_values.pop("tipo_documento", None)
-                            odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
-                        else:
-                            raise ex_w
+                    odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
                 return {"id": existing_id, "message": "Agente comunitario existente actualizado exitosamente."}
 
-        try:
-            new_id = odoo_client.create("minsa.agente.comunitario", values)
-        except Exception as ex_c:
-            if "tipo_documento" in str(ex_c):
-                values.pop("tipo_documento", None)
-                new_id = odoo_client.create("minsa.agente.comunitario", values)
-            else:
-                raise ex_c
-
+        new_id = odoo_client.create("minsa.agente.comunitario", values)
         return {"id": new_id, "message": "Agente comunitario creado exitosamente en Odoo."}
     except Exception as e:
         import traceback
