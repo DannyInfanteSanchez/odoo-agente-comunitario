@@ -359,7 +359,10 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
             )
             if existing:
                 existing_id = existing[0]["id"]
-                odoo_client.write("minsa.agente.comunitario", [existing_id], values)
+                # En Odoo ORM, no se deben modificar tipo_documento ni numero_documento con write()
+                update_values = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
+                if update_values:
+                    odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
                 return {"id": existing_id, "message": "Agente comunitario existente actualizado exitosamente."}
 
         new_id = odoo_client.create("minsa.agente.comunitario", values)
