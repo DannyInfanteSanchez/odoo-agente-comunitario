@@ -24,13 +24,6 @@ class AttachmentResponse(BaseModel):
 # AGENTE COMUNITARIO SCHEMAS
 # ----------------------------------------------------
 class AgenteComunitarioBase(BaseModel):
-    tipo_documento: str = Field(..., description="Tipo de documento ('01'=DNI, '03'=Carne Ext, '07'=Pasaporte, '23'=PTP)")
-
-    @field_validator("tipo_documento", mode="before")
-    @classmethod
-    def format_tipo_doc(cls, v):
-        m = {"1": "01", 1: "01", "01": "01", "2": "03", 2: "03", "03": "03", "3": "07", 3: "07", "07": "07", "4": "23", 4: "23", "23": "23"}
-        return m.get(v, m.get(str(v), "01"))
     numero_documento: str = Field(..., description="Número de documento de identidad")
     ape_paterno: str = Field(..., description="Apellido Paterno")
     ape_materno: Optional[str] = Field(None, description="Apellido Materno")

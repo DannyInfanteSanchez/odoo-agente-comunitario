@@ -272,8 +272,16 @@ def get_agentes(
         domain.append(("es_voluntario", "=", es_voluntario))
         
     try:
+        # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
+        VALID_AGENTE_FIELDS = {
+            'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
+            'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
+            'diresa_id', 'red_id', 'establecimiento_id', 'genero_id', 'etnia_id', 'seguro_id',
+            'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
+            'nivel_agente_id', 'estandar_laboral_id', 'operador_id', 'tipo_voluntariado_ids', 'foto'
+        }
         fields = [
-            "id", "name", "tipo_documento", "numero_documento", "ape_paterno", "ape_materno",
+            "id", "name", "numero_documento", "ape_paterno", "ape_materno",
             "nombres", "telefono", "celular", "email", "fecha_nacimiento", "edad", "direccion",
             "es_voluntario", "diresa_id", "red_id", "establecimiento_id", "genero_id", "etnia_id",
             "seguro_id", "dialecto_ids", "grado_instruccion_id", "nivel_agente_id", "estandar_laboral_id",
@@ -328,8 +336,18 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # Omitir tipo_documento de forma incondicional porque el addon minsa_regcom de Odoo tiene un error interno al procesar este campo
-    values.pop("tipo_documento", None)
+    # Filtrar solo campos válidos existentes en Odoo y omitir tipo_documento
+    VALID_AGENTE_FIELDS = {
+        'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
+        'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
+        'diresa_id', 'red_id', 'establecimiento_id', 'genero_id', 'etnia_id', 'seguro_id',
+        'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
+        'nivel_agente_id', 'estandar_laboral_id', 'operador_id', 'tipo_voluntariado_ids', 'foto'
+    }
+    values = {
+        k: v for k, v in values.items()
+        if k in VALID_AGENTE_FIELDS and v is not None and (not isinstance(v, str) or v.strip() != "")
+    }
 
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
