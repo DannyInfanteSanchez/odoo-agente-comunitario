@@ -566,18 +566,15 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     if detalles_odoo:
         values["detalle_ids"] = detalles_odoo
 
-    # 2. Procesar documentos adjuntos (asignar url_documento y tipo_archivo exigidos por el modelo de Odoo)
+    # 2. Procesar documentos adjuntos (asignar url_documento y tipo_archivo='adjunto' exigidos por Odoo)
     docs_raw = values.pop("documentos", []) or values.pop("carga_documento", []) or []
     attachment_ids = []
     
     if docs_raw:
         primer_doc = docs_raw[0]
         b64 = primer_doc.get("archivo_base64") or primer_doc.get("datas") or ""
-        nombre = primer_doc.get("nombre_archivo") or primer_doc.get("name") or "archivo.jpg"
-        ext = nombre.split(".")[-1].lower() if "." in nombre else "jpg"
-        
         values["url_documento"] = b64
-        values["tipo_archivo"] = ext
+        values["tipo_archivo"] = "adjunto"
 
     for doc in docs_raw:
         try:
