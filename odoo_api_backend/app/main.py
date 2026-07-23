@@ -336,9 +336,20 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # Filtrar solo campos válidos existentes en Odoo y omitir tipo_documento
+    # MAPEO EXACTO Y GARANTIZADO DE CUALQUIER INPUT A CÓDIGO ODOO ('01', '03', '07', '23')
+    MAP_TIPO_DOC = {
+        "1": "01", 1: "01", "01": "01",
+        "2": "03", 2: "03", "03": "03",
+        "3": "07", 3: "07", "07": "07",
+        "4": "23", 4: "23", "23": "23"
+    }
+    if "tipo_documento" in values and values["tipo_documento"] is not None:
+        raw_doc = str(values["tipo_documento"]).strip()
+        values["tipo_documento"] = MAP_TIPO_DOC.get(raw_doc, "01")
+
+    # Filtrar solo campos válidos existentes en Odoo
     VALID_AGENTE_FIELDS = {
-        'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
+        'tipo_documento', 'numero_documento', 'ape_paterno', 'ape_materno', 'nombres',
         'telefono', 'celular', 'email', 'fecha_nacimiento', 'direccion', 'es_voluntario',
         'diresa_id', 'red_id', 'establecimiento_id', 'genero_id', 'etnia_id', 'seguro_id',
         'state_id', 'ubigeo', 'latitud', 'longitud', 'dialecto_ids', 'grado_instruccion_id',
