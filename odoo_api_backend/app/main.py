@@ -580,6 +580,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         return {"id": new_id, "message": "Ficha de registro creada exitosamente."}
     except Exception as e:
         import traceback
+        tb = traceback.format_exc()
         raise HTTPException(status_code=400, detail=f"Error creando minsa.registro: {str(e)} | {tb}")
 
 
