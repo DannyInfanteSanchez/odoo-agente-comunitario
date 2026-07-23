@@ -544,38 +544,31 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     """
     Crea una nueva ficha de registro en Odoo con sus miembros asociados y documentos adjuntos.
     """
-    # 1. Extraer b64 del primer documento y asegurar extensión .pdf para Odoo
+    # 1. Extraer b64 del documento enviado o usar fallback PDF
     docs_raw = registro.documentos or registro.carga_documento or []
-    b64_file = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-    nombre_file = "compromiso.pdf"
+    b64_file = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
     
     if docs_raw:
         for d in docs_raw:
             if isinstance(d, dict):
                 c = d.get("archivo_base64") or d.get("datas")
-                n = d.get("nombre_archivo") or d.get("name")
             else:
                 c = getattr(d, "archivo_base64", None) or getattr(d, "datas", None)
-                n = getattr(d, "nombre_archivo", None) or getattr(d, "name", None)
             if c:
                 b64_file = c
-                if n:
-                    nombre_base = n.rsplit('.', 1)[0] if '.' in n else n
-                    nombre_file = f"{nombre_base}.pdf"
                 break
 
-    # 2. Crear primero el ir.attachment en Odoo con extensión .pdf obligatoria
-    try:
-        attachment_id = odoo_client.create("ir.attachment", {
-            "name": nombre_file,
-            "datas": b64_file,
-            "res_model": "minsa.registro",
-            "type": "binary"
-        })
-        carga_doc_cmd = [(6, 0, [attachment_id])]
-    except Exception as e_att:
-        print(f"⚠️ Error creando ir.attachment: {e_att}")
-        carga_doc_cmd = [(0, 0, {"name": nombre_file, "datas": b64_file})]
+    if b64_file and "," in b64_file:
+        b64_file = b64_file.split(",", 1)[1]
+
+    # 2. Crear ir.attachment en Odoo con mimetype application/pdf y nombre .pdf
+    att_id = odoo_client.create("ir.attachment", {
+        "name": "documento_compromiso.pdf",
+        "datas": b64_file,
+        "res_model": "minsa.registro",
+        "mimetype": "application/pdf",
+        "type": "binary"
+    })
 
     # 3. Detalles de los agentes
     agente_ids = registro.agente_ids or []
@@ -588,7 +581,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
 
-    # 4. Construir payload directo exacto para minsa.registro
+    # 4. Payload exacto para minsa.registro
     payload = {
         "diresa_id": registro.diresa_id,
         "red_id": registro.red_id,
@@ -596,7 +589,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         "tipo_registro": getattr(registro, "tipo_registro", "ACS") or "ACS",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
-        "carga_documento": carga_doc_cmd,
+        "carga_documento": [(4, att_id)],
     }
     if detalles_odoo:
         payload["detalle_ids"] = detalles_odoo
