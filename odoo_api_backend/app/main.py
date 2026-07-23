@@ -540,48 +540,58 @@ def get_registro_by_id(registro_id: int, token: str = Depends(verify_token)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/registros", status_code=status.HTTP_201_CREATED, tags=["Registro de Fichas"])
-def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)):
+async def create_registro(request: Request, token: str = Depends(verify_token)):
     """
     Crea una nueva ficha de registro en Odoo con sus miembros asociados y documentos adjuntos.
     """
-    # 1. Extraer b64 del documento enviado o usar fallback PDF
-    docs_raw = registro.documentos or registro.carga_documento or []
-    b64_file = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
+    try:
+        body = await request.json()
+    except Exception:
+        body = {}
     
-    if docs_raw:
-        for d in docs_raw:
-            if isinstance(d, dict):
-                c = d.get("archivo_base64") or d.get("datas")
-            else:
-                c = getattr(d, "archivo_base64", None) or getattr(d, "datas", None)
-            if c:
-                b64_file = c
-                break
+    # 1. Extraer diresa_id, red_id, establecimiento_id
+    diresa_id = body.get("diresa_id")
+    red_id = body.get("red_id")
+    establecimiento_id = body.get("establecimiento_id")
+    
+    # 2. Extraer b64 del documento
+    docs_raw = body.get("documentos") or body.get("carga_documento") or []
+    b64_file = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
+    nombre_file = "documento_compromiso.pdf"
+    
+    if docs_raw and isinstance(docs_raw, list):
+        first_doc = docs_raw[0]
+        if isinstance(first_doc, dict):
+            c = first_doc.get("archivo_base64") or first_doc.get("datas")
+            n = first_doc.get("nombre_archivo") or first_doc.get("name")
+            if c: b64_file = c
+            if n: nombre_file = n if n.endswith(".pdf") else f"{n.rsplit('.', 1)[0]}.pdf"
 
-    if b64_file and "," in b64_file:
+    if "," in b64_file:
         b64_file = b64_file.split(",", 1)[1]
 
-    # 2. Detalles de los agentes
-    agente_ids = registro.agente_ids or []
+    # 3. Extraer agentes/detalles
+    agente_ids = body.get("agente_ids") or []
+    detalle_ids = body.get("detalle_ids") or []
     detalles_odoo = []
-    if registro.detalle_ids:
-        for det in registro.detalle_ids:
-            d_dict = det.model_dump(exclude_none=True) if hasattr(det, "model_dump") else det
-            detalles_odoo.append((0, 0, d_dict))
+    
+    if detalle_ids:
+        for det in detalle_ids:
+            detalles_odoo.append((0, 0, det))
     elif agente_ids:
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
 
-    # 3. Payload exacto comprobado para minsa.registro
+    # 4. Payload exacto para minsa.registro
     payload = {
-        "diresa_id": registro.diresa_id,
-        "red_id": registro.red_id,
-        "establecimiento_id": registro.establecimiento_id,
-        "tipo_registro": getattr(registro, "tipo_registro", "ACS") or "ACS",
+        "diresa_id": diresa_id,
+        "red_id": red_id,
+        "establecimiento_id": establecimiento_id,
+        "tipo_registro": body.get("tipo_registro", "ACS") or "ACS",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
         "carga_documento": [(0, 0, {
-            "name": "documento_compromiso.pdf",
+            "name": nombre_file,
             "datas": b64_file
         })],
     }
