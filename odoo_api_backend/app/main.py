@@ -561,16 +561,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     if b64_file and "," in b64_file:
         b64_file = b64_file.split(",", 1)[1]
 
-    # 2. Crear ir.attachment en Odoo con mimetype application/pdf y nombre .pdf
-    att_id = odoo_client.create("ir.attachment", {
-        "name": "documento_compromiso.pdf",
-        "datas": b64_file,
-        "res_model": "minsa.registro",
-        "mimetype": "application/pdf",
-        "type": "binary"
-    })
-
-    # 3. Detalles de los agentes
+    # 2. Detalles de los agentes
     agente_ids = registro.agente_ids or []
     detalles_odoo = []
     if registro.detalle_ids:
@@ -581,7 +572,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
 
-    # 4. Payload exacto para minsa.registro
+    # 3. Payload exacto comprobado para minsa.registro
     payload = {
         "diresa_id": registro.diresa_id,
         "red_id": registro.red_id,
@@ -589,7 +580,10 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         "tipo_registro": getattr(registro, "tipo_registro", "ACS") or "ACS",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
-        "carga_documento": [(4, att_id)],
+        "carga_documento": [(0, 0, {
+            "name": "documento_compromiso.pdf",
+            "datas": b64_file
+        })],
     }
     if detalles_odoo:
         payload["detalle_ids"] = detalles_odoo
