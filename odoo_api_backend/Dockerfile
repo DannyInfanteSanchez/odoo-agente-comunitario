@@ -7,7 +7,11 @@ COPY requirements.txt .
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
 
-# Copiar el código del app (esta capa cambia frecuentemente, pero es instantánea)
+# Invalidate Docker build cache
+ARG BUILD_DATE=2026-07-23-22-50
+ENV BUILD_DATE=${BUILD_DATE}
+
+# Copiar el código del app
 COPY app/ ./app/
 
 # Expose port
