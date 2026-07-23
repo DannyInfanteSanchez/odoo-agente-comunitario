@@ -587,7 +587,7 @@ async def create_registro(request: Request, token: str = Depends(verify_token)):
         "diresa_id": diresa_id,
         "red_id": red_id,
         "establecimiento_id": establecimiento_id,
-        "tipo_registro": body.get("tipo_registro", "ACS") or "ACS",
+        "tipo_registro": "agente",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
         "carga_documento": [(0, 0, {
