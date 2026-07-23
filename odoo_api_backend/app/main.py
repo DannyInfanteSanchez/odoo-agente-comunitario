@@ -542,79 +542,52 @@ def get_registro_by_id(registro_id: int, token: str = Depends(verify_token)):
 @app.post("/api/registros", status_code=status.HTTP_201_CREATED, tags=["Registro de Fichas"])
 def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)):
     """
-    Crea una nueva ficha de registro con su respectivo listado de agentes/miembros asociados y documentos adjuntos.
+    Crea una nueva ficha de registro en Odoo con sus miembros asociados y documentos adjuntos.
     """
-    # 2. Procesar documentos adjuntos (carga_documento Many2many obligatorio en Odoo)
+    # 1. Extraer b64 del primer documento
     docs_raw = registro.documentos or registro.carga_documento or []
-    documentos_odoo = []
+    b64_file = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+    nombre_file = "compromiso.jpg"
     
-    for doc in docs_raw:
-        if isinstance(doc, dict):
-            nombre = doc.get("nombre_archivo") or doc.get("name") or "ficha_compromiso.pdf"
-            b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
-        else:
-            nombre = getattr(doc, "nombre_archivo", None) or getattr(doc, "name", None) or "ficha_compromiso.pdf"
-            b64_content = getattr(doc, "archivo_base64", None) or getattr(doc, "datas", None) or ""
-            
-        if b64_content:
-            documentos_odoo.append((0, 0, {
-                "name": nombre,
-                "datas": b64_content
-            }))
-
-    # Fallback si no viene adjunto para cumplir la regla de Odoo "Debe adjuntar al menos un archivo"
-    dummy_b64 = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDAKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDAKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
-    if not documentos_odoo:
-        documentos_odoo = [(0, 0, {
-            "name": "ficha_registro.pdf",
-            "datas": dummy_b64
-        })]
-        primer_b64 = dummy_b64
-
-    values = registro.model_dump(exclude_none=True)
-    
-    # Clean and assign valid fields
-    VALID_REGISTRO_FIELDS = {
-        'diresa_id', 'red_id', 'establecimiento_id', 'renipress', 'ubigeo',
-        'departamento_id', 'provincia_id', 'distrito_id', 'tipo_registro',
-        'tipo_archivo', 'url_documento', 'detalle_ids', 'carga_documento', 'estado'
-    }
-    values = {k: v for k, v in values.items() if k in VALID_REGISTRO_FIELDS and v is not None}
-    
-    # Asignar agente_ids a detalle_ids si vienen
-    agente_ids = getattr(registro, "agente_ids", []) or []
-    detalles_odoo = []
-    if "detalle_ids" in values and values["detalle_ids"]:
-        for det in values["detalle_ids"]:
-            if "fecha_inicio" in det and isinstance(det["fecha_inicio"], date):
-                det["fecha_inicio"] = det["fecha_inicio"].strftime("%Y-%m-%d")
-            if "fecha_fin" in det and isinstance(det["fecha_fin"], date):
-                det["fecha_fin"] = det["fecha_fin"].strftime("%Y-%m-%d")
-            detalles_odoo.append((0, 0, det))
-    elif agente_ids:
-        for aid in agente_ids:
-            detalles_odoo.append((0, 0, {
-                "agente_comunitario_id": aid
-            }))
-
-    # Asignar url_documento a partir de los documentos adjuntos recibidos de la App
-    doc_b64 = None
     if docs_raw:
         for d in docs_raw:
             if isinstance(d, dict):
-                content = d.get("archivo_base64") or d.get("datas")
+                c = d.get("archivo_base64") or d.get("datas")
+                n = d.get("nombre_archivo") or d.get("name")
             else:
-                content = getattr(d, "archivo_base64", None) or getattr(d, "datas", None)
-            if content:
-                doc_b64 = content
+                c = getattr(d, "archivo_base64", None) or getattr(d, "datas", None)
+                n = getattr(d, "nombre_archivo", None) or getattr(d, "name", None)
+            if c:
+                b64_file = c
+                if n: nombre_file = n
                 break
 
-    values["carga_documento"] = documentos_odoo
-    values["tipo_archivo"] = "adjunto"
-    values["url_documento"] = doc_b64 or dummy_b64
-    
+    # 2. Detalles de los agentes
+    agente_ids = registro.agente_ids or []
+    detalles_odoo = []
+    if registro.detalle_ids:
+        for det in registro.detalle_ids:
+            d_dict = det.model_dump(exclude_none=True) if hasattr(det, "model_dump") else det
+            detalles_odoo.append((0, 0, d_dict))
+    elif agente_ids:
+        for aid in agente_ids:
+            detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
+
+    # 3. Construir payload directo exacto para Odoo
+    payload = {
+        "diresa_id": registro.diresa_id,
+        "red_id": registro.red_id,
+        "establecimiento_id": registro.establecimiento_id,
+        "tipo_registro": getattr(registro, "tipo_registro", "ACS") or "ACS",
+        "tipo_archivo": "adjunto",
+        "url_documento": b64_file,
+        "carga_documento": [(0, 0, {"name": nombre_file, "datas": b64_file})],
+    }
+    if detalles_odoo:
+        payload["detalle_ids"] = detalles_odoo
+
     try:
-        new_id = odoo_client.create("minsa.registro", values)
+        new_id = odoo_client.create("minsa.registro", payload)
         return {"id": new_id, "message": "Ficha de registro creada exitosamente."}
     except Exception as e:
         import traceback
