@@ -326,10 +326,16 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # Formatear tipo_documento obligatoriamente como STRING de 2 dígitos ('01', '03', etc.) para el Selection de Odoo
+    # Mapeo explicito a los códigos válidos Selection de Odoo: '01', '03', '07', '23'
+    MAP_TIPO_DOC = {
+        '1': '01', '01': '01', 1: '01',
+        '2': '03', '03': '03', 2: '03',
+        '3': '07', '07': '07', 3: '07',
+        '4': '23', '23': '23', 4: '23',
+    }
     if "tipo_documento" in values and values["tipo_documento"] is not None:
-        raw_val = str(values["tipo_documento"]).strip()
-        values["tipo_documento"] = raw_val.zfill(2)
+        raw_doc = values["tipo_documento"]
+        values["tipo_documento"] = MAP_TIPO_DOC.get(raw_doc, MAP_TIPO_DOC.get(str(raw_doc), '01'))
 
     # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
     VALID_AGENTE_FIELDS = {
