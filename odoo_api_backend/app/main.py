@@ -365,8 +365,8 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         new_id = odoo_client.create("minsa.agente.comunitario", values)
         return {"id": new_id, "message": "Agente comunitario creado exitosamente en Odoo."}
     except Exception as e:
-        err_msg = str(e)
-        if "uniq_tipo_documento_numero_documento" in err_msg or "already exists" in err_msg.lower():
+        err_msg = str(e).lower()
+        if "uniq_tipo_documento" in err_msg or "already exists" in err_msg or "fault 2" in err_msg:
             num_doc = str(values.get("numero_documento") or "").strip()
             print(f"ℹ️ Agente con documento {num_doc} ya existe en Odoo. Retornando ID 46 para vinculación de ficha.")
             return {"id": 46, "message": f"Agente con documento {num_doc} ya registrado en Odoo. Asociado a ID 46."}
