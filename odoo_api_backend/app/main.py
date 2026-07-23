@@ -566,33 +566,23 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     if detalles_odoo:
         values["detalle_ids"] = detalles_odoo
 
-    # 2. Procesar documentos adjuntos (asignar url_documento y tipo_archivo='adjunto' exigidos por Odoo)
+    # 2. Procesar documentos adjuntos (Many2many carga_documento con comando (0, 0, {...}))
     docs_raw = values.pop("documentos", []) or values.pop("carga_documento", []) or []
-    attachment_ids = []
+    documentos_odoo = []
     
-    if docs_raw:
-        primer_doc = docs_raw[0]
-        b64 = primer_doc.get("archivo_base64") or primer_doc.get("datas") or ""
-        values["url_documento"] = b64
-        values["tipo_archivo"] = "adjunto"
-
     for doc in docs_raw:
-        try:
-            nombre = doc.get("nombre_archivo") or doc.get("name") or "documento.jpg"
-            b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
-            if b64_content:
-                att_id = odoo_client.create("ir.attachment", {
-                    "name": nombre,
-                    "datas": b64_content,
-                    "res_model": "minsa.registro",
-                    "type": "binary"
-                })
-                attachment_ids.append(att_id)
-        except Exception as e:
-            print(f"⚠️ Error creando adjunto ir.attachment: {e}")
+        nombre = doc.get("nombre_archivo") or doc.get("name") or "documento.pdf"
+        b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
+        if b64_content:
+            documentos_odoo.append((0, 0, {
+                "name": nombre,
+                "datas": b64_content,
+                "type": "binary"
+            }))
 
-    if attachment_ids:
-        values["carga_documento"] = [(6, 0, attachment_ids)]
+    if documentos_odoo:
+        values["carga_documento"] = documentos_odoo
+    values["tipo_archivo"] = "adjunto"
     
     # Clean non-valid fields
     VALID_REGISTRO_FIELDS = {
