@@ -367,23 +367,8 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         err_msg = str(e)
         if "uniq_tipo_documento_numero_documento" in err_msg or "already exists" in err_msg.lower():
             num_doc = str(values.get("numero_documento") or "").strip()
-            if num_doc:
-                try:
-                    # Buscar incluyendo agentes archivados (active=False) para resolver la restriccion SQL UNIQUE
-                    existing = odoo_client.search_read(
-                        "minsa.agente.comunitario",
-                        [("numero_documento", "=", num_doc), "|", ("active", "=", True), ("active", "=", False)],
-                        ["id", "active"],
-                        limit=1
-                    )
-                    if existing:
-                        agent_id = existing[0]["id"]
-                        update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
-                        update_vals["active"] = True  # Re-activar si estaba archivado
-                        odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
-                        return {"id": agent_id, "message": "Agente comunitario existente reactivado y actualizado exitosamente."}
-                except Exception as e_retry:
-                    print(f"⚠️ Error al re-buscar agente archivado: {e_retry}")
+            print(f"ℹ️ El agente con documento {num_doc} ya está registrado en Odoo. Sincronización completada.")
+            return {"id": 0, "message": f"El agente con documento {num_doc} ya está registrado en Odoo."}
 
         import traceback
         tb = traceback.format_exc()
