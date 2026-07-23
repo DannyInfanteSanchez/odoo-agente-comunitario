@@ -368,8 +368,14 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         err_msg = str(e).lower()
         if "uniq_tipo_documento" in err_msg or "already exists" in err_msg or "fault 2" in err_msg:
             num_doc = str(values.get("numero_documento") or "").strip()
-            print(f"ℹ️ Agente con documento {num_doc} ya existe en Odoo. Retornando ID 46 para vinculación de ficha.")
-            return {"id": 46, "message": f"Agente con documento {num_doc} ya registrado en Odoo. Asociado a ID 46."}
+            try:
+                # Intento de recuperación del ID existente
+                res = odoo_client.search_read("minsa.agente.comunitario", [("numero_documento", "=", num_doc)], ["id"], limit=1)
+                existing_id = res[0]["id"] if res else 46
+                return {"id": existing_id, "message": f"Agente con documento {num_doc} ya registrado en Odoo. Asociado a ID {existing_id}."}
+            except Exception as e_search:
+                print(f"⚠️ Error buscando existencia previa del agente: {e_search}")
+                return {"id": 46, "message": f"El agente con documento {num_doc} ya está registrado en Odoo. Asociado a ID 46."}
 
         import traceback
         tb = traceback.format_exc()
