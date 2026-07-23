@@ -176,8 +176,10 @@ class RegistroBase(BaseModel):
 class RegistroCreate(RegistroBase):
     # En Odoo se puede enviar la creación de líneas relacionales usando el comando tuples:
     # (0, 0, values) para crear un nuevo registro detalle relacionado
-    detalle_ids: List[RegistroDetalleCreate] = Field(default=[], description="Lista de miembros/detalles a asociar")
-    carga_documento: List[AttachmentCreate] = Field(default=[], description="Lista de documentos adjuntos obligatorios")
+    detalle_ids: Optional[List[RegistroDetalleCreate]] = Field(default=[], description="Lista de miembros en la ficha")
+    carga_documento: Optional[List[AttachmentCreate]] = Field(default=[], description="Lista de documentos adjuntos obligatorios")
+    agente_ids: Optional[List[int]] = Field(default=[], description="Lista de IDs de agentes creados en Odoo")
+    documentos: Optional[List[dict]] = Field(default=[], description="Documentos adjuntos de la ficha enviados desde la app")
 
 class RegistroDetalleUpdate(BaseModel):
     id: Optional[int] = Field(None, description="ID del registro detalle de Odoo")

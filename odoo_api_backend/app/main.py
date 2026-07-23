@@ -542,50 +542,66 @@ def get_registro_by_id(registro_id: int, token: str = Depends(verify_token)):
 @app.post("/api/registros", status_code=status.HTTP_201_CREATED, tags=["Registro de Fichas"])
 def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)):
     """
-    Crea una nueva ficha de registro con su respectivo listado de agentes/miembros asociados.
+    Crea una nueva ficha de registro con su respectivo listado de agentes/miembros asociados y documentos adjuntos.
     """
     values = registro.model_dump(exclude_none=True)
     
-    # Preparar el comando relacional de Odoo para el One2many (detalle_ids).
-    # Odoo usa el formato (0, 0, {valores}) para crear registros relacionados.
+    # 1. Procesar agente_ids provenientes de la App si existen
+    agente_ids = values.pop("agente_ids", [])
     detalles_odoo = []
-    if "detalle_ids" in values:
+    
+    if "detalle_ids" in values and values["detalle_ids"]:
         for det in values["detalle_ids"]:
-            # Dar formato a las fechas dentro del detalle si existen
             if "fecha_inicio" in det and isinstance(det["fecha_inicio"], date):
                 det["fecha_inicio"] = det["fecha_inicio"].strftime("%Y-%m-%d")
             if "fecha_fin" in det and isinstance(det["fecha_fin"], date):
                 det["fecha_fin"] = det["fecha_fin"].strftime("%Y-%m-%d")
-            
-            # Formatear documentos adjuntos dentro del detalle si existen
-            if "carga_documento" in det:
-                docs_det = []
-                for doc in det["carga_documento"]:
-                    docs_det.append((0, 0, {
-                        "name": doc["name"],
-                        "datas": doc["datas"]
-                    }))
-                det["carga_documento"] = docs_det
-                
             detalles_odoo.append((0, 0, det))
-            
-    values["detalle_ids"] = detalles_odoo
-
-    # Preparar documentos adjuntos (Many2many ir.attachment)
-    documentos_odoo = []
-    if "carga_documento" in values:
-        for doc in values["carga_documento"]:
-            documentos_odoo.append((0, 0, {
-                "name": doc["name"],
-                "datas": doc["datas"]
+    elif agente_ids:
+        for aid in agente_ids:
+            detalles_odoo.append((0, 0, {
+                "agente_comunitario_id": aid
             }))
-    values["carga_documento"] = documentos_odoo
+            
+    if detalles_odoo:
+        values["detalle_ids"] = detalles_odoo
+
+    # 2. Procesar documentos adjuntos (crear primero en ir.attachment)
+    docs_raw = values.pop("documentos", []) or values.pop("carga_documento", []) or []
+    attachment_ids = []
+    for doc in docs_raw:
+        try:
+            nombre = doc.get("nombre_archivo") or doc.get("name") or "documento.jpg"
+            b64_content = doc.get("archivo_base64") or doc.get("datas") or ""
+            if b64_content:
+                att_id = odoo_client.create("ir.attachment", {
+                    "name": nombre,
+                    "datas": b64_content,
+                    "res_model": "minsa.registro",
+                    "type": "binary"
+                })
+                attachment_ids.append(att_id)
+        except Exception as e:
+            print(f"⚠️ Error creando adjunto ir.attachment: {e}")
+
+    if attachment_ids:
+        values["carga_documento"] = [(6, 0, attachment_ids)]
+    
+    # Clean non-valid fields
+    VALID_REGISTRO_FIELDS = {
+        'diresa_id', 'red_id', 'establecimiento_id', 'renipress', 'ubigeo',
+        'departamento_id', 'provincia_id', 'distrito_id', 'tipo_registro',
+        'tipo_archivo', 'url_documento', 'detalle_ids', 'carga_documento', 'estado'
+    }
+    values = {k: v for k, v in values.items() if k in VALID_REGISTRO_FIELDS and v is not None}
     
     try:
         new_id = odoo_client.create("minsa.registro", values)
         return {"id": new_id, "message": "Ficha de registro creada exitosamente."}
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        import traceback
+        tb = traceback.format_exc()
+        raise HTTPException(status_code=400, detail=f"Error creando minsa.registro: {str(e)} | {tb}")
 
 
 @app.put("/api/registros/{registro_id}", tags=["Registro de Fichas"])
