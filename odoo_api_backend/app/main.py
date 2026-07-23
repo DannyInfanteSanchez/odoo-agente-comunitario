@@ -369,27 +369,21 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
             num_doc = str(values.get("numero_documento") or "").strip()
             if num_doc:
                 try:
+                    # Buscar incluyendo agentes archivados (active=False) para resolver la restriccion SQL UNIQUE
                     existing = odoo_client.search_read(
                         "minsa.agente.comunitario",
-                        [("numero_documento", "=ilike", num_doc)],
-                        ["id"],
+                        [("numero_documento", "=", num_doc), "|", ("active", "=", True), ("active", "=", False)],
+                        ["id", "active"],
                         limit=1
                     )
-                    if not existing:
-                        existing = odoo_client.search_read(
-                            "minsa.agente.comunitario",
-                            [("numero_documento", "=", num_doc)],
-                            ["id"],
-                            limit=1
-                        )
                     if existing:
                         agent_id = existing[0]["id"]
                         update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
-                        if update_vals:
-                            odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
-                        return {"id": agent_id, "message": "Agente comunitario ya existía en Odoo y fue actualizado exitosamente."}
+                        update_vals["active"] = True  # Re-activar si estaba archivado
+                        odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
+                        return {"id": agent_id, "message": "Agente comunitario existente reactivado y actualizado exitosamente."}
                 except Exception as e_retry:
-                    print(f"⚠️ Error al re-buscar agente existente: {e_retry}")
+                    print(f"⚠️ Error al re-buscar agente archivado: {e_retry}")
 
         import traceback
         tb = traceback.format_exc()
