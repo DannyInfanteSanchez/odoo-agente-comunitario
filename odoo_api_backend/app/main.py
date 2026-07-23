@@ -544,10 +544,10 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
     """
     Crea una nueva ficha de registro en Odoo con sus miembros asociados y documentos adjuntos.
     """
-    # 1. Extraer b64 del primer documento
+    # 1. Extraer b64 del primer documento y asegurar extensión .pdf para Odoo
     docs_raw = registro.documentos or registro.carga_documento or []
     b64_file = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-    nombre_file = "compromiso.jpg"
+    nombre_file = "compromiso.pdf"
     
     if docs_raw:
         for d in docs_raw:
@@ -559,10 +559,25 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
                 n = getattr(d, "nombre_archivo", None) or getattr(d, "name", None)
             if c:
                 b64_file = c
-                if n: nombre_file = n
+                if n:
+                    nombre_base = n.rsplit('.', 1)[0] if '.' in n else n
+                    nombre_file = f"{nombre_base}.pdf"
                 break
 
-    # 2. Detalles de los agentes
+    # 2. Crear primero el ir.attachment en Odoo con extensión .pdf obligatoria
+    try:
+        attachment_id = odoo_client.create("ir.attachment", {
+            "name": nombre_file,
+            "datas": b64_file,
+            "res_model": "minsa.registro",
+            "type": "binary"
+        })
+        carga_doc_cmd = [(6, 0, [attachment_id])]
+    except Exception as e_att:
+        print(f"⚠️ Error creando ir.attachment: {e_att}")
+        carga_doc_cmd = [(0, 0, {"name": nombre_file, "datas": b64_file})]
+
+    # 3. Detalles de los agentes
     agente_ids = registro.agente_ids or []
     detalles_odoo = []
     if registro.detalle_ids:
@@ -573,7 +588,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         for aid in agente_ids:
             detalles_odoo.append((0, 0, {"agente_comunitario_id": aid}))
 
-    # 3. Construir payload directo exacto para Odoo
+    # 4. Construir payload directo exacto para minsa.registro
     payload = {
         "diresa_id": registro.diresa_id,
         "red_id": registro.red_id,
@@ -581,7 +596,7 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
         "tipo_registro": getattr(registro, "tipo_registro", "ACS") or "ACS",
         "tipo_archivo": "adjunto",
         "url_documento": b64_file,
-        "carga_documento": [(0, 0, {"name": nombre_file, "datas": b64_file})],
+        "carga_documento": carga_doc_cmd,
     }
     if detalles_odoo:
         payload["detalle_ids"] = detalles_odoo
