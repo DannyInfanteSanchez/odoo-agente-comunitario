@@ -597,12 +597,21 @@ def create_registro(registro: RegistroCreate, token: str = Depends(verify_token)
                 "agente_comunitario_id": aid
             }))
 
-    if detalles_odoo:
-        values["detalle_ids"] = detalles_odoo
+    # Asignar url_documento a partir de los documentos adjuntos recibidos de la App
+    doc_b64 = None
+    if docs_raw:
+        for d in docs_raw:
+            if isinstance(d, dict):
+                content = d.get("archivo_base64") or d.get("datas")
+            else:
+                content = getattr(d, "archivo_base64", None) or getattr(d, "datas", None)
+            if content:
+                doc_b64 = content
+                break
 
     values["carga_documento"] = documentos_odoo
     values["tipo_archivo"] = "adjunto"
-    values["url_documento"] = primer_b64 or dummy_b64
+    values["url_documento"] = doc_b64 or dummy_b64
     
     try:
         new_id = odoo_client.create("minsa.registro", values)
