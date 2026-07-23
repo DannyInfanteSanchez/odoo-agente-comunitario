@@ -354,7 +354,6 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         if k in VALID_AGENTE_FIELDS and v is not None and (not isinstance(v, str) or v.strip() != "")
     }
 
-    print(f"🔍 DEBUG PAYLOAD RECIBIDO EN API: {values}")
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
         num_doc = values.get("numero_documento")
@@ -370,15 +369,33 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
                 # En Odoo ORM, no se deben modificar tipo_documento ni numero_documento con write()
                 update_values = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
                 if update_values:
-                    odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
+                    try:
+                        odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
+                    except Exception as ex_w:
+                        if "tipo_documento" in str(ex_w):
+                            update_values.pop("tipo_documento", None)
+                            odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
+                        else:
+                            raise ex_w
                 return {"id": existing_id, "message": "Agente comunitario existente actualizado exitosamente."}
 
-        new_id = odoo_client.create("minsa.agente.comunitario", values)
-        return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
+        try:
+            new_id = odoo_client.create("minsa.agente.comunitario", values)
+        except Exception as ex_c:
+            if "tipo_documento" in str(ex_c):
+                values.pop("tipo_documento", None)
+                new_id = odoo_client.create("minsa.agente.comunitario", values)
+            else:
+                raise ex_c
+
+        return {"id": new_id, "message": "Agente comunitario creado exitosamente en Odoo."}
     except Exception as e:
+        import traceback
         tb = traceback.format_exc()
-        print(f"❌ DETALLE DE ERROR ODOO COMPLETO:\n{tb}")
-        raise HTTPException(status_code=400, detail=f"Error en Odoo ORM: {str(e)} | TRACEBACK: {tb}")
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error en Odoo ORM: {str(e)} | TRACEBACK: {tb}"
+        )
 
 @app.put("/api/agentes/{agente_id}", tags=["Agentes Comunitarios"])
 def update_agente(agente_id: int, agente: AgenteComunitarioUpdate, token: str = Depends(verify_token)):
