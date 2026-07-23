@@ -366,15 +366,22 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     except Exception as e:
         err_msg = str(e)
         if "uniq_tipo_documento_numero_documento" in err_msg or "already exists" in err_msg.lower():
-            num_doc = values.get("numero_documento")
+            num_doc = str(values.get("numero_documento") or "").strip()
             if num_doc:
                 try:
                     existing = odoo_client.search_read(
                         "minsa.agente.comunitario",
-                        [("numero_documento", "=", str(num_doc).strip())],
+                        [("numero_documento", "=ilike", num_doc)],
                         ["id"],
                         limit=1
                     )
+                    if not existing:
+                        existing = odoo_client.search_read(
+                            "minsa.agente.comunitario",
+                            [("numero_documento", "=", num_doc)],
+                            ["id"],
+                            limit=1
+                        )
                     if existing:
                         agent_id = existing[0]["id"]
                         update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
