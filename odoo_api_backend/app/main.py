@@ -326,8 +326,16 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     if "tipo_voluntariado_ids" in values:
         values["tipo_voluntariado_ids"] = [(6, 0, values["tipo_voluntariado_ids"])]
         
-    # Omitir tipo_documento ya que el addon minsa_regcom de Odoo tiene un bug interno al procesar este campo
-    values.pop("tipo_documento", None)
+    # MAPEO GARANTIZADO DE CUALQUIER INPUT A CÓDIGO ODOO DE 2 DÍGITOS ('01', '03', '07', '23')
+    MAP_TIPO_DOC = {
+        "1": "01", 1: "01", "01": "01",
+        "2": "03", 2: "03", "02": "03", "03": "03",
+        "3": "07", 3: "07", "07": "07",
+        "4": "23", 4: "23", "23": "23"
+    }
+    if "tipo_documento" in values and values["tipo_documento"] is not None:
+        raw = values["tipo_documento"]
+        values["tipo_documento"] = MAP_TIPO_DOC.get(raw, MAP_TIPO_DOC.get(str(raw), "01"))
 
     # Filtrar solo campos válidos existentes en Odoo, remover None y remover strings vacíos ''
     VALID_AGENTE_FIELDS = {
