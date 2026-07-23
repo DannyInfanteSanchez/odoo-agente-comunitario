@@ -360,35 +360,35 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         if k in VALID_AGENTE_FIELDS and v is not None and (not isinstance(v, str) or v.strip() != "")
     }
 
-    # Verificar si el agente ya existe en Odoo por número de documento
-    num_doc = values.get("numero_documento")
-    if num_doc:
-        try:
-            existing = odoo_client.search_read(
-                "minsa.agente.comunitario",
-                [("numero_documento", "=", str(num_doc).strip())],
-                ["id"],
-                limit=1
-            )
-            if existing:
-                agent_id = existing[0]["id"]
-                print(f"ℹ️ Agente ya existe en Odoo con ID {agent_id}. Actualizando datos...")
-                update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
-                if update_vals:
-                    odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
-                return {"id": agent_id, "message": "Agente comunitario ya existía y fue actualizado exitosamente."}
-        except Exception as e_search:
-            print(f"⚠️ Error buscando existencia previa del agente: {e_search}")
-
     try:
         new_id = odoo_client.create("minsa.agente.comunitario", values)
         return {"id": new_id, "message": "Agente comunitario creado exitosamente en Odoo."}
     except Exception as e:
+        err_msg = str(e)
+        if "uniq_tipo_documento_numero_documento" in err_msg or "already exists" in err_msg.lower():
+            num_doc = values.get("numero_documento")
+            if num_doc:
+                try:
+                    existing = odoo_client.search_read(
+                        "minsa.agente.comunitario",
+                        [("numero_documento", "=", str(num_doc).strip())],
+                        ["id"],
+                        limit=1
+                    )
+                    if existing:
+                        agent_id = existing[0]["id"]
+                        update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
+                        if update_vals:
+                            odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
+                        return {"id": agent_id, "message": "Agente comunitario ya existía en Odoo y fue actualizado exitosamente."}
+                except Exception as e_retry:
+                    print(f"⚠️ Error al re-buscar agente existente: {e_retry}")
+
         import traceback
         tb = traceback.format_exc()
         raise HTTPException(
             status_code=400,
-            detail=f"Error en Odoo ORM: {str(e)} | TRACEBACK: {tb}"
+            detail=f"Error en Odoo ORM: {err_msg} | TRACEBACK: {tb}"
         )
 
 @app.put("/api/agentes/{agente_id}", tags=["Agentes Comunitarios"])
