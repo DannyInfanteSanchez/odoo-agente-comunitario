@@ -362,22 +362,29 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
 
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
+        doc_tipo = values.get("tipo_documento")
         num_doc = values.get("numero_documento")
-        if num_doc:
+        if doc_tipo and num_doc:
+            domain = [("numero_documento", "=", str(num_doc).strip()), ("tipo_documento", "=", str(doc_tipo).strip())]
             existing = odoo_client.search_read(
                 "minsa.agente.comunitario",
-                [("numero_documento", "=", str(num_doc).strip())],
+                domain,
                 ["id"],
                 limit=1
             )
             if existing:
                 existing_id = existing[0]["id"]
-                # En Odoo ORM, no se deben modificar tipo_documento ni numero_documento con write()
-                update_values = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
-                if update_values:
-                    odoo_client.write("minsa.agente.comunitario", [existing_id], update_values)
-                return {"id": existing_id, "message": "Agente comunitario existente actualizado exitosamente."}
+                agent_id = existing[0]["id"]
+                print(f"ℹ️ Agente ya existe en Odoo con ID {agent_id}. Actualizando datos...")
+                # Excluir campos inmutables de Odoo
+                update_vals = {k: v for k, v in values.items() if k not in ["tipo_documento", "numero_documento"]}
+                if update_vals:
+                    odoo_client.write("minsa.agente.comunitario", [agent_id], update_vals)
+                return {"id": agent_id, "message": "Agente comunitario ya existía y fue actualizado exitosamente."}
+        except Exception as e_search:
+            print(f"⚠️ Error buscando existencia previa del agente: {e_search}")
 
+    try:
         new_id = odoo_client.create("minsa.agente.comunitario", values)
         return {"id": new_id, "message": "Agente comunitario creado exitosamente en Odoo."}
     except Exception as e:
