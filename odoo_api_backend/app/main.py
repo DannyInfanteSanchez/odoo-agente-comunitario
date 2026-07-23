@@ -343,6 +343,7 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
     }
     values = {k: v for k, v in values.items() if k in VALID_AGENTE_FIELDS and v is not None}
 
+    print(f"🔍 DEBUG PAYLOAD RECIBIDO EN API: {values}")
     try:
         # Verificar si el agente ya existe en Odoo por número de documento
         num_doc = values.get("numero_documento")
@@ -361,7 +362,9 @@ def create_agente(agente: AgenteComunitarioCreate, token: str = Depends(verify_t
         new_id = odoo_client.create("minsa.agente.comunitario", values)
         return {"id": new_id, "message": "Agente comunitario creado exitosamente."}
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        tb = traceback.format_exc()
+        print(f"❌ DETALLE DE ERROR ODOO COMPLETO:\n{tb}")
+        raise HTTPException(status_code=400, detail=f"Error en Odoo ORM: {str(e)} | TRACEBACK: {tb}")
 
 @app.put("/api/agentes/{agente_id}", tags=["Agentes Comunitarios"])
 def update_agente(agente_id: int, agente: AgenteComunitarioUpdate, token: str = Depends(verify_token)):
